@@ -1,0 +1,40 @@
+/* menu-header
+=========================== */
+header {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.menu-header {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 3.8em
+}
+
+.logo {
+    width: 15em;
+    padding-bottom: 1em;
+    padding-top: 1em
+}
+  
+h1 {
+    font-size: 5em;
+    margin-top: 1em;
+    letter-spacing: .03em;
+    color: white;
+    margin-bottom: -.01em;
+}
+  
+@media (max-width: 55rem) {
+    .title {
+      font-size: 3em;
+      margin-bottom: -.5em
+    }
+}
+  
+.title span {
+    color: #2FCE74;
+}
+  
+

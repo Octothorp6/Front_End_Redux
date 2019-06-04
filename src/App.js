@@ -1,26 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+import themes, { overrides } from './themes';
+import { withLayout } from "./components/HomePage/UI/Layout"
+import Layout from './pages/Layout';
+import Error from './pages/Error';
+import Login from './pages/Login';
+import Home from "./pages/Home"
 
-function App() {
+const theme = createMuiTheme({...themes.default, ...overrides});
+
+const PrivateRoute = ({ component, ...rest }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Route
+      {...rest} render={props => (
+      localStorage.getItem('id_token') ? (
+        React.createElement(component, props)
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { from: props.location },
+          }}
+        />
+      )
+    )}
+    />
   );
-}
+};
 
-export default App;
+
+const App = () => (
+  <MuiThemeProvider theme={theme}>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" render={() => withLayout(Home)} />
+        <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
+        <PrivateRoute path="/admin" component={Layout} />
+        <Route path="/login" component={Login} />
+        <Route component={Error} />
+      </Switch>
+    </BrowserRouter>
+  </MuiThemeProvider>
+);
+
+
+export default compose(
+  connect(
+    state => ({
+      isAuthenticated: state.login.isAuthenticated,
+    })
+  )
+)(App);

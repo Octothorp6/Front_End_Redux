@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+
+html,
+body {
+  margin: 0 auto;
+  background-color: #1c1d26;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin: 0 auto; 
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Typography
+=========================== */
+
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 3em;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  color: #2fce74;
+}
+
+h3 {
+  font-size: 1.8em;
+  font-weight: 500;
+  letter-spacing: 0em;
+}
+
+h4 {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: rgb(236, 236, 236);
+}
+h5 {
+  font-size: 1.3em;
+  font-weight: 500;
+  color: white;
+  line-height: 2em;
+}
+
+p {
+  font-size: 1em;
+  color: #b1b1b1;
+  line-height: 1.5em;
+}
+
+@media (max-width: 43rem) {
+  h1 {
+    font-size: 5em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.8em;
+  }
+
+  h4 {
+    font-size: 1.4em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+  .nully {
+    display: none;
+  }
+}

@@ -1,0 +1,36 @@
+/* home-features
+=========================== */
+
+.home-features {
+  background-color: #1c1d26;
+  margin: 0 auto;
+  /* padding-left: 1em; */
+}
+
+.home-features * {
+  color: white;
+}
+
+.home-features > div {
+  display: inline-block;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em
+}
+
+.testNets > span {
+  font-size: large;
+
+}
+
+.testNets {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+@media(max-width: 43rem) {
+  .testNets2{
+    text-align: center !important
+  }
+}
