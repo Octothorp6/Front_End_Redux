@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Dialog, withMobileDialog } from "@material-ui/core";
-import WizardForm from "../checkout2";
+import { Button, Dialog, withMobileDialog, TextField } from "@material-ui/core";
+import WizardForm from "../checkout2"
 
 function ResponsiveDialog(props) {
   const { fullScreen } = props;
@@ -33,8 +33,7 @@ function ResponsiveDialog(props) {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       > 
-        <WizardForm />
-        {/* <Checkout handleClose={handleClose} /> */}
+       <WizardForm />
       </Dialog>
     </div>
   );
