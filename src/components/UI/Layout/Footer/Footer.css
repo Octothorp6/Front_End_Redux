@@ -1,6 +1,8 @@
 .footer {
-  position: fixed;
+  position: absolute;
+  left: 0;
   bottom: 0;
+  right: 0;
   width: 100%;
 }
 
@@ -43,7 +45,8 @@ nav ul {
 
 nav li {
   display: inline-block;
-  margin: 1.8em;
+  margin: 1em;
+  margin-top: 2em;
 }
 
 nav a {

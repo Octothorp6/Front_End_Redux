@@ -68,6 +68,7 @@ export default function checkoutReducer(state = checkoutState, action) {
     case CRYPTO_CHECKOUT:
       return {
         ...state,
+        payType: "BTC",
         ...action.payload
       };
     case CHECKOUT_SUCCESS:

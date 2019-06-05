@@ -15,7 +15,7 @@ import "./Footer.css";
 const Footer = () => (
   <div className="footer">
     <GridContainer>
-      <GridItem xs={4} sm={6} md={4} lg={3}>
+      <GridItem xs={12} sm={12} md={4} lg={3}>
         <img
           src={ethernodeBlack}
           alt="LogoBlack"
@@ -23,16 +23,22 @@ const Footer = () => (
           title="Ethernode"
         />
       </GridItem>
-      <GridItem xs={4} sm={6} md={4} lg={6}>
+      <GridItem xs={6} sm={6} md={4} lg={6}>
         <nav>
           <ul>
             <li>
               <a href="https://forum.ethernode.io">Forum</a>
             </li>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
+            </li>
           </ul>
         </nav>
       </GridItem>
-      <GridItem xs={12} sm={12} md={4} lg={3}>
+      <GridItem xs={6} sm={6} md={4} lg={3}>
         <div className="footer-links">
           <a href="https://github.com/ethernodeio">
             <img src={githubLogo} alt="Github Logo" className="social-icon" />

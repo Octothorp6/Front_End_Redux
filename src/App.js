@@ -17,7 +17,7 @@ const PrivateRoute = ({ component, ...rest }) => {
   return (
     <Route
       {...rest} render={props => (
-      localStorage.getItem('id_token') ? (
+      localStorage.getItem('token') ? (
         React.createElement(component, props)
       ) : (
         <Redirect
@@ -32,6 +32,23 @@ const PrivateRoute = ({ component, ...rest }) => {
   );
 };
 
+const PublicRoute = ({ component, ...rest }) => {
+  return (
+    <Route
+      {...rest} render={props => (
+      localStorage.getItem('token') ? (
+        <Redirect
+          to={{
+            pathname: '/admin',
+          }}
+        />
+      ) : (
+        React.createElement(component, props)
+      )
+    )}
+    />
+  );
+};
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
@@ -41,7 +58,7 @@ const App = () => (
         <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
         <PrivateRoute path="/admin" component={Layout} />
         <Route exact path="/checkout" render={() => withLayout(Checkout)} />
-        <Route path="/login" component={Login} />
+        <PublicRoute path="/login" component={Login} />
         <Route component={Error} />
       </Switch>
     </BrowserRouter>

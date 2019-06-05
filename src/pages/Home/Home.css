@@ -3,14 +3,21 @@
 html,
 body {
   margin: 0 auto;
+  padding: 0;
   background-color: #1c1d26;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   text-align: center;
   margin: 0 auto; 
+}
+
+.container {
+  min-height:100%;
+  position:relative;
 }
 
 * {

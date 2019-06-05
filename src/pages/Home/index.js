@@ -9,11 +9,13 @@ import "./Home.css"
 function Home() {
   return (
     <React.Fragment>
+      <div className="container">
       <Interaction />
       <SectionPills />
       <Features />
       <HomeMap />
       <Form />
+      </div>
     </React.Fragment>
   );
 }
