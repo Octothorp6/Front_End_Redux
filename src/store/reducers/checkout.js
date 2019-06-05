@@ -32,15 +32,16 @@ export default function checkoutReducer(state = checkoutState, action) {
         cart: tempCart
       };
     case REMOVE_ITEM_FROM_CART:
-      let index = tempCart
-        .map(function(item) {
-          return item.itemId;
-        })
-        .indexOf(action.payload);
-      if (tempCart.length === 0) {
-        return tempCart;
-      } else if (index !== -1) {
-        tempCart.splice(index, 1);
+      updatedItemIndex = tempCart.findIndex(
+        item => item.itemId === action.payload
+      );
+      const updatedItem = {
+        ...tempCart[updatedItemIndex]
+      };
+      if (updatedItemIndex !== -1) {
+        tempCart.splice(updatedItemIndex, 1);
+      } else {
+        tempCart[updatedItemIndex] = updatedItem;
       }
       return {
         ...state,
@@ -87,3 +88,18 @@ export default function checkoutReducer(state = checkoutState, action) {
       return state;
   }
 }
+
+// let index = tempCart
+//         .map(function(item) {
+//           return item.itemId;
+//         })
+//         .indexOf(action.payload);
+//       if (tempCart.length === 0) {
+//         return tempCart;
+//       } else if (index !== -1) {
+//         tempCart.splice(index, 1);
+//       }
+//       return {
+//         ...state,
+//         cart: tempCart
+//       };
