@@ -19,7 +19,7 @@ const Login = ({ classes, ...props }) => (
     <div className={classes.formContainer}>
       <div className={classes.form}>
           <React.Fragment>
-            <Typography variant="h1" className={classes.greeting}>
+            <Typography variant="h1" className={classes.greeting} style={{color: "white"}}>
               Welcome to Ethernode
             </Typography>
             <div className={classes.formDividerContainer}>
@@ -74,6 +74,7 @@ const Login = ({ classes, ...props }) => (
                   variant="contained"
                   color="primary"
                   size="large"
+                  
                 >
                   Login
                 </Button>

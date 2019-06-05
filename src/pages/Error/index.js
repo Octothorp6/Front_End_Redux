@@ -9,12 +9,11 @@ const Error = ({ classes }) => (
   <Grid container className={classes.container}>
     <div className={classes.logotype}>
       <img className={classes.logotypeIcon} src={logo} alt="logo" />
-      <Typography variant="h3" color="white" className={classes.logotypeText}>Ethernode.io</Typography>
     </div>
     <Paper classes={{ root: classes.paperRoot }}>
       <Typography variant="h1" color="primary" className={classnames(classes.textRow, classes.errorCode)}>404</Typography>
-      <Typography variant="h5" color="primary" className={classes.textRow}>Oops. Looks like the page you're looking for no longer exists</Typography>
-      <Typography variant="h6" color="textSecondary" className={classnames(classes.textRow, classes.safetyText)}>But we're here to bring you back to safety</Typography>
+      <Typography variant="h5" color="primary" className={classes.textRow}>Oops. Looks like the page you're looking for doesn't exist.</Typography>
+      <Typography variant="h6" color="textSecondary" className={classnames(classes.textRow, classes.safetyText)}>Return to the HomePage to try again.</Typography>
       <Button variant="contained" color="primary" component={Link} to="/" size="large" className={classes.backButton}>Back to Home</Button>
     </Paper>
   </Grid>
@@ -28,7 +27,7 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "gray",
     position: 'absolute',
     top: 0,
     left: 0,
@@ -41,13 +40,8 @@ const styles = theme => ({
       display: 'none',
     }
   },
-  logotypeText: {
-    fontWeight: 500,
-    color: 'white',
-    marginLeft: theme.spacing.unit * 2,
-  },
   logotypeIcon: {
-    width: 70,
+    width: 250,
     marginRight: theme.spacing.unit * 2,
   },
   paperRoot: {

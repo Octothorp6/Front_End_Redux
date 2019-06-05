@@ -3,7 +3,7 @@ import { Button, Typography } from "@material-ui/core";
 import { products } from "./products";
 
 
-const PickYourNode = ({ addItemToCart, removeItemFromCart, getTotal }) => {
+const PickYourNode = ({ addItemToCart, removeItemFromCart }) => {
   return (
     <React.Fragment>
       {products.map((item, index) => {

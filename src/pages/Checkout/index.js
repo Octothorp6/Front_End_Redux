@@ -56,7 +56,6 @@ class Checkout extends React.PureComponent {
           <PickYourNode
             addItemToCart={this.props.addItemToCart}
             removeItemFromCart={this.props.removeItemFromCart}
-            getTotal={this.props.getTotal}
           />
         );
       case 1:
@@ -67,7 +66,6 @@ class Checkout extends React.PureComponent {
         return (
           <Confirm
             values={values}
-            getTotal={this.props.getTotal}
             cart={this.props.cart}
             orderTotal={this.props.orderTotal}
           />
