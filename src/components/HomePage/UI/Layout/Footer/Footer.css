@@ -1,6 +1,8 @@
 .footer {
+    position: fixed;
+    bottom: 0;
     background-color: white;
-    max-width: 100%;
+    width: 100%;
 }
 
 #footer a:visited {

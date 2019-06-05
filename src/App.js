@@ -9,6 +9,7 @@ import Layout from './pages/Layout';
 import Error from './pages/Error';
 import Login from './pages/Login';
 import Home from "./pages/Home"
+import Checkout from './pages/Checkout';
 
 const theme = createMuiTheme({...themes.default, ...overrides});
 
@@ -39,6 +40,7 @@ const App = () => (
         <Route exact path="/" render={() => withLayout(Home)} />
         <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
         <PrivateRoute path="/admin" component={Layout} />
+        <Route exact path="/checkout" render={() => withLayout(Checkout)} />
         <Route path="/login" component={Login} />
         <Route component={Error} />
       </Switch>

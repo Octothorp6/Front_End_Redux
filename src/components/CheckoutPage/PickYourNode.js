@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Typography } from "@material-ui/core";
-import { products } from "../Checkout/products";
+import { products } from "./products";
 
 const PickYourNode = ({ addItemToCart, removeItemFromCart }) => {
   return (

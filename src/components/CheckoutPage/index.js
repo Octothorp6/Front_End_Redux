@@ -4,10 +4,10 @@ import {
   handleCryptoCheckout,
   addItemToCart,
   removeItemFromCart
-} from "../../../store/actions";
+} from "../../store/actions";
 import { Form, Formik } from "formik";
 import { connect } from "react-redux";
-import { fieldState } from "../../../store/initialState";
+import { fieldState } from "../../store/initialState";
 import PickYourNode from "./PickYourNode";
 import AddressForm from "./AddressForm";
 import PaymentDetails from "./PaymentDetails";
@@ -45,7 +45,7 @@ class Checkout extends React.PureComponent {
     this.props.handleCreditCheckout(values);
   };
 
-  getStepContent = (step, ...props) => {
+  getStepContent = (step, ...rest) => {
     switch (step) {
       case 0:
         return (
@@ -55,11 +55,11 @@ class Checkout extends React.PureComponent {
           />
         );
       case 1:
-        return <AddressForm props={props} />;
+        return <AddressForm errors={rest.errors} touched={rest.touched} />;
       case 2:
-        return <PaymentDetails props={props} />;
+        return <PaymentDetails errors={rest.errors} touched={rest.touched} />;
       case 3:
-        return <Confirm props={props} />;
+        return <Confirm />;
       default:
         throw new Error("Invalid Step");
     }
@@ -69,7 +69,7 @@ class Checkout extends React.PureComponent {
     return (
       <Formik
         initialValues={{ ...fieldState }}
-        onSubmit={this.checkout("")}
+        onSubmit={this.checkout}
         validationSchema={CheckoutSchema}
       >
         {({ values, errors, touched, validateForm }) => (

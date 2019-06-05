@@ -1,46 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Button, Dialog, withMobileDialog } from "@material-ui/core";
-import Checkout from "../checkout2"
+import { BrowserRouter as Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
-function ResponsiveDialog(props) {
-  const { fullScreen } = props;
-  const [open, setOpen] = React.useState(false);
+const RenderCheckout = () => 
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <div>
-      <Button
-        variant="contained"
-        size="large"
-        style={{ backgroundColor: "#2FCE74", color: "white" }}
-        onClick={handleClickOpen}
-      >
-        Order Now!
-      </Button>
-      <Dialog
-        style={{ overflowX: "hidden" }}
-        fullScreen={fullScreen}
-        open={open}
-        scroll={"paper"}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <Checkout />
-      </Dialog>
-    </div>
+    <React.Fragment>
+     
+      </Link>
+        </React.Fragment>
   );
+
 }
 
-ResponsiveDialog.propTypes = {
-  fullScreen: PropTypes.bool.isRequired
-};
-
-export default withMobileDialog()(ResponsiveDialog);
+export default RenderCheckout;

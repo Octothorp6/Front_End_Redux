@@ -1,5 +1,8 @@
 import React from 'react'
-import Checkout from "../components/HomePage/checkout2"
+import Checkout from "../../components/CheckoutPage"
+
+
+
 const dodo = () => {
     return (
         <div>
