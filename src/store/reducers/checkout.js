@@ -26,7 +26,8 @@ export default function checkoutReducer(state = checkoutState, action) {
       return {
         ...state,
         madeOrder: true,
-        orderStatus: "pending"
+        orderStatus: "pending",
+        ...action.payload
       };
     case CHECKOUT_FAILURE:
       return {

@@ -1,32 +1,15 @@
 //INTIIAL CHECKOUTSTATE
 export const checkoutState = {
   userEmail: "",
-  userRole: "customer",
   userFirst: "",
   userLast: "",
   userPassword: "",
-  cardHolder: "",
-  cardNumber: "",
-  cvv: "",
-  expiration: "",
   orderTotal: "0",
   orderId: Date.now(),
   orderStatus: "pending",
   cart: [],
   salesTax: "0",
   payType: "Credit Card",
-  billingAddress1: "",
-  billingAddress2: "",
-  billingCity: "",
-  billingState: "",
-  billingZip: "",
-  billingCountry: "",
-  shippingAddress1: "",
-  shippingAddress2: "",
-  shippingCity: "",
-  shippingState: "",
-  shippingZip: "",
-  shippingCountry: "",
   shippingCost: 10,
   difShipping: false,
   madeOrder: false
@@ -59,4 +42,28 @@ export const contactState = {
   name: "",
   email: "",
   message: ""
+}
+
+//====================================================================
+//FIELD STATE
+export const fieldState = {
+  userEmail: "",
+  userRole: "customer",
+  userFirst: "",
+  userLast: "",
+  cardHolder: "",
+  cardNumber: "",
+  cvv: "",
+  billingAddress1: "",
+  billingAddress2: "",
+  billingCity: "",
+  billingState: "",
+  billingZip: "",
+  billingCountry: "",
+  shippingAddress1: "",
+  shippingAddress2: "",
+  shippingCity: "",
+  shippingState: "",
+  shippingZip: "",
+  shippingCountry: "",
 }
