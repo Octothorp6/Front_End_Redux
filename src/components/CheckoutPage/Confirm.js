@@ -7,14 +7,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 
-const Confirm = ({ state, classes }) => {
+const Confirm = ({ cart, classes, values, orderTotal }) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
       <List disablePadding>
-        {state.cart.map((item, index) => (
+        {cart.map((item, index) => (
           <ListItem className={classes.listItem} key={index}>
             <ListItemText primary={item.itemName} secondary={item.itemDesc} />
             <Typography variant="body2">{item.itemCost}</Typography>
@@ -23,7 +23,7 @@ const Confirm = ({ state, classes }) => {
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-            ${state.orderTotal}
+            ${orderTotal}
           </Typography>
         </ListItem>
       </List>
@@ -33,12 +33,12 @@ const Confirm = ({ state, classes }) => {
             Shipping
           </Typography>
           <Typography gutterBottom>
-            {state.shippingAddress1} {state.shippingAddress2}
+            {values.shippingAddress1} {values.shippingAddress2}
           </Typography>
           <Typography gutterBottom>
-            {state.shippingCity}, {state.shippingState} {state.shippingZip}
+            {values.shippingCity}, {values.shippingState} {values.shippingZip}
           </Typography>
-          <Typography gutterBottom>{state.shippingCountry}</Typography>
+          <Typography gutterBottom>{values.shippingCountry}</Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
@@ -46,9 +46,9 @@ const Confirm = ({ state, classes }) => {
           </Typography>
           <Grid item xs={12}>
             <Typography gutterBottom>
-              {state.userFirst} {state.userLast}
+              {values.userFirst} {values.userLast}
             </Typography>
-            <Typography gutterBottom>{state.cardNumber}</Typography>
+            <Typography gutterBottom>{values.cardNumber}</Typography>
           </Grid>
         </Grid>
       </Grid>

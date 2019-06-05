@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Typography } from "@material-ui/core";
 import { products } from "./products";
 
-const PickYourNode = ({ addItemToCart, removeItemFromCart }) => {
+
+const PickYourNode = ({ addItemToCart, removeItemFromCart, getTotal }) => {
   return (
     <React.Fragment>
       {products.map((item, index) => {
