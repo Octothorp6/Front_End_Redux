@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, TextField } from "@material-ui/core"
-import GridContainer from "../UI/Grid/GridContainer";
-import GridItem from "../UI/Grid/GridItem";
+import GridContainer from "../../UI/Grid/GridContainer";
+import GridItem from "../../UI/Grid/GridItem";
 import { connect } from "react-redux";
 import { contactUs } from "../../../store/actions";
 

@@ -1,10 +1,10 @@
 import React from "react";
-import GridContainer from "../UI/Grid/GridContainer";
-import GridItem from "../UI/Grid/GridItem";
-import { Link } from "react-router-dom";
+import GridContainer from "../../UI/Grid/GridContainer";
+import GridItem from "../../UI/Grid/GridItem";
+import LinkButton from "../../UI/LinkButton";
 import { nodeImg } from "../../../assets";
 import CustomListItem from "../List/CustomList";
-import { List, Button } from "@material-ui/core";
+import { List } from "@material-ui/core";
 import "./enkeep.css";
 
 const Enkeep = () => {
@@ -14,15 +14,11 @@ const Enkeep = () => {
       <GridContainer>
         <GridItem xs={12} sm={12} md={6} lg={8}>
           <img src={nodeImg} alt="nodeImg" style={{ maxWidth: "100%" }} />
-          <Link to="/checkout">
-            <Button
-              variant="contained"
-              size="large"
-              style={{ backgroundColor: "#2FCE74", color: "white" }}
+            <LinkButton
+              to="/checkout"
             >
               Order Now!
-            </Button>
-          </Link>
+            </LinkButton>
         </GridItem>
         <GridItem xs={12} sm={12} md={6} lg={4}>
           <List>

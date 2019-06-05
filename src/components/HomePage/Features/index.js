@@ -1,8 +1,8 @@
 import React from "react";
-import GridContainer from "../UI/Grid/GridContainer";
 import { etcLogo, test, ethereumLogo } from "../../../assets";
 import "./Features.css";
-import GridItem from "../UI/Grid/GridItem";
+import GridItem from "../../UI/Grid/GridItem";
+import GridContainer from "../../UI/Grid/GridContainer";
 import { Row } from "react-grid-system";
 import List from "@material-ui/core/List";
 import ListItem from "../List";

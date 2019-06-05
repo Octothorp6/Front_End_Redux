@@ -2,8 +2,8 @@ import React from "react";
 import { classicNodeExplorer } from "../../../assets";
 import List from "@material-ui/core/List";
 import CustomListItem from "../List/CustomList";
-import GridContainer from "../UI/Grid/GridContainer";
-import GridItem from "../UI/Grid/GridItem";
+import GridContainer from "../../UI/Grid/GridContainer";
+import GridItem from "../../UI/Grid/GridItem";
 
 const EnOs = () => {
   return (

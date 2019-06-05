@@ -1,7 +1,7 @@
 import React from "react";
 import { mapImg } from "../../../assets";
-import GridContainer from "../UI/Grid/GridContainer";
-import GridItem from "../UI/Grid/GridItem";
+import GridContainer from "../../UI/Grid/GridContainer";
+import GridItem from "../../UI/Grid/GridItem";
 import "./Map.css";
 
 const HomeMap = () => (

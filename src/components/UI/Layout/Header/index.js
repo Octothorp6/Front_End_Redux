@@ -1,5 +1,5 @@
 import React from "react";
-import { darkHeader } from "../../../../../assets";
+import { darkHeader } from "../../../../assets";
 import GridContainer from "../../../UI/Grid/GridContainer";
 import GridItem from "../../../UI/Grid/GridItem";
 import "./Header.css";

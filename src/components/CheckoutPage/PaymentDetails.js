@@ -1,8 +1,8 @@
 import React from "react";
 import { TextField } from "formik-material-ui";
 import { Field } from "formik";
-import GridContainer from "../../components/HomePage/UI/Grid/GridContainer";
-import GridItem from "../../components/HomePage/UI/Grid/GridItem";
+import GridContainer from "../UI/Grid/GridContainer";
+import GridItem from "../UI/Grid/GridItem";
 
 const PaymentDetails = ({ errors, touched }) => (
   <React.Fragment>

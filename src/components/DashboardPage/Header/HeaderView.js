@@ -19,7 +19,7 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import classNames from "classnames";
 
 import { Badge, Typography } from "../Wrappers";
-import Notification from "../../Notification";
+import Notification from "../../UI/Notification";
 
 const notifications = [
   { id: 0, color: "warning", message: "Check out this awesome ticket" },

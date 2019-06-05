@@ -18,7 +18,7 @@ import {
 import classnames from "classnames";
 import tinycolor from "tinycolor2";
 
-import { Typography } from "../DashboardPage/Wrappers";
+import { Typography } from "../../DashboardPage/Wrappers";
 
 const typesIcons = {
   "e-commerce": <ShoppingCartIcon />,

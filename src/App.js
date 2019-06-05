@@ -4,7 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import themes, { overrides } from './themes';
-import { withLayout } from "./components/HomePage/UI/Layout"
+import { withLayout } from "./components/UI/Layout"
 import Layout from './pages/Layout';
 import Error from './pages/Error';
 import Login from './pages/Login';

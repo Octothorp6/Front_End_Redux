@@ -20,8 +20,8 @@ import {
 } from "../../../assets/index";
 import Home from "@material-ui/icons/Home";
 // core components
-import GridContainer from "../UI/Grid/GridContainer";
-import GridItem from "../UI/Grid/GridItem";
+import GridContainer from "../../UI/Grid/GridContainer";
+import GridItem from "../../UI/Grid/GridItem";
 import NavPills from "../navPills";
 import pillsStyle from "./navPillsStyle";
 import ListItem from "../List";

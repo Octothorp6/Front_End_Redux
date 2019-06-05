@@ -6,7 +6,7 @@ import {
   discordLogo,
   linkedInLogo,
   twitterLogo
-} from "../../../../../assets";
+} from "../../../../assets";
 import GridContainer from "../../../UI/Grid/GridContainer";
 import GridItem from "../../../UI/Grid/GridItem";
 import "./Footer.css";
