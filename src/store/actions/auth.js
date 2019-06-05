@@ -7,11 +7,12 @@ import {
 } from "../actions/types";
 
 export const login = () => ({
-  type: LOGIN
+  type: LOGIN,
 });
 
-export const loginSuccess = () => ({
-  type: LOGIN_SUCCESS
+export const loginSuccess = payload => ({
+  type: LOGIN_SUCCESS,
+  payload: payload
 });
 
 export const loginFailure = () => ({
@@ -28,7 +29,7 @@ export const loginUser = (username, password) => dispatch => {
   if (!!username && !!password) {
     setTimeout(() => {
       localStorage.setItem("token", username);
-      dispatch(loginSuccess());
+      dispatch(loginSuccess(username));
     }, 2000);
   } else {
     dispatch(loginFailure());

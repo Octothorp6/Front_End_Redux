@@ -1,16 +1,13 @@
 //INTIIAL CHECKOUTSTATE
 export const checkoutState = {
-  userEmail: "",
-  userFirst: "",
-  userLast: "",
   userPassword: "",
-  orderTotal: "0",
+  orderTotal: 0,
   orderId: Date.now(),
-  orderStatus: "pending",
+  orderStatus: "",
   cart: [],
-  salesTax: "0",
-  payType: "Credit Card",
-  shippingCost: 10,
+  salesTax: 0,
+  payType: "",
+  shippingCost: 0,
   difShipping: false,
   madeOrder: false
 };
@@ -18,6 +15,7 @@ export const checkoutState = {
 //INITIAL STATE FOR THE LOGIN REDUCER
 //MUST CHECK FOR AUTH, TOKEN, PERMISSIONS
 export const authState = {
+  user: "",
   isLoading: false,
   isAuthenticated: !!localStorage.getItem("token"),
   error: null

@@ -88,18 +88,3 @@ export default function checkoutReducer(state = checkoutState, action) {
       return state;
   }
 }
-
-// let index = tempCart
-//         .map(function(item) {
-//           return item.itemId;
-//         })
-//         .indexOf(action.payload);
-//       if (tempCart.length === 0) {
-//         return tempCart;
-//       } else if (index !== -1) {
-//         tempCart.splice(index, 1);
-//       }
-//       return {
-//         ...state,
-//         cart: tempCart
-//       };

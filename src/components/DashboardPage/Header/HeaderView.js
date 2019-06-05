@@ -22,7 +22,7 @@ import { Badge, Typography } from "../Wrappers";
 import Notification from "../../UI/Notification";
 
 const notifications = [
-  { id: 0, color: "warning", message: "Check out this awesome ticket" },
+  { id: 0, color: "error", message: "Check out this awesome ticket" },
   {
     id: 1,
     color: "success",
@@ -103,7 +103,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           badgeContent={
             props.isNotificationsUnread ? notifications.length : null
           }
-          color="warning"
+          color="error"
         >
           <NotificationsIcon classes={{ root: classes.headerIcon }} />
         </Badge>
