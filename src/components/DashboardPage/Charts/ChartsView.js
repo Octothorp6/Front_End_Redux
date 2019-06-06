@@ -1,7 +1,6 @@
-import React from 'react';
-import { Grid } from '@material-ui/core';
-
-import Widget from '../../../components/DashboardPage/Widget';
+import React from './node_modules/react';
+import { Grid } from './node_modules/@material-ui/core';
+import Widget from '../Widget';
 import ApexLineChart from './components/Plots/ApexLineChart';
 import ApexHeatmap from './components/Plots/ApexHeatmap'
 import {
@@ -15,9 +14,9 @@ import {
     Tooltip,
     XAxis,
     YAxis
-} from "recharts";
-import {withTheme} from "@material-ui/core";
-import PageTitle from "../../../components/DashboardPage/PageTitle";
+} from "./node_modules/recharts";
+import { withTheme } from "./node_modules/@material-ui/core";
+import PageTitle from "../PageTitle";
 
 const lineChartData = [
     {

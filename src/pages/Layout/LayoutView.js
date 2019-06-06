@@ -9,6 +9,7 @@ import Sidebar from "../../components/DashboardPage/Sidebar";
 import Dashboard from "../Admin";
 import Tables from "../Admin/charts/components/Table";
 import Charts from "../Admin/charts";
+import CheatSheet from "../../components/DashboardPage/CheatSheet";
 
 const Layout = ({ classes, isSidebarOpened, toggleSidebar }) => (
   <div className={classes.root}>
@@ -27,6 +28,7 @@ const Layout = ({ classes, isSidebarOpened, toggleSidebar }) => (
             <Route path="/admin/dashboard" component={Dashboard} />
             <Route path="/admin/tables" component={Tables} />
             <Route path="/admin/charts" component={Charts} />
+            <Route path="/admin/cheatSheet" component={CheatSheet} />
           </Switch>
         </div>
       </React.Fragment>
