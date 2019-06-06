@@ -1,9 +1,11 @@
 import { checkoutState } from "../initialState";
 import {
   CRYPTO_CHECKOUT,
+  CRYPTO_CHECKOUT_SUCCESS,
+  CRYPTO_CHECKOUT_ERROR,
   CREDIT_CHECKOUT,
-  CHECKOUT_FAILURE,
-  CHECKOUT_SUCCESS,
+  CREDIT_CHECKOUT_ERROR,
+  CREDIT_CHECKOUT_SUCCESS,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
   GET_TOTAL
@@ -66,24 +68,35 @@ export default function checkoutReducer(state = checkoutState, action) {
         ...state,
         ...action.payload
       };
-    case CRYPTO_CHECKOUT:
-      return {
-        ...state,
-        payType: "BTC",
-        ...action.payload
-      };
-    case CHECKOUT_SUCCESS:
+    case CREDIT_CHECKOUT_SUCCESS:
       return {
         ...state,
         madeOrder: true,
         orderStatus: "pending",
         ...action.payload
       };
-    case CHECKOUT_FAILURE:
+    case CREDIT_CHECKOUT_ERROR:
       return {
         ...state,
         error: true
       };
+    case CRYPTO_CHECKOUT:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case CRYPTO_CHECKOUT_ERROR:
+      return {
+        ...state,
+        error: true
+      }
+    case CRYPTO_CHECKOUT_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        madeOrder: true,
+        orderStatus: "pending",
+      }
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, RETURN_ERRORS, LOG_OUT_SUCCESS } from "../actions/types"
+import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR, LOG_OUT_SUCCESS } from "../actions/types"
 import { authState } from "../initialState"
 
 export default function LoginReducer(state = authState, action) {
@@ -16,17 +16,11 @@ export default function LoginReducer(state = authState, action) {
           isAuthenticated: true,
           error: null
         };
-      case LOGIN_FAILURE:
+      case LOGIN_ERROR:
         return {
           ...state,
           isLoading: false,
           error: true
-        };
-      case RETURN_ERRORS:
-        return {
-          ...state,
-          error: true,
-          errorText: "Sorry, there appears to be an error"
         };
       case LOG_OUT_SUCCESS:
         return {

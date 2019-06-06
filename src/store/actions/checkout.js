@@ -7,7 +7,6 @@ import {
   CREDIT_CHECKOUT_SUCCESS,
   CREDIT_CHECKOUT_ERROR
 } from "./types";
-import API from "../../utils/API";
 import {
   signUpInfo,
   checkoutInfo,
@@ -15,6 +14,8 @@ import {
   txInfo,
   invoiceInfo
 } from "../../utils/sanitizer";
+import API from "../../utils/API";
+
 
 //=================================================================
 // USER CART ACTIONS
@@ -91,7 +92,7 @@ export const creditCheckoutError = error => ({
   payload: error
 });
 
-export const makePayment = payload => {
+export const creditCheckout = payload => {
   let user = signUpInfo(payload);
   let userData = checkoutInfo(payload);
 
@@ -105,7 +106,7 @@ export const makePayment = payload => {
         checkout.data.result.messages.resultCode === "Ok" &&
         register.status === 200
       ) {
-        let ccTxData = ccTxInfo(state, checkout);
+        let ccTxData = ccTxInfo(payload, checkout);
         let saveTx = await API.newTransaction(ccTxData);
         dispatch(creditCheckoutSuccess(saveTx.status));
       }

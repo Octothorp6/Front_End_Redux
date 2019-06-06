@@ -3,6 +3,7 @@ import { TextField } from "formik-material-ui";
 import { Field } from "formik";
 import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
+import "./checkoutPages.css"
 
 const DifBilling = ({ errors, touched }) => (
   <React.Fragment>
@@ -11,6 +12,8 @@ const DifBilling = ({ errors, touched }) => (
         <Field
           type="text"
           name="cardHolder"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.cardHolder && errors.cardHolder && errors.cardHolder
@@ -22,6 +25,8 @@ const DifBilling = ({ errors, touched }) => (
         <Field
           type="number"
           name="cardNumber"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.cardNumber && errors.cardNumber && errors.cardNumber
@@ -33,6 +38,8 @@ const DifBilling = ({ errors, touched }) => (
         <Field
           type="text"
           name="expiration"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.expiration && errors.expiration && errors.expiration
@@ -44,6 +51,8 @@ const DifBilling = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingAddress1"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingAddress1 &&
@@ -57,6 +66,8 @@ const DifBilling = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingAddress2"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingAddress2 &&

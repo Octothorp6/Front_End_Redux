@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import LoginView from "./LoginView";
-import { loginUser, returnErrors } from "../../store/actions";
+import { loginUser, loginError } from "../../store/actions";
 
 export default compose(
   connect(
@@ -12,7 +12,7 @@ export default compose(
       isAuthenticated: state.login.isAuthenticated,
       error: state.login.error
     }),
-    { loginUser, returnErrors }
+    { loginUser, loginError }
   ),
   withRouter,
   withState("nameValue", "setNameValue", ""),

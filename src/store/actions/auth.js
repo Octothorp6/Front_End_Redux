@@ -1,7 +1,7 @@
 import {
   LOGIN,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE,
+  LOGIN_ERROR,
   LOG_OUT_SUCCESS,
   TOGGLE_SIDEBAR
 } from "../actions/types";
@@ -15,8 +15,8 @@ export const loginSuccess = payload => ({
   payload: payload
 });
 
-export const loginFailure = () => ({
-  type: LOGIN_FAILURE
+export const loginError = () => ({
+  type: LOGIN_ERROR
 });
 
 export const toggleSidebar = () => ({
@@ -32,7 +32,7 @@ export const loginUser = (username, password) => dispatch => {
       dispatch(loginSuccess(username));
     }, 2000);
   } else {
-    dispatch(loginFailure());
+    dispatch(loginError());
   }
 };
 

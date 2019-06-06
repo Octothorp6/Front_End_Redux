@@ -2,7 +2,7 @@ export {
   addItemToCart,
   removeItemFromCart,
   getTotal,
-  makePayment,
+  creditCheckout,
   cryptoCheckout
 } from "./checkout";
 export {
@@ -10,9 +10,7 @@ export {
   loginUser,
   logOut,
   logOutSuccess,
-  loginFailure,
+  loginError,
   toggleSidebar
 } from "./auth";
-
-export { contactUs, updateField } from "./contact";
 export { sendEmail, contactEthernode, } from "./email"

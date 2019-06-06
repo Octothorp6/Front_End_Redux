@@ -19,7 +19,7 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import classNames from "classnames";
 
 import { Badge, Typography } from "../Wrappers";
-import Notification from "../../UI/Notification";
+import Notification from "./Notification";
 
 const notifications = [
   { id: 0, color: "error", message: "Check out this awesome ticket" },
@@ -42,7 +42,7 @@ const notifications = [
     message: "12 new orders has arrived today"
   }
 ];
-const user = localStorage.getItem('id_token')
+const user = localStorage.getItem('token')
 
 const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
   <AppBar position="fixed" className={classes.appBar}>

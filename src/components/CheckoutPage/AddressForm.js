@@ -3,6 +3,7 @@ import { TextField } from "formik-material-ui";
 import { Field } from "formik";
 import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
+import "./checkoutPages.css"
 
 const AddressForm = ({ errors, touched }) => (
   <React.Fragment>
@@ -11,6 +12,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="userFirst"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={touched.userFirst && errors.userFirst && errors.userFirst}
           fullwidth="true"
@@ -20,6 +23,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="userLast"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={touched.userLast && errors.userLast && errors.userLast}
           fullwidth="true"
@@ -29,6 +34,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="userEmail"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={touched.userEmail && errors.userEmail && errors.userEmail}
           fullwidth="true"
@@ -38,6 +45,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingAddress1"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingAddress1 &&
@@ -51,6 +60,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingAddress2"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingAddress2 &&
@@ -64,6 +75,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingCity"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingCity && errors.shippingCity && errors.shippingCity
@@ -75,6 +88,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingState"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingState &&
@@ -88,6 +103,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingZip"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingZip && errors.shippingZip && errors.shippingZip
@@ -99,6 +116,8 @@ const AddressForm = ({ errors, touched }) => (
         <Field
           type="text"
           name="shippingCountry"
+          className="Field"
+          variant="outlined"
           component={TextField}
           helperText={
             touched.shippingCountry &&
