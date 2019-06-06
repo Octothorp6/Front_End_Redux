@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import GridContainer from "../../UI/Grid/GridContainer";
 import GridItem from "../../UI/Grid/GridItem";
-import { Button, Card } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { contactEthernode } from "../../../store/actions";
 import { Form, Formik, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { contactState } from "../../../store/initialState";
 import { ContactSchema } from "./validationSchema";
+import "./Form.css"
 
 class ContactForm extends Component {
   handleSubmit = values => {
@@ -21,7 +22,7 @@ class ContactForm extends Component {
         onSubmit={this.handleSubmit}
         validationSchema={ContactSchema}
       >
-        {({ values, errors, touched, validateForm }) => (
+        {({ values, validateForm }) => (
           <React.Fragment>
             <Form>
               <GridContainer>
@@ -36,14 +37,15 @@ class ContactForm extends Component {
                   </span>
                 </GridItem>
                 <GridItem sm={12} lg={6}>
+                  <br/>
                   <Field
                     type="text"
                     name="name"
                     margin="normal"
                     className="Field"
                     variant="outlined"
+                    label="Name"
                     component={TextField}
-                    helperText={touched.name && errors.name && errors.name}
                     fullwidth="true"
                   />
                   <Field
@@ -51,22 +53,19 @@ class ContactForm extends Component {
                     name="email"
                     margin="normal"
                     className="Field"
+                    label="Email"
                     variant="outlined"
                     component={TextField}
-                    helperText={touched.email && errors.email && errors.email}
                     fullwidth="true"
                   />
-                  <br />
                   <Field
                     type="text"
                     name="message"
                     margin="normal"
                     className="Field"
+                    label="Message"
                     variant="outlined"
                     component={TextField}
-                    helperText={
-                      touched.message && errors.message && errors.message
-                    }
                     fullwidth="true"
                   />
                   <Button
@@ -81,6 +80,7 @@ class ContactForm extends Component {
                   </Button>
                 </GridItem>
               </GridContainer>
+              <br />
             </Form>
           </React.Fragment>
         )}

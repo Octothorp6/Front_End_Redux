@@ -3,10 +3,10 @@ import { TextField } from "formik-material-ui";
 import { Field } from "formik";
 import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
-import "./checkoutPages.css"
+import "./checkoutPages.css";
 
 const PaymentDetails = ({ errors, touched }) => (
-  <React.Fragment>
+  <div className="textFields">
     <GridContainer spacing={24}>
       <GridItem lg={6} sm={12}>
         <Field
@@ -14,9 +14,12 @@ const PaymentDetails = ({ errors, touched }) => (
           name="cardHolder"
           className="Field"
           variant="outlined"
+          label="Card holder"
           component={TextField}
           helperText={
-            touched.cardHolder && errors.cardHolder && errors.cardHolder
+            touched.cardHolder && 
+            errors.cardHolder && 
+            errors.cardHolder
           }
           fullwidth="true"
         />
@@ -27,56 +30,50 @@ const PaymentDetails = ({ errors, touched }) => (
           name="cardNumber"
           className="Field"
           variant="outlined"
+          label="Card number"
           component={TextField}
           helperText={
-            touched.cardNumber && errors.cardNumber && errors.cardNumber
+            touched.cardNumber && 
+            errors.cardNumber && 
+            errors.cardNumber
           }
           fullwidth="true"
         />
       </GridItem>
-      <GridItem lg={12} sm={12}>
+      <GridItem lg={6} sm={12}>
         <Field
           type="text"
           name="expiration"
+          className="Field"
+          variant="outlined"
+          label="Expiration YYYY-MM"
           component={TextField}
           helperText={
-            touched.expiration && errors.expiration && errors.expiration
+            touched.expiration && 
+            errors.expiration && 
+            errors.expiration
           }
           fullwidth="true"
         />
       </GridItem>
-      <GridItem lg={12} sm={12}>
+      <GridItem lg={6} sm={12}>
         <Field
-          type="text"
-          name="shippingAddress1"
+          type="number"
+          name="cvv"
           className="Field"
           variant="outlined"
+          label="CVV"
           component={TextField}
           helperText={
-            touched.shippingAddress1 &&
-            errors.shippingAddress1 &&
-            errors.shippingAddress1
-          }
-          fullwidth="true"
-        />
-      </GridItem>
-      <GridItem lg={12} sm={12}>
-        <Field
-          type="text"
-          name="shippingAddress2"
-          className="Field"
-          variant="outlined"
-          component={TextField}
-          helperText={
-            touched.shippingAddress2 &&
-            errors.shippingAddress2 &&
-            errors.shippingAddress2
+            touched.cvv &&
+            errors.cvv &&
+            errors.cvv
           }
           fullwidth="true"
         />
       </GridItem>
     </GridContainer>
-  </React.Fragment>
+  </div>
 );
 
 export default PaymentDetails;

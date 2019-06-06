@@ -7,7 +7,7 @@ import {
   CONTACT_US_ERROR,
   CONTACT_US_SUCCESS
 } from "../actions/types";
-import { PurchaseTemp } from "../../utils/EmailTemplates/Purchase";
+
 import API from "../../utils/API";
 
 //=================================================================
@@ -28,7 +28,7 @@ export const sendEmailError = error => ({
 });
 
 export const sendEmail = payload => {
-  let customer = emailContact(payload, PurchaseTemp);
+  let customer = emailContact(payload);
 
   return async dispatch => {
     dispatch(sendEmailRequest());

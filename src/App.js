@@ -55,9 +55,9 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" render={() => withLayout(Home)} />
+        <Route exact path="/checkout" render={() => withLayout(Checkout)} />
         <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
         <PrivateRoute path="/admin" component={Layout} />
-        <Route exact path="/checkout" render={() => withLayout(Checkout)} />
         <PublicRoute path="/login" component={Login} />
         <Route component={Error} />
       </Switch>

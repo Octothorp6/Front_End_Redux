@@ -8,15 +8,15 @@ import "./Home.css";
 
 function Home() {
   return (
-    <React.Fragment>
-      <div className="homeContainer">
+    <div className="homeContainer">
+      <React.Fragment>
         <Interaction />
         <SectionPills />
         <Features />
         <HomeMap />
         <ContactForm />
-      </div>
-    </React.Fragment>
+      </React.Fragment>
+    </div>
   );
 }
 

@@ -3,19 +3,24 @@ import { TextField } from "formik-material-ui";
 import { Field } from "formik";
 import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
-import "./checkoutPages.css"
+import "./checkoutPages.css";
 
 const AddressForm = ({ errors, touched }) => (
-  <React.Fragment>
-    <GridContainer spacing={24}>
+  <div className="textFields">
+    <GridContainer container spacing={24} justify="center">
       <GridItem lg={6} sm={12}>
         <Field
           type="text"
           name="userFirst"
           className="Field"
+          label="First Name"
           variant="outlined"
           component={TextField}
-          helperText={touched.userFirst && errors.userFirst && errors.userFirst}
+          helperText={
+            touched.userFirst && 
+            errors.userFirst && 
+            errors.userFirst
+          }
           fullwidth="true"
         />
       </GridItem>
@@ -24,9 +29,14 @@ const AddressForm = ({ errors, touched }) => (
           type="text"
           name="userLast"
           className="Field"
+          label="Last Name"
           variant="outlined"
           component={TextField}
-          helperText={touched.userLast && errors.userLast && errors.userLast}
+          helperText={
+            touched.userLast && 
+            errors.userLast && 
+            errors.userLast
+          }
           fullwidth="true"
         />
       </GridItem>
@@ -36,8 +46,13 @@ const AddressForm = ({ errors, touched }) => (
           name="userEmail"
           className="Field"
           variant="outlined"
+          label="Email"
           component={TextField}
-          helperText={touched.userEmail && errors.userEmail && errors.userEmail}
+          helperText={
+            touched.userEmail && 
+            errors.userEmail && 
+            errors.userEmail
+          }
           fullwidth="true"
         />
       </GridItem>
@@ -47,6 +62,7 @@ const AddressForm = ({ errors, touched }) => (
           name="shippingAddress1"
           className="Field"
           variant="outlined"
+          label="Address 1"
           component={TextField}
           helperText={
             touched.shippingAddress1 &&
@@ -62,6 +78,7 @@ const AddressForm = ({ errors, touched }) => (
           name="shippingAddress2"
           className="Field"
           variant="outlined"
+          label="Address 2"
           component={TextField}
           helperText={
             touched.shippingAddress2 &&
@@ -76,10 +93,13 @@ const AddressForm = ({ errors, touched }) => (
           type="text"
           name="shippingCity"
           className="Field"
+          label="City"
           variant="outlined"
           component={TextField}
           helperText={
-            touched.shippingCity && errors.shippingCity && errors.shippingCity
+            touched.shippingCity && 
+            errors.shippingCity && 
+            errors.shippingCity
           }
           fullwidth="true"
         />
@@ -90,6 +110,7 @@ const AddressForm = ({ errors, touched }) => (
           name="shippingState"
           className="Field"
           variant="outlined"
+          label="State"
           component={TextField}
           helperText={
             touched.shippingState &&
@@ -105,9 +126,12 @@ const AddressForm = ({ errors, touched }) => (
           name="shippingZip"
           className="Field"
           variant="outlined"
+          label="Zip code"
           component={TextField}
           helperText={
-            touched.shippingZip && errors.shippingZip && errors.shippingZip
+            touched.shippingZip && 
+            errors.shippingZip && 
+            errors.shippingZip
           }
           fullwidth="true"
         />
@@ -118,6 +142,7 @@ const AddressForm = ({ errors, touched }) => (
           name="shippingCountry"
           className="Field"
           variant="outlined"
+          label="Country"
           component={TextField}
           helperText={
             touched.shippingCountry &&
@@ -128,7 +153,7 @@ const AddressForm = ({ errors, touched }) => (
         />
       </GridItem>
     </GridContainer>
-  </React.Fragment>
+  </div>
 );
 
 export default AddressForm;

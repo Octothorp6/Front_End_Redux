@@ -6,7 +6,7 @@ import {
   removeItemFromCart,
   getTotal
 } from "../../store/actions";
-import { Button } from "@material-ui/core";
+
 import { CheckoutSchema } from "../../components/CheckoutPage/validation";
 import { connect } from "react-redux";
 import { Form, Formik } from "formik";
@@ -15,6 +15,7 @@ import {
   Card,
   Step,
   MobileStepper,
+  Button,
   Typography,
   StepLabel
 } from "@material-ui/core";
@@ -25,7 +26,7 @@ import PickYourNode from "../../components/CheckoutPage/PickYourNode";
 import AddressForm from "../../components/CheckoutPage/AddressForm";
 import PaymentDetails from "../../components/CheckoutPage/PaymentDetails";
 import Confirm from "../../components/CheckoutPage/Confirm";
-import "./Checkout.css"
+import "./Checkout.css";
 
 class Checkout extends React.PureComponent {
   state = {
@@ -90,74 +91,78 @@ class Checkout extends React.PureComponent {
         {({ values, errors, touched, validateForm }) => (
           <div className="container">
             <Card className="Card">
-              <GridContainer spacing={24}>
-                <Form>
-                  <GridItem xs={12} sm={12} md={12} lg={12}>
-                    <MobileStepper
-                      variant="progress"
-                      position="static"
-                      steps={4}
-                      activeStep={this.state.step}
-                      style={{ display: "flex" }}
-                    >
-                      {steps.map(label => (
-                        <Step key={label}>
-                          <StepLabel>{label}</StepLabel>
-                        </Step>
-                      ))}
-                    </MobileStepper>
-                    <Typography variant="subheading">
-                      {/* Cart total: {state.orderTotal} */}
-                    </Typography>{" "}
-                  </GridItem>
-                  <GridItem xs={12} sm={12} md={12} lg={12}>
-                    <br />
-                    {this.getStepContent(
-                      this.state.step,
-                      errors,
-                      touched,
-                      values
-                    )}
-                    <br />
-                    {this.state.step !== 0 ? (
-                      <Button color="primary" onClick={this.handleBack}>
-                        Back
-                      </Button>
-                    ) : (
-                      ""
-                    )}
-                    {this.state.step === steps.length - 1 ? (
-                      <Button color="primary" type="submit">
-                        Checkout
-                      </Button>
-                    ) : (
-                      <Button
-                        color="primary"
-                        onClick={() =>
-                          validateForm().then(() => this.handleNext())
-                        }
+              <div className="innerCard">
+                <GridContainer spacing={24} justify="center">
+                  <Form>
+                    <GridItem xs={12} sm={12} md={12} lg={12}>
+                      <MobileStepper
+                        variant="progress"
+                        position="static"
+                        steps={4}
+                        activeStep={this.state.step}
+                        style={{ display: "flex" }}
                       >
-                        Next
-                      </Button>
-                    )}
+                        {steps.map(label => (
+                          <Step key={label}>
+                            <StepLabel>{label}</StepLabel>
+                          </Step>
+                        ))}
+                      </MobileStepper>
+                      <Typography variant="subheading">
+                        Cart total: {this.props.orderTotal}
+                      </Typography>{" "}
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={12} lg={12}>
+                      <br />
+                      {this.getStepContent(
+                        this.state.step,
+                        errors,
+                        touched,
+                        values
+                      )}
+                      <br />
+                      {this.state.step !== 0 ? (
+                        <Button color="primary" onClick={this.handleBack}>
+                          Back
+                        </Button>
+                      ) : (
+                        ""
+                      )}
+                      {this.state.step === steps.length - 1 ? (
+                        <Button color="primary" type="submit">
+                          Checkout
+                        </Button>
+                      ) : (
+                        <Button
+                          color="primary"
+                          onClick={() =>
+                            validateForm().then(() => this.handleNext())
+                          }
+                        >
+                          Next
+                        </Button>
+                      )}
 
-                    {this.state.step === 1 ? (
-                      <Button
-                        color="primary"
-                        onClick={() =>
-                          validateForm().then(() => this.cryptoCheckout(values))
-                        }
-                      >
-                        Pay with BTC
-                      </Button>
-                    ) : (
-                      ""
-                    )}
-                    <br />
-                    <br />
-                  </GridItem>
-                </Form>
-              </GridContainer>
+                      {this.state.step === 1 ? (
+                        <Button
+                          color="primary"
+                          onClick={() =>
+                            validateForm().then(() =>
+                              this.cryptoCheckout(values)
+                            )
+                          }
+                        >
+                          Pay with BTC
+                        </Button>
+                      ) : (
+                        ""
+                      )}
+                      <br />
+                      <br />
+                    </GridItem>
+                  </Form>
+                </GridContainer>
+              </div>
             </Card>
           </div>
         )}

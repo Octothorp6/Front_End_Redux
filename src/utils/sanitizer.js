@@ -1,3 +1,5 @@
+import { Purchase, Contact } from "./EmailTemplates"
+
 //==========================================================================
 //SANITIZE USER INFORMATION FOR REGISTRATION
 export const signUpInfo = user => {
@@ -18,7 +20,7 @@ export const signUpInfo = user => {
 
 //===========================================================================
 //Clean up contact email Data
-export const emailContact = (info, template) => {
+export const emailContact = info => {
   let userObj = {
     email: info.userEmail,
     name: `${info.userFirst} ${info.userLast}`
@@ -27,7 +29,7 @@ export const emailContact = (info, template) => {
   let contact = {
     jsonrpc: "2.0",
     method: "sendEmail",
-    params: [[userObj], process.env.REACT_APP_SALES_EMAIL, "Thank You for Your Recent Purchase.", template],
+    params: [[userObj], process.env.REACT_APP_SALES_EMAIL, "Thank You for Your Recent Purchase.", Purchase(info.message)],
     id: 500
   };
   return contact;
@@ -36,7 +38,7 @@ export const emailContact = (info, template) => {
 
 //===========================================================================
 //Clean up contact email Data
-export const contactUs = (info, template) => {
+export const contactUs = info => {
   let userObj = {
     email: process.env.REACT_APP_SUPPORT_EMAIL,
     name:  `EtherNode Support`
@@ -45,7 +47,7 @@ export const contactUs = (info, template) => {
   let contact = {
     jsonrpc: "2.0",
     method: "sendEmail",
-    params: [[userObj], info.userEmail,`Website Contact from User: ${info.userName}`, template(info.message)],
+    params: [[userObj], info.userEmail,`Website Contact from User: ${info.userName}`, Contact(info.message)],
     id: 500
   };
   return contact;

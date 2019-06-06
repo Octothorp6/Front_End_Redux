@@ -3,10 +3,10 @@ import { TextField } from "formik-material-ui";
 import { Field } from "formik";
 import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
-import "./checkoutPages.css"
+import "./checkoutPages.css";
 
 const DifBilling = ({ errors, touched }) => (
-  <React.Fragment>
+  <div className="textFields">
     <GridContainer spacing={24}>
       <GridItem lg={6} sm={12}>
         <Field
@@ -78,7 +78,7 @@ const DifBilling = ({ errors, touched }) => (
         />
       </GridItem>
     </GridContainer>
-  </React.Fragment>
+  </div>
 );
 
 export default DifBilling;

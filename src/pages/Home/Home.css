@@ -2,9 +2,9 @@
 
 html,
 body {
+  background-color: #1c1d26;
   margin: 0 auto;
   padding: 0;
-  background-color: #1c1d26;
   overflow-x: hidden;
   height: 100%;
   width: 100%;
@@ -12,17 +12,18 @@ body {
 
 body {
   position: relative;
-  padding-bottom: 6rem;
-  min-height: 100%;
+  min-height: 100vh;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  margin: 0 auto; 
 }
 
 .homeContainer {
-  margin: 0 auto;
-  min-height: 100vh;
-  padding-bottom: 60px;
+  background-color: #1c1d26;
+  height: 100%;
+  padding-bottom: 2rem;
 }
+
 
 * {
   font-family: "Roboto", sans-serif;
