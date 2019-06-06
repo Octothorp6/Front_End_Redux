@@ -2,8 +2,8 @@ export {
   addItemToCart,
   removeItemFromCart,
   getTotal,
-  handleCreditCheckout,
-  handleCryptoCheckout
+  makePayment,
+  cryptoCheckout
 } from "./checkout";
 export {
   login,
@@ -15,4 +15,4 @@ export {
 } from "./auth";
 
 export { contactUs, updateField } from "./contact";
-export {returnErrors, createMessage } from "./errors"
+export { sendEmail, contactEthernode, } from "./email"
