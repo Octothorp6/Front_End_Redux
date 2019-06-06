@@ -17,23 +17,17 @@ import {
 import classNames from 'classnames';
 
 import SidebarLink from './components/SidebarLink';
-import Dot from './components/Dot';
 
 const structure = [
   { id: 0, label: 'Dashboard', link: '/admin/dashboard', icon: <HomeIcon /> },
-  { id: 1, label: 'Tables', link: '/admin/tables', icon: <ShopIcon /> },
-  { id: 2, label: 'Notifications', link: '/admin/cheatSheet', icon: <CalendarIcon />},
+  { id: 1, label: 'Tables', link: '/admin/sales', icon: <ShopIcon /> },
+  { id: 2, label: 'Notifications', link: '/admin/notifications', icon: <CalendarIcon />},
   { id: 3, label: 'Charts', link: '/admin/charts', icon: <UIElementsIcon /> },
   { id: 4, type: 'divider' },
   { id: 5, type: 'title', label: 'HELP' },
-  { id: 6, label: 'Library', link: '', icon: <LibraryIcon /> },
+  { id: 6, label: 'Documentation', link: '', icon: <LibraryIcon/> },
   { id: 7, label: 'Support', link: '', icon: <SupportIcon /> },
-  { id: 8, label: 'FAQ', link: '', icon: <FAQIcon />},
-  { id: 9, type: 'divider' },
-  { id: 10, type: 'title', label: 'PROJECTS' },
-  { id: 11, label: 'My recent', link: '', icon: <Dot size="large" color="warning" /> },
-  { id: 12, label: 'Starred', link: '', icon: <Dot size="large" color="primary" /> },
-  { id: 13, label: 'Background', link: '', icon: <Dot size="large" color="secondary" /> },
+  { id: 8, label: 'FAQ', link: '', icon: <FAQIcon />}
 ];
 
 const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermanent, location }) => {

@@ -7,9 +7,9 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 // pages
 import Dashboard from "../../../pages/Admin/";
-import Tables from "../Charts/components/Table";
+import Tables from "../Charts/components/Table/tableComponent";
 import Charts from "../Charts";
-import CheatSheet from "../CheatSheet";
+import Notifications from "../Notifications"
 
 const Layout = ({ classes, isSidebarOpened, toggleSidebar }) => (
   <div className={classes.root}>
@@ -26,9 +26,9 @@ const Layout = ({ classes, isSidebarOpened, toggleSidebar }) => (
           <div className={classes.fakeToolbar} />
           <Switch>
             <Route path="/admin/dashboard" component={Dashboard} />
-            <Route path="/admin/tables" component={Tables} />
+            <Route path="/admin/sales" component={Tables} />
             <Route path="/admin/charts" component={Charts} />
-            <Route path="/admin/cheatSheet" component={CheatSheet} />
+            <Route path="/admin/notifications" component={Notifications} />
           </Switch>
         </div>
       </React.Fragment>

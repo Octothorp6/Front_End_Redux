@@ -5,7 +5,7 @@ import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import themes, { overrides } from './themes';
 import { withLayout } from "./components/UI/Layout"
-import Layout from './pages/Layout';
+import Layout from './components/DashboardPage/Layout';
 import Error from './pages/Error';
 import Login from './pages/Login';
 import Home from "./pages/Home"

@@ -1,55 +1,53 @@
-import React from "react";
-import {
-  Table,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell
-} from "@material-ui/core";
-import { Button } from "../../../../../components/DashboardPage/Wrappers";
+import React from 'react';
+import { Grid } from '@material-ui/core';
+import MUIDataTable from "mui-datatables";
 
-const states = {
-  shipped: "primary",
-  pending: "warning",
-  delivered: "success"
-};
+import PageTitle from '../../../PageTitle'
+import Widget from '../../../Widget'
+import Table from './tableComponent';
+import mock from '../mock'; 
 
-const TableComponent = ({ data }) => {
-  const keys = Object.keys(data[0]).map(i => i.toUpperCase());
-  keys.shift(); // delete "id" key
-  return (
-    <Table className="mb-0">
-      <TableHead>
-        <TableRow>
-          {keys.map(key => (
-            <TableCell>{key}</TableCell>
-          ))}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map(({ id, name, email, product, price, date, city, status }) => (
-          <TableRow key={id}>
-            <TableCell className="pl-3 fw-normal">{name}</TableCell>
-            <TableCell>{email}</TableCell>
-            <TableCell>{date}</TableCell>
-            <TableCell>{city}</TableCell>
-            <TableCell>{product}</TableCell>
-            <TableCell>{price}</TableCell>
-            <TableCell>
-              <Button
-                color={states[status.toLowerCase()]}
-                size="small"
-                className="px-2"
-                variant="contained"
-              >
-                {status}
-              </Button>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
+const datatableData = [
+ ["Joe James", "OrderId", "Yonkers", "NY"],
+ ["John Walsh", "OrderId", "Hartford", "CT"],
+ ["Bob Herm", "OrderId", "Tampa", "FL"],
+ ["James Houston", "OrderId", "Dallas", "TX"],
+ ["Prabhakar Linwood", "OrderId", "Hartford", "CT"],
+ ["Kaui Ignace", "OrderId", "Yonkers", "NY"],
+ ["Esperanza Susanne", "OrderId", "Hartford", "CT"],
+ ["Christian Birgitte", "OrderId", "Tampa", "FL"],
+ ["Meral Elias", "OrderId", "Hartford", "CT"],
+ ["Deep Pau", "OrderId", "Yonkers", "NY"],
+ ["Sebastiana Hani", "OrderId", "Dallas", "TX"],
+ ["Marciano Oihana", "OrderId", "Yonkers", "NY"],
+ ["Brigid Ankur", "OrderId", "Dallas", "TX"],
+ ["Anna Siranush", "OrderId", "Yonkers", "NY"],
+ ["Avram Sylva", "OrderId", "Hartford", "CT"],
+ ["Serafima Babatunde", "OrderId", "Tampa", "FL"],
+ ["Gaston Festus", "OrderId", "Tampa", "FL"],
+];
 
-export default TableComponent;
+const Tables = props => (
+  <React.Fragment>
+    <PageTitle title="Enkeep Orders" />
+    <Grid container spacing={32}>
+      <Grid item xs={12}>
+        <MUIDataTable
+          title="New Orders"
+          data={datatableData}
+          columns={["Name", "OrderId", "City", "State"]}
+          options={{
+            filterType: 'checkbox',
+          }}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Widget title="Shipped" upperTitle noBodyPadding>
+          <Table data={mock.table} />
+        </Widget>
+      </Grid>
+    </Grid>
+  </React.Fragment>
+);
+
+export default Tables;
