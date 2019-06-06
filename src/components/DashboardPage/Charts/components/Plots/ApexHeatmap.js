@@ -1,6 +1,6 @@
-import React from './node_modules/react';
-import ApexCharts from './node_modules/react-apexcharts';
-import { withTheme } from "./node_modules/@material-ui/core";
+import React from 'react';
+import ApexCharts from 'react-apexcharts';
+import { withTheme } from "@material-ui/core";
 
 const generateData = (count, yrange) => {
   var i = 0;

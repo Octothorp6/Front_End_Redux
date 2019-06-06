@@ -3,13 +3,13 @@ import { withStyles, CssBaseline } from "@material-ui/core";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classnames from "classnames";
 
-import Header from "../../components/DashboardPage/Header";
-import Sidebar from "../../components/DashboardPage/Sidebar";
+import Header from "../Header";
+import Sidebar from "../Sidebar";
 // pages
-import Dashboard from "../Admin";
-import Tables from "../Admin/charts/components/Table";
-import Charts from "../Admin/charts";
-import CheatSheet from "../../components/DashboardPage/CheatSheet";
+import Dashboard from "../../../pages/Admin/";
+import Tables from "../Charts/components/Table";
+import Charts from "../Charts";
+import CheatSheet from "../CheatSheet";
 
 const Layout = ({ classes, isSidebarOpened, toggleSidebar }) => (
   <div className={classes.root}>

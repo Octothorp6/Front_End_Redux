@@ -7,8 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 
-const Confirm = ({ cart, classes, values, orderTotal }) => {
-  return (
+const Confirm = ({ cart, classes, values, orderTotal }) => (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order summary
@@ -53,8 +52,7 @@ const Confirm = ({ cart, classes, values, orderTotal }) => {
         </Grid>
       </Grid>
     </React.Fragment>
-  );
-};
+);
 
 const styles = theme => ({
   listItem: {
@@ -69,7 +67,10 @@ const styles = theme => ({
 });
 
 Confirm.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  cart: PropTypes.array.isRequired,
+  values: PropTypes.object.isRequired,
+  orderTotal: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Confirm);
