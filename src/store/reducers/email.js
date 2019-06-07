@@ -6,14 +6,14 @@ export default function emailReducer(state = contactState, action) {
     case CONTACT_US:
       return {
         ...state,
-        name: action.payload.name,
-        email: action.payload.email,
-        message: action.payload.message
+        status: "query"
       };
     case CONTACT_US_SUCCESS:
       return {
         ...state,
-        status: action.payload
+        name: action.payload.name,
+        email: action.payload.email,
+        message: action.payload.message
       }
     case CONTACT_US_ERROR:
       return {

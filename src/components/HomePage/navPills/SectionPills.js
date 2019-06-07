@@ -44,6 +44,77 @@ function SectionPills(props) {
                   contentGrid: { xs: 12, sm: 9, md: 9, lg: 9 }
                 }}
                 tabs={[
+                
+                  {
+                    tabButton: "EnKeep",
+                    tabIcon: Home,
+                    tabContent: (
+                      <React.Fragment>
+                        <img
+                          src={enKeepIcon}
+                          alt="enKeep"
+                          style={{ maxWidth: "6em" }}
+                        />
+                        <List>
+                          <ListItem
+                            alt="plug"
+                            icon={gateway}
+                            header="Gateway/Network"
+                            text={
+                              <>
+                                Connecting to blockchain networks with EnKeep is
+                                as easy as plugging in the power, connecting an
+                                ethernet cable to your router, and logging in
+                                from your computer or smart phone. You can host
+                                nodes for any supported blockchains with a
+                                single click and be instantly connected to the
+                                network.
+                              </>
+                            }
+                          />
+                          <ListItem
+                            alt="developer"
+                            icon={developer}
+                            header="Developer Tools"
+                            text={
+                              <>
+                                EnKeep runs the EnOS Linux operating system
+                                which has been engineered to increase access to
+                                and enhance the properties and features of
+                                Ethereum blockchains and networks. The Open-RPC
+                                spec JSON-RPC api allows easy development of
+                                truly decentralized blockchain applications, no
+                                3rd parties required for users with EnOS.
+                              </>
+                            }
+                          />
+                          <ListItem
+                            alt="img"
+                            icon={smartHome}
+                            header="Smart Home"
+                            text={
+                              <>
+                                Personal digital data has rapidly become one of
+                                the most valuable commodities on earth and the
+                                value continues to increase as more connected
+                                devices enter our daily lives. The security of
+                                the devices and sensors in your home and the
+                                data they produce is critical to your personal
+                                privacy and that data is currently being
+                                monetized and occasionally exposed by the
+                                companies collecting it. Ethernode is developing
+                                smart home devices with a different model,
+                                <br />
+                                <br />
+                                <strong>It's YOUR data, OWN it.</strong> <br />
+                              </>
+                            }
+                          />
+                        </List>
+                        <Enkeep />
+                      </React.Fragment>
+                    )
+                  },
                   {
                     tabButton: "Mission",
                     tabIcon: flight_takeoff,
@@ -118,76 +189,6 @@ function SectionPills(props) {
                           style={{ maxWidth: "8em" }}
                         />
                       </span>
-                    )
-                  },
-                  {
-                    tabButton: "EnKeep",
-                    tabIcon: Home,
-                    tabContent: (
-                      <React.Fragment>
-                        <img
-                          src={enKeepIcon}
-                          alt="enKeep"
-                          style={{ maxWidth: "6em" }}
-                        />
-                        <List>
-                          <ListItem
-                            alt="plug"
-                            icon={gateway}
-                            header="Gateway/Network"
-                            text={
-                              <>
-                                Connecting to blockchain networks with EnKeep is
-                                as easy as plugging in the power, connecting an
-                                ethernet cable to your router, and logging in
-                                from your computer or smart phone. You can host
-                                nodes for any supported blockchains with a
-                                single click and be instantly connected to the
-                                network.
-                              </>
-                            }
-                          />
-                          <ListItem
-                            alt="developer"
-                            icon={developer}
-                            header="Developer Tools"
-                            text={
-                              <>
-                                EnKeep runs the EnOS Linux operating system
-                                which has been engineered to increase access to
-                                and enhance the properties and features of
-                                Ethereum blockchains and networks. The Open-RPC
-                                spec JSON-RPC api allows easy development of
-                                truly decentralized blockchain applications, no
-                                3rd parties required for users with EnOS.
-                              </>
-                            }
-                          />
-                          <ListItem
-                            alt="img"
-                            icon={smartHome}
-                            header="Smart Home"
-                            text={
-                              <>
-                                Personal digital data has rapidly become one of
-                                the most valuable commodities on earth and the
-                                value continues to increase as more connected
-                                devices enter our daily lives. The security of
-                                the devices and sensors in your home and the
-                                data they produce is critical to your personal
-                                privacy and that data is currently being
-                                monetized and occasionally exposed by the
-                                companies collecting it. Ethernode is developing
-                                smart home devices with a different model,
-                                <br />
-                                <br />
-                                <strong>It's YOUR data, OWN it.</strong> <br />
-                              </>
-                            }
-                          />
-                        </List>
-                        <Enkeep />
-                      </React.Fragment>
                     )
                   },
                   {

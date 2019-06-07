@@ -29,13 +29,12 @@ export const sendEmailError = error => ({
 
 export const sendEmail = payload => {
   let customer = emailContact(payload);
-
   return async dispatch => {
     dispatch(sendEmailRequest());
-
     try {
+      dispatch(sendEmailSuccess(payload));
       let thankYou = await API.sendEmail(customer);
-      dispatch(sendEmailSuccess(thankYou.response));
+        console.log(thankYou.statusText)
     } catch (error) {
       dispatch(sendEmailError(error));
     }
@@ -62,10 +61,11 @@ export const contactUsSuccess = payload => ({
 export const contactEthernode = payload => {
   let user = contactUs(payload);
   return async dispatch => {
-    dispatch(contactUsRequest());
     try {
-      let contact = API.sendEmail(user);
-      dispatch(contactUsSuccess(contact.data));
+      dispatch(contactUsRequest());
+      let contact = await API.sendEmail(user);
+      dispatch(contactUsSuccess(payload));
+      console.log(contact.statusText);
     } catch (error) {
       dispatch(contactUsError(error));
     }

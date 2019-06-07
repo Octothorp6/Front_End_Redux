@@ -5,7 +5,8 @@ import {
   REMOVE_ITEM_FROM_CART,
   GET_TOTAL,
   CREDIT_CHECKOUT_SUCCESS,
-  CREDIT_CHECKOUT_ERROR
+  CREDIT_CHECKOUT_ERROR,
+  CRYPTO_CHECKOUT_SUCCESS
 } from "./types";
 import {
   signUpInfo,
@@ -15,7 +16,6 @@ import {
   invoiceInfo
 } from "../../utils/sanitizer";
 import API from "../../utils/API";
-
 
 //=================================================================
 // USER CART ACTIONS
@@ -47,7 +47,7 @@ export const cryptoCheckoutRequest = () => ({
 });
 
 export const cryptoCheckoutSuccess = payload => ({
-  type: CREDIT_CHECKOUT_SUCCESS,
+  type: CRYPTO_CHECKOUT_SUCCESS,
   payload: payload
 });
 export const cryptoCheckoutError = error => ({
@@ -65,7 +65,7 @@ export const cryptoCheckout = payload => {
       let invoiceLink = await API.newInvoice(customer);
       let txData = await txInfo(payload, invoiceLink.data.result);
       let newTx = await API.newTransaction(txData);
-      let saveUser = await API.register(user)
+      let saveUser = await API.register(user);
       if (invoiceLink.status && newTx.status === 200) {
         window.location.assign(invoiceLink.data.result);
         dispatch(creditCheckoutSuccess(saveUser.statusText));
@@ -108,7 +108,7 @@ export const creditCheckout = payload => {
       ) {
         let ccTxData = ccTxInfo(payload, checkout);
         let saveTx = await API.newTransaction(ccTxData);
-        dispatch(creditCheckoutSuccess(saveTx.status));
+        dispatch(creditCheckoutSuccess(payload));
       }
     } catch (error) {
       dispatch(creditCheckoutError(error));
