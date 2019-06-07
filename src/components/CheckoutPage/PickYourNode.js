@@ -3,7 +3,7 @@ import { Button, Typography } from "@material-ui/core";
 import { products } from "./products";
 import "./checkoutPages.css";
 
-const PickYourNode = ({ addItemToCart, removeItemFromCart }) => {
+const PickYourNode = ({ addItemToCart, cart, removeItemFromCart, getTotal }) => {
   return (
     <React.Fragment>
       <div className="pickYourNode">

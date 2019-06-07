@@ -36,7 +36,7 @@ export const removeItemFromCart = itemId => {
 export const getTotal = payload => {
   return {
     type: GET_TOTAL,
-    payload: [...payload.cart]
+    payload: payload
   };
 };
 
@@ -98,20 +98,20 @@ export const creditCheckout = payload => {
 
   return async dispatch => {
     dispatch(creditCheckoutRequest());
-
     try {
       let checkout = await API.newOrder(userData);
       let register = await API.register(user);
+      dispatch(creditCheckoutSuccess(payload));
       if (
         checkout.data.result.messages.resultCode === "Ok" &&
         register.status === 200
       ) {
         let ccTxData = ccTxInfo(payload, checkout);
         let saveTx = await API.newTransaction(ccTxData);
-        dispatch(creditCheckoutSuccess(payload));
+        console.log(saveTx.statusText);
       }
     } catch (error) {
-      dispatch(creditCheckoutError(error));
+        dispatch(creditCheckoutError(error));
     }
   };
 };

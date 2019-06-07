@@ -54,8 +54,10 @@ class Checkout extends React.PureComponent {
       case 0:
         return (
           <PickYourNode
+            cart={this.props.cart}
             addItemToCart={this.props.addItemToCart}
             removeItemFromCart={this.props.removeItemFromCart}
+            getTotal={this.props.getTotal}
           />
         );
       case 1:
@@ -63,11 +65,15 @@ class Checkout extends React.PureComponent {
           <AddressForm
             errors={errors}
             touched={touched}
-            cryptoCheckout={cryptoCheckout}
           />
         );
       case 2:
-        return <PaymentDetails errors={errors} touched={touched} />;
+        return ( 
+          <PaymentDetails 
+            errors={errors} 
+            touched={touched} 
+          />
+        );
       case 3:
         return (
           <Confirm
