@@ -78,8 +78,7 @@ class Checkout extends React.PureComponent {
         {({ values, errors, touched, validateForm }) => (
           <GridContainer spacing={24} justify="center">
             <main className={classes.layout}>
-              <Paper className="paper">
-                <div className="innerPaper">
+              <Paper className={classes.paper}>
                   <Form>
                       <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
@@ -136,7 +135,6 @@ class Checkout extends React.PureComponent {
                       <br />
                     </GridItem>
                   </Form>
-                </div>
               </Paper>
             </main>
           </GridContainer>
@@ -148,14 +146,12 @@ class Checkout extends React.PureComponent {
 
 const styles = theme => ({
   layout: {
+    display: "table",
     width: "auto",
-    overflowX: "hidden",
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
-    paddingBottom: "9.7rem",
-    scrollBehavior: "smooth",
+    paddingBottom: "6.6rem",
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
-      width: 600,
       marginLeft: "auto",
       marginRight: "auto"
     },
@@ -164,13 +160,14 @@ const styles = theme => ({
     }
   },
   paper: {
+    display: "table-cell",
+    verticalAlign: "middle",
+    margin: "auto",
     padding: theme.spacing.unit * 2,
     overflowX: "hidden",
-    overflowY: "scroll",
-    scrollBehavior: "smooth",
-    display: "flex",
-    margin: "auto",
     alignItems: "center",
+    textAlign: "center",
+    width: 600,
     [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
       padding: theme.spacing.unit * 3
     },
