@@ -8,3 +8,7 @@
 .textFields {
   padding-right: 1.5rem;
 }
+
+.Node {
+  max-width: 15em;
+}
