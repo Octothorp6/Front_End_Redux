@@ -16,7 +16,10 @@ export default {
   newTransaction: function(txData) {
     return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/orderRPC/orderRPC', txData)
   },
-  login: function(user) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API, user)
+  login: function(admin) {
+    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/usrAdmin', admin)
+  },
+  createAccount: function(user) {
+    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/usrAdmin', user)
   }
 };

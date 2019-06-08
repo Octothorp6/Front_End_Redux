@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../../assets/ENLinuxGrey.png";
 import {
   Grid,
   CircularProgress,
@@ -8,7 +9,6 @@ import {
   TextField,
   Fade
 } from "@material-ui/core";
-import logo from "../../assets/ENLinuxGrey.png";
 
 const Login = ({ classes, ...props }) => (
   <Grid container className={classes.container}>

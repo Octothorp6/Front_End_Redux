@@ -1,9 +1,9 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR, LOG_OUT_SUCCESS } from "../actions/types"
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOG_OUT_SUCCESS } from "../actions/types"
 import { authState } from "../initialState"
 
 export default function LoginReducer(state = authState, action) {
     switch (action.type) {
-      case LOGIN:
+      case LOGIN_REQUEST:
         return {
           ...state,
           isLoading: true
@@ -11,7 +11,8 @@ export default function LoginReducer(state = authState, action) {
       case LOGIN_SUCCESS:
         return {
           ...state,
-          user: action.payload,
+          user: action.payload.user,
+          token: action.payload.token,
           isLoading: false,
           isAuthenticated: true,
           error: null

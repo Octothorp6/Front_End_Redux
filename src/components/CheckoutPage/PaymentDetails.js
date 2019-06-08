@@ -1,8 +1,8 @@
 import React from "react";
-import { TextField } from "formik-material-ui";
-import { Field } from "formik";
 import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
+import { TextField } from "formik-material-ui";
+import { Field } from "formik";
 import "./checkoutPages.css";
 
 const PaymentDetails = ({ errors, touched }) => (

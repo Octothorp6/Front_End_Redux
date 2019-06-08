@@ -1,21 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CheckoutSchema } from "../../components/CheckoutPage/validation";
-import { Form, Formik } from "formik";
-import { fieldState } from "../../store/initialState";
-import {
-  Button,
-  Paper,
-  Typography,
-  withStyles
-} from "@material-ui/core";
-import { steps } from "../../components/CheckoutPage/products";
 import GridContainer from "../../components/UI/Grid/GridContainer";
 import GridItem from "../../components/UI/Grid/GridItem";
 import PickYourNode from "../../components/CheckoutPage/PickYourNode";
 import AddressForm from "../../components/CheckoutPage/AddressForm";
 import PaymentDetails from "../../components/CheckoutPage/PaymentDetails";
 import Confirm from "../../components/CheckoutPage/Confirm";
+import { CheckoutSchema } from "../../components/CheckoutPage/validation";
+import { Form, Formik } from "formik";
+import { fieldState } from "../../store/initialState";
+import { Button, Paper, Typography, withStyles } from "@material-ui/core";
+import { steps } from "../../components/CheckoutPage/products";
+
 
 class Checkout extends React.PureComponent {
   state = {
@@ -79,62 +75,60 @@ class Checkout extends React.PureComponent {
           <GridContainer spacing={24} justify="center">
             <main className={classes.layout}>
               <Paper className={classes.paper}>
-                  <Form>
-                      <br />
-                    <GridItem xs={12} sm={12} md={12} lg={12}>
-                      <Typography variant="subheading">
-                        Cart total: {this.props.orderTotal}
-                      </Typography>{" "}
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={12} lg={12}>
-                      <br />
-                      {this.getStepContent(
-                        this.state.step,
-                        errors,
-                        touched,
-                        values
-                      )}
-                      <br />
-                      {this.state.step !== 0 ? (
-                        <Button color="primary" onClick={this.handleBack}>
-                          Back
-                        </Button>
-                      ) : (
-                        ""
-                      )}
-                      {this.state.step === steps.length - 1 ? (
-                        <Button color="primary" type="submit">
-                          Checkout
-                        </Button>
-                      ) : (
-                        <Button
-                          color="primary"
-                          onClick={() =>
-                            validateForm().then(() => this.handleNext())
-                          }
-                        >
-                          Next
-                        </Button>
-                      )}
+                <Form>
+                  <br />
+                  <GridItem xs={12} sm={12} md={12} lg={12}>
+                    <Typography variant="subheading">
+                      Cart total: {this.props.orderTotal}
+                    </Typography>{" "}
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={12} lg={12}>
+                    <br />
+                    {this.getStepContent(
+                      this.state.step,
+                      errors,
+                      touched,
+                      values
+                    )}
+                    <br />
+                    {this.state.step !== 0 ? (
+                      <Button color="primary" onClick={this.handleBack}>
+                        Back
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                    {this.state.step === steps.length - 1 ? (
+                      <Button color="primary" type="submit">
+                        Checkout
+                      </Button>
+                    ) : (
+                      <Button
+                        color="primary"
+                        onClick={() =>
+                          validateForm().then(() => this.handleNext())
+                        }
+                      >
+                        Next
+                      </Button>
+                    )}
 
-                      {this.state.step === 1 ? (
-                        <Button
-                          color="primary"
-                          onClick={() =>
-                            validateForm().then(() =>
-                              this.cryptoCheckout(values)
-                            )
-                          }
-                        >
-                          Pay with BTC
-                        </Button>
-                      ) : (
-                        ""
-                      )}
-                      <br />
-                      <br />
-                    </GridItem>
-                  </Form>
+                    {this.state.step === 1 ? (
+                      <Button
+                        color="primary"
+                        onClick={() =>
+                          validateForm().then(() => this.cryptoCheckout(values))
+                        }
+                      >
+                        Pay with BTC
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                    <br />
+                    <br />
+                  </GridItem>
+                </Form>
               </Paper>
             </main>
           </GridContainer>
@@ -156,7 +150,7 @@ const styles = theme => ({
       marginRight: "auto"
     },
     [theme.breakpoints.down("sm")]: {
-        margin: "auto"
+      margin: "auto"
     }
   },
   paper: {
@@ -172,13 +166,18 @@ const styles = theme => ({
       padding: theme.spacing.unit * 3
     },
     [theme.breakpoints.down("sm")]: {
-        margin: "auto"
+      margin: "auto"
     }
   }
 });
 
+//validate props format
 Checkout.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  creditCheckout: PropTypes.func.isRequired,
+  cryptoCheckout: PropTypes.func.isRequired,
+  addItemToCart: PropTypes.func.isRequired,
+  removeItemFromCart: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Checkout);

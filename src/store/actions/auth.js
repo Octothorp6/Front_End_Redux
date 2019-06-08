@@ -1,13 +1,15 @@
+import API from "../../utils/API";
 import {
-  LOGIN,
+  LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOG_OUT_SUCCESS,
   TOGGLE_SIDEBAR
 } from "../actions/types";
+import { authData } from "../../utils/sanitizer"
 
 export const login = () => ({
-  type: LOGIN,
+  type: LOGIN_REQUEST,
 });
 
 export const loginSuccess = payload => ({
@@ -15,30 +17,36 @@ export const loginSuccess = payload => ({
   payload: payload
 });
 
-export const loginError = () => ({
-  type: LOGIN_ERROR
+export const loginError = error => ({
+  type: LOGIN_ERROR,
+  payload: error
 });
 
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR
 });
 
-export const loginUser = (username, password) => dispatch => {
-  dispatch(login());
+export const loginAdmin = (username, password) => {
+  let admin = authData(username, password);
 
-  if (!!username && !!password) {
-    setTimeout(() => {
-      localStorage.setItem("token", username);
-      dispatch(loginSuccess(username));
-    }, 2000);
-  } else {
-    dispatch(loginError());
-  }
+  return async dispatch => {
+    dispatch(login());
+    try {
+      let authRequest = await API.login(admin);
+      if (authRequest.data.result.message === "Auth Success") {
+        let token = authRequest.data.result.token;
+        sessionStorage.setItem("token", token);
+        dispatch(loginSuccess(username, token));
+      }
+    } catch (error) {
+      dispatch(loginError(error));
+    }
+  };
 };
 
 
 export const logOut = () => dispatch => {
-  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
   dispatch(logOutSuccess());
 };
 

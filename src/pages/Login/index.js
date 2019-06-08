@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import LoginView from "./LoginView";
-import { loginUser, loginError } from "../../store/actions";
+import { loginAdmin, loginError } from "../../store/actions";
 
 export default compose(
   connect(
@@ -12,7 +12,7 @@ export default compose(
       isAuthenticated: state.login.isAuthenticated,
       error: state.login.error
     }),
-    { loginUser, loginError }
+    { loginAdmin, loginError }
   ),
   withRouter,
   withState("nameValue", "setNameValue", ""),
@@ -33,7 +33,7 @@ export default compose(
       }
     },
     handleLoginButtonClick: props => () => {
-      props.loginUser(props.usernameValue, props.passwordValue);
+      props.loginAdmin(props.usernameValue, props.passwordValue);
     }
   }),
   lifecycle({

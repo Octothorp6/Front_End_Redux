@@ -1,9 +1,8 @@
 import React from 'react';
+import classnames from 'classnames';
+import logo from '../../assets/ethernode_logo_black.svg';
 import { Link } from 'react-router-dom';
 import { Grid, Paper, Typography, withStyles, Button } from '@material-ui/core';
-import classnames from 'classnames';
-
-import logo from '../../assets/ethernode_logo_black.svg';
 
 const Error = ({ classes }) => (
   <Grid container className={classes.container}>
@@ -41,7 +40,7 @@ const styles = theme => ({
     }
   },
   logotypeIcon: {
-    width: 250,
+    width: 550,
     marginRight: theme.spacing.unit * 2,
   },
   paperRoot: {

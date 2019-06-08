@@ -1,8 +1,7 @@
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 export const UPDATE_FIELD = "UPDATE_FIELD";
 
-export const LOGIN = "LOGIN";
-export const LOGIN_USER = "LOGIN_USER";
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOG_OUT_SUCCESS = "SIGN_OUT_SUCCESS";

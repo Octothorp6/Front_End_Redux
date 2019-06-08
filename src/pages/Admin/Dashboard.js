@@ -1,4 +1,9 @@
 import React from "react";
+import mock from "../../components/DashboardPage/Charts/components/mock";
+import Widget from "../../components/DashboardPage/Widget";
+import PageTitle from "../../components/DashboardPage/PageTitle";
+import Dot from "../../components/DashboardPage/Sidebar/components/Dot";
+import BigStat from "../../components/DashboardPage/Charts/components/BigStat/BigStat";
 import {
   Grid,
   LinearProgress,
@@ -19,14 +24,7 @@ import {
   YAxis,
   XAxis
 } from "recharts";
-
-import mock from "../../components/DashboardPage/Charts/components/mock";
-import Widget from "../../components/DashboardPage/Widget";
-import PageTitle from "../../components/DashboardPage/PageTitle";
 import { Typography } from "../../components/DashboardPage/Wrappers";
-import Dot from "../../components/DashboardPage/Sidebar/components/Dot";
-
-import BigStat from "../../components/DashboardPage/Charts/components/BigStat/BigStat";
 
 const getRandomData = (length, min, max, multiplier = 10, maxDiff = 10) => {
   const array = new Array(length).fill();

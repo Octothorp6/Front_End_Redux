@@ -7,7 +7,7 @@ export {
 } from "./checkout";
 export {
   login,
-  loginUser,
+  loginAdmin,
   logOut,
   logOutSuccess,
   loginError,

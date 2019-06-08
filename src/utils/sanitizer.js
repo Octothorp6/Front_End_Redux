@@ -217,3 +217,17 @@ export const txInfo = (user, url) => {
   };
   return txData;
 };
+
+//==========================================================================
+// SANITIZE LOGIN && REGISTER DATA 
+export const authData = (username, password) => {
+  let admin = {
+    jsonrpc: "2.0",
+    method: "login",
+    params: [
+      username,
+      password
+    ]
+  }
+  return admin 
+}
