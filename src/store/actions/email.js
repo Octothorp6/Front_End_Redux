@@ -1,3 +1,4 @@
+import API from "../../utils/API";
 import { emailContact, contactUs } from "../../utils/sanitizer";
 import {
   SEND_EMAIL,
@@ -8,7 +9,6 @@ import {
   CONTACT_US_SUCCESS
 } from "../actions/types";
 
-import API from "../../utils/API";
 
 //=================================================================
 // SEND EMAIL TO USERS AFTER A PURCHASE

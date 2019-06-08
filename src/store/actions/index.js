@@ -13,4 +13,4 @@ export {
   loginError,
   toggleSidebar
 } from "./auth";
-export { sendEmail, contactEthernode, } from "./email"
+export { sendEmail, contactEthernode } from "./email"

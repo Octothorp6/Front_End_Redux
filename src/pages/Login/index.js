@@ -21,7 +21,7 @@ export default compose(
   withHandlers({
     handleInput: props => (e, input = "login") => {
       if (props.error) {
-        props.returnErrors(props.error);
+        props.loginError(props.error);
       }
 
       if (input === "username") {

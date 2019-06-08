@@ -1,6 +1,6 @@
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
-export const UPDATE_FIELD = "UPDATE_FIELD";
-
+//AUTH ACTION TYPES 
+export const ERROR_TYPE = "ERROR_TYPE"
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";

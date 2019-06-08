@@ -17,8 +17,9 @@ export const checkoutState = {
 export const authState = {
   user: "",
   isLoading: false,
-  isAuthenticated: !!localStorage.getItem("token"),
-  error: null
+  isAuthenticated: !!sessionStorage.getItem("token"),
+  error: null,
+  errorMsg: null
 };
 
 //======================================================
