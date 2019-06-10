@@ -13,9 +13,19 @@ import {
 //=================================================================
 // SEND EMAIL TO USERS AFTER A PURCHASE
 
-export const sendEmailRequest = () => ({
-  type: SEND_EMAIL
-});
+export const sendEmail = payload => {
+  let customer = emailContact(payload);
+  return async dispatch => {
+    dispatch({ type: SEND_EMAIL });
+    try {
+      dispatch(sendEmailSuccess(payload));
+      let thankYou = await API.sendEmail(customer);
+        console.log(thankYou.statusText)
+    } catch (error) {
+      dispatch(sendEmailError(error));
+    }
+  };
+};
 
 export const sendEmailSuccess = payload => ({
   type: SEND_EMAIL_SUCCESS,
@@ -27,42 +37,14 @@ export const sendEmailError = error => ({
   payload: error
 });
 
-export const sendEmail = payload => {
-  let customer = emailContact(payload);
-  return async dispatch => {
-    dispatch(sendEmailRequest());
-    try {
-      dispatch(sendEmailSuccess(payload));
-      let thankYou = await API.sendEmail(customer);
-        console.log(thankYou.statusText)
-    } catch (error) {
-      dispatch(sendEmailError(error));
-    }
-  };
-};
-
 //===================================================================
 // RECIEVE INCOMING MESSAGE FROM USERS VIA FORM
-
-export const contactUsRequest = () => ({
-  type: CONTACT_US
-});
-
-export const contactUsError = error => ({
-  type: CONTACT_US_ERROR,
-  payload: error
-});
-
-export const contactUsSuccess = payload => ({
-  type: CONTACT_US_SUCCESS,
-  payload: payload
-});
 
 export const contactEthernode = payload => {
   let user = contactUs(payload);
   return async dispatch => {
     try {
-      dispatch(contactUsRequest());
+      dispatch({ type: CONTACT_US });
       let contact = await API.sendEmail(user);
       dispatch(contactUsSuccess(payload));
       console.log(contact.statusText);
@@ -71,3 +53,13 @@ export const contactEthernode = payload => {
     }
   };
 };
+
+export const contactUsSuccess = payload => ({
+  type: CONTACT_US_SUCCESS,
+  payload: payload
+});
+
+export const contactUsError = error => ({
+  type: CONTACT_US_ERROR,
+  payload: error
+});

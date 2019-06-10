@@ -6,10 +6,10 @@ import {
   LOG_OUT_SUCCESS,
   TOGGLE_SIDEBAR
 } from "../actions/types";
-import { authData } from "../../utils/sanitizer"
+import { authData } from "../../utils/sanitizer";
 
-export const login = () => ({
-  type: LOGIN_REQUEST,
+export const toggleSidebar = () => ({
+  type: TOGGLE_SIDEBAR
 });
 
 export const loginSuccess = payload => ({
@@ -22,15 +22,11 @@ export const loginError = error => ({
   payload: error
 });
 
-export const toggleSidebar = () => ({
-  type: TOGGLE_SIDEBAR
-});
-
-export const loginAdmin = (username, password) => {
+export const login = (username, password) => {
   let admin = authData(username, password);
 
   return async dispatch => {
-    dispatch(login());
+    dispatch({ type: LOGIN_REQUEST });
     try {
       let authRequest = await API.login(admin);
       if (authRequest.data.result.message === "Auth Success") {
@@ -44,12 +40,10 @@ export const loginAdmin = (username, password) => {
   };
 };
 
-
 export const logOut = () => dispatch => {
   sessionStorage.removeItem("token");
   dispatch(logOutSuccess());
 };
-
 
 export const logOutSuccess = () => ({
   type: LOG_OUT_SUCCESS

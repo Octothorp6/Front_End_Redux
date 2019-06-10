@@ -5,7 +5,6 @@ import {
   cryptoCheckout,
   addItemToCart,
   removeItemFromCart,
-  getTotal
 } from "../../store/actions";
 
 const mapStateToProps = state => ({
@@ -18,7 +17,6 @@ const mapDispatchToProps = {
   cryptoCheckout,
   addItemToCart,
   removeItemFromCart,
-  getTotal
 };
 
 export default connect(

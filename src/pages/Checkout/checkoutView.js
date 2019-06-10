@@ -39,10 +39,8 @@ class Checkout extends React.PureComponent {
       case 0:
         return (
           <PickYourNode
-            cart={this.props.cart}
             addItemToCart={this.props.addItemToCart}
             removeItemFromCart={this.props.removeItemFromCart}
-            getTotal={this.props.getTotal}
           />
         );
       case 1:
@@ -178,7 +176,6 @@ Checkout.propTypes = {
   cryptoCheckout: PropTypes.func.isRequired,
   addItemToCart: PropTypes.func.isRequired,
   removeItemFromCart: PropTypes.func.isRequired,
-  orderTotal: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(Checkout);

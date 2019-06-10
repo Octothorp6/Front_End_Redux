@@ -22,18 +22,14 @@ import API from "../../utils/API";
 export const addItemToCart = (item, cart) => {
   return dispatch => {
     dispatch({ type: ADD_ITEM_TO_CART, payload: item });
-    if (item.itemId === 1 || 2 || 3) {
-      dispatch(getTotal(cart));
-    }
+    dispatch(getTotal(cart));
   };
 };
 
 export const removeItemFromCart = (itemId, cart) => {
   return dispatch => {
     dispatch({ type: REMOVE_ITEM_FROM_CART, payload: itemId });
-    if (itemId === 1 || 2 || 3) {
-      dispatch(getTotal(cart));
-    }
+    dispatch(getTotal(cart));
   };
 };
 
@@ -46,14 +42,12 @@ export const getTotal = cart => {
 
 //===================================================================
 // CRYPTO CHECKOUT ACTIONS
-export const cryptoCheckoutRequest = () => ({
-  type: CRYPTO_CHECKOUT
-});
 
 export const cryptoCheckoutSuccess = payload => ({
   type: CRYPTO_CHECKOUT_SUCCESS,
   payload: payload
 });
+
 export const cryptoCheckoutError = error => ({
   type: CREDIT_CHECKOUT_ERROR,
   payload: error
@@ -64,7 +58,7 @@ export const cryptoCheckout = payload => {
   let user = signUpInfo(payload);
 
   return async dispatch => {
-    dispatch(cryptoCheckoutRequest());
+    dispatch({ type: CRYPTO_CHECKOUT });
     try {
       let invoiceLink = await API.newInvoice(customer);
       let txData = await txInfo(payload, invoiceLink.data.result);
@@ -82,10 +76,6 @@ export const cryptoCheckout = payload => {
 
 //=================================================================
 // CREDIT CHECKOUT ACTIONS
-export const creditCheckoutRequest = () => ({
-  type: CREDIT_CHECKOUT
-});
-
 export const creditCheckoutSuccess = payload => ({
   type: CREDIT_CHECKOUT_SUCCESS,
   payload: payload
@@ -101,7 +91,7 @@ export const creditCheckout = payload => {
   let userData = checkoutInfo(payload);
 
   return async dispatch => {
-    dispatch(creditCheckoutRequest());
+    dispatch({ type: CREDIT_CHECKOUT });
     try {
       let checkout = await API.newOrder(userData);
       let register = await API.register(user);

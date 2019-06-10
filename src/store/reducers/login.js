@@ -11,7 +11,7 @@ export default function LoginReducer(state = authState, action) {
       case LOGIN_SUCCESS:
         return {
           ...state,
-          user: action.payload.user,
+          user: action.payload.username,
           token: action.payload.token,
           isLoading: false,
           isAuthenticated: true,
