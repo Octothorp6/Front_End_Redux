@@ -63,7 +63,7 @@ class Checkout extends React.PureComponent {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, orderTotal } = this.props;
 
     return (
       <Formik
@@ -79,7 +79,7 @@ class Checkout extends React.PureComponent {
                   <br />
                   <GridItem xs={12} sm={12} md={12} lg={12}>
                     <Typography variant="subheading">
-                      Cart total: {this.props.orderTotal}
+                      Cart total: {orderTotal}
                     </Typography>{" "}
                   </GridItem>
                   <GridItem xs={12} sm={12} md={12} lg={12}>
@@ -177,7 +177,8 @@ Checkout.propTypes = {
   creditCheckout: PropTypes.func.isRequired,
   cryptoCheckout: PropTypes.func.isRequired,
   addItemToCart: PropTypes.func.isRequired,
-  removeItemFromCart: PropTypes.func.isRequired
+  removeItemFromCart: PropTypes.func.isRequired,
+  orderTotal: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(Checkout);

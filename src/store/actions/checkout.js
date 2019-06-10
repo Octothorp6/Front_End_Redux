@@ -19,24 +19,28 @@ import API from "../../utils/API";
 
 //=================================================================
 // USER CART ACTIONS
-export const addItemToCart = item => {
-  return {
-    type: ADD_ITEM_TO_CART,
-    payload: item
+export const addItemToCart = (item, cart) => {
+  return dispatch => {
+    dispatch({ type: ADD_ITEM_TO_CART, payload: item });
+    if (item.itemId === 1 || 2 || 3) {
+      dispatch(getTotal(cart));
+    }
   };
 };
 
-export const removeItemFromCart = itemId => {
-  return {
-    type: REMOVE_ITEM_FROM_CART,
-    payload: itemId
+export const removeItemFromCart = (itemId, cart) => {
+  return dispatch => {
+    dispatch({ type: REMOVE_ITEM_FROM_CART, payload: itemId });
+    if (itemId === 1 || 2 || 3) {
+      dispatch(getTotal(cart));
+    }
   };
 };
 
-export const getTotal = payload => {
+export const getTotal = cart => {
   return {
     type: GET_TOTAL,
-    payload: payload
+    payload: cart
   };
 };
 
@@ -111,7 +115,7 @@ export const creditCheckout = payload => {
         console.log(saveTx.statusText);
       }
     } catch (error) {
-        dispatch(creditCheckoutError(error));
+      dispatch(creditCheckoutError(error));
     }
   };
 };

@@ -12,9 +12,8 @@ import {
 } from "../actions/types";
 
 export default function checkoutReducer(state = checkoutState, action) {
-  let tempCart = [...state.cart];
+  let tempCart = state.cart;
   let updatedItemIndex;
-  let total = 0;
 
   switch (action.type) {
     case ADD_ITEM_TO_CART:
@@ -50,6 +49,7 @@ export default function checkoutReducer(state = checkoutState, action) {
         cart: tempCart
       };
     case GET_TOTAL:
+      let total = 0;
       if (tempCart.length === 0) {
         return total;
       } else {
@@ -57,7 +57,7 @@ export default function checkoutReducer(state = checkoutState, action) {
           let parsedTotal = parseInt(item.itemCost);
           total = parsedTotal + currentTotal;
           return total;
-        });
+        }, 0);
       }
       return {
         ...state,
@@ -65,15 +65,15 @@ export default function checkoutReducer(state = checkoutState, action) {
       };
     case CREDIT_CHECKOUT:
       return {
-        ...state,
-        ...action.payload
+        ...state
       };
     case CREDIT_CHECKOUT_SUCCESS:
       return {
         ...state,
+        ...action.payload,
         madeOrder: true,
         orderStatus: "pending",
-        ...action.payload
+
       };
     case CREDIT_CHECKOUT_ERROR:
       return {
@@ -89,14 +89,14 @@ export default function checkoutReducer(state = checkoutState, action) {
       return {
         ...state,
         error: true
-      }
+      };
     case CRYPTO_CHECKOUT_SUCCESS:
       return {
         ...state,
         ...action.payload,
         madeOrder: true,
-        orderStatus: "pending",
-      }
+        orderStatus: "pending"
+      };
     default:
       return state;
   }

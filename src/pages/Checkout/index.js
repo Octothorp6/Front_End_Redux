@@ -4,7 +4,8 @@ import {
   creditCheckout,
   cryptoCheckout,
   addItemToCart,
-  removeItemFromCart
+  removeItemFromCart,
+  getTotal
 } from "../../store/actions";
 
 const mapStateToProps = state => ({
@@ -16,7 +17,8 @@ const mapDispatchToProps = {
   creditCheckout,
   cryptoCheckout,
   addItemToCart,
-  removeItemFromCart
+  removeItemFromCart,
+  getTotal
 };
 
 export default connect(

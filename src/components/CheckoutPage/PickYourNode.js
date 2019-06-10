@@ -44,7 +44,7 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
       </div>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="open-select">Storage</InputLabel>
-        <Select
+         <Select
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
@@ -56,13 +56,13 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
           }}
         >
           <MenuItem value={products[0]} id={1}>
-            250GB
+            250GB $399
           </MenuItem>
           <MenuItem value={products[1]} id={2}>
-            1TB
+            1TB $625
           </MenuItem>
           <MenuItem value={products[2]} id={3}>
-            2TB
+            2TB $850
           </MenuItem>
         </Select>
       </FormControl>
@@ -81,7 +81,7 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
 PickYourNode.propTypes = {
   classes: PropTypes.object.isRequired,
   addItemToCart: PropTypes.func.isRequired,
-  removeItemFromCart: PropTypes.func.isRequired
+  removeItemFromCart: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(PickYourNode);
