@@ -43,16 +43,6 @@ export const getTotal = cart => {
 //===================================================================
 // CRYPTO CHECKOUT ACTIONS
 
-export const cryptoCheckoutSuccess = payload => ({
-  type: CRYPTO_CHECKOUT_SUCCESS,
-  payload: payload
-});
-
-export const cryptoCheckoutError = error => ({
-  type: CREDIT_CHECKOUT_ERROR,
-  payload: error
-});
-
 export const cryptoCheckout = payload => {
   let customer = invoiceInfo(payload);
   let user = signUpInfo(payload);
@@ -65,8 +55,9 @@ export const cryptoCheckout = payload => {
       let newTx = await API.newTransaction(txData);
       let saveUser = await API.register(user);
       if (invoiceLink.status && newTx.status === 200) {
+        dispatch(creditCheckoutSuccess(payload));
         window.location.assign(invoiceLink.data.result);
-        dispatch(creditCheckoutSuccess(saveUser.statusText));
+       
       }
     } catch (error) {
       dispatch(creditCheckoutError(error));
@@ -74,17 +65,19 @@ export const cryptoCheckout = payload => {
   };
 };
 
-//=================================================================
-// CREDIT CHECKOUT ACTIONS
-export const creditCheckoutSuccess = payload => ({
-  type: CREDIT_CHECKOUT_SUCCESS,
+export const cryptoCheckoutSuccess = payload => ({
+  type: CRYPTO_CHECKOUT_SUCCESS,
   payload: payload
 });
 
-export const creditCheckoutError = error => ({
-  type: CREDIT_CHECKOUT_SUCCESS,
+export const cryptoCheckoutError = error => ({
+  type: CREDIT_CHECKOUT_ERROR,
   payload: error
 });
+
+
+//=================================================================
+// CREDIT CHECKOUT ACTIONS
 
 export const creditCheckout = payload => {
   let user = signUpInfo(payload);
@@ -109,3 +102,13 @@ export const creditCheckout = payload => {
     }
   };
 };
+
+export const creditCheckoutSuccess = payload => ({
+  type: CREDIT_CHECKOUT_SUCCESS,
+  payload: payload
+});
+
+export const creditCheckoutError = error => ({
+  type: CREDIT_CHECKOUT_SUCCESS,
+  payload: error
+});
