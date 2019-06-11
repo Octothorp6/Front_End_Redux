@@ -109,7 +109,6 @@ class Checkout extends React.PureComponent {
                         Next
                       </Button>
                     )}
-
                     {this.state.step === 1 ? (
                       <Button
                         color="primary"

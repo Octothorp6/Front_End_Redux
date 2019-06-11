@@ -44,34 +44,38 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
       </div>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="open-select">Storage</InputLabel>
-         <Select
+        <Select
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={item}
+          value={item || ""}
           onChange={handleChange}
           inputProps={{
             name: "price",
             id: "open-select"
           }}
         >
-          <MenuItem value={products[0]} id={1}>
-            $399 250GB 
-          </MenuItem>
-          <MenuItem value={products[1]} id={2}>
-            $625 1TB 
-          </MenuItem>
-          <MenuItem value={products[2]} id={3}>
-            $850 2TB 
-          </MenuItem>
+          {products.map((item, index) => {
+            return (
+              <MenuItem value={item} key={index}>
+                ${item.itemCost} {item.itemDesc}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
       <br />
       <br />
-      <Button color="primary" onClick={() => item ? addItemToCart(item) : "" }>
+      <Button
+        color="primary"
+        onClick={() => (item ? addItemToCart(item) : "")}
+      >
         Add Item
       </Button>
-      <Button color="primary" onClick={() => removeItemFromCart(item.itemId)}>
+      <Button
+        color="primary"
+        onClick={() => (item ? removeItemFromCart(item.itemId) : "")}
+      >
         Remove Item
       </Button>
     </React.Fragment>
