@@ -12,7 +12,6 @@ import { fieldState } from "../../store/initialState";
 import { Button, Paper, Typography, withStyles } from "@material-ui/core";
 import { steps } from "../../components/CheckoutPage/products";
 
-
 class Checkout extends React.PureComponent {
   state = {
     step: 0
@@ -175,7 +174,7 @@ Checkout.propTypes = {
   creditCheckout: PropTypes.func.isRequired,
   cryptoCheckout: PropTypes.func.isRequired,
   addItemToCart: PropTypes.func.isRequired,
-  removeItemFromCart: PropTypes.func.isRequired,
+  removeItemFromCart: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Checkout);

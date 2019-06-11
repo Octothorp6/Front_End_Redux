@@ -8,20 +8,12 @@ import {
 } from "../actions/types";
 import { authData } from "../../utils/sanitizer";
 
+// TOGGLE SIDEBAR FOR DASHBOARD
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR
 });
 
-export const loginSuccess = payload => ({
-  type: LOGIN_SUCCESS,
-  payload: payload
-});
-
-export const loginError = error => ({
-  type: LOGIN_ERROR,
-  payload: error
-});
-
+// USER LOGIN && LOGOUT ACTIONS
 export const login = (username, password) => {
   let admin = authData(username, password);
 
@@ -39,6 +31,15 @@ export const login = (username, password) => {
     }
   };
 };
+export const loginSuccess = payload => ({
+  type: LOGIN_SUCCESS,
+  payload: payload
+});
+
+export const loginError = error => ({
+  type: LOGIN_ERROR,
+  payload: error
+});
 
 export const logOut = () => dispatch => {
   sessionStorage.removeItem("token");

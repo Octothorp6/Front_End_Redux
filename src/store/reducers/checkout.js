@@ -68,7 +68,8 @@ export default function checkoutReducer(state = checkoutState, action) {
       };
     case CREDIT_CHECKOUT:
       return {
-        ...state
+        ...state,
+        orderStatus: "pending"
       };
     case CREDIT_CHECKOUT_SUCCESS:
       return {
@@ -85,7 +86,7 @@ export default function checkoutReducer(state = checkoutState, action) {
     case CRYPTO_CHECKOUT:
       return {
         ...state,
-        ...action.payload
+        orderStatus: "pending"
       };
     case CRYPTO_CHECKOUT_ERROR:
       return {

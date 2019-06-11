@@ -55,7 +55,7 @@ export const cryptoCheckout = payload => {
       let newTx = await API.newTransaction(txData);
       let saveUser = await API.register(user);
       if (invoiceLink.status && newTx.status && saveUser.status === 200) {
-        dispatch(creditCheckoutSuccess(payload));
+        dispatch(cryptoCheckoutSuccess(payload));
         window.location.assign(invoiceLink.data.result);
       }
     } catch (error) {

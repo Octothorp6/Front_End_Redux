@@ -22,7 +22,7 @@ const styles = theme => ({
 });
 
 const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
-  const [item, setItem] = React.useState({});
+  const [item, setItem] = React.useState();
   const [open, setOpen] = React.useState(false);
 
   function handleChange(event) {
@@ -68,7 +68,7 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
       </FormControl>
       <br />
       <br />
-      <Button color="primary" onClick={() => addItemToCart(item)}>
+      <Button color="primary" onClick={() => item ? addItemToCart(item) : "" }>
         Add Item
       </Button>
       <Button color="primary" onClick={() => removeItemFromCart(item.itemId)}>
