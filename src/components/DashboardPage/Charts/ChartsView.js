@@ -1,8 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import Widget from '../Widget';
-import ApexLineChart from './components/Plots/ApexLineChart';
-import ApexHeatmap from './components/Plots/ApexHeatmap'
 import {
     CartesianGrid,
     Legend,
@@ -102,12 +100,12 @@ const ChartsView = (props) => (
       <Grid container spacing={32}>
         <Grid item xs={12} md={6}>
           <Widget title="Apex Line Chart" upperTitle noBodyPadding>
-            <ApexLineChart />
+
           </Widget>
         </Grid>
         <Grid item xs={12} md={6}>
           <Widget title="Apex Heatmap" upperTitle noBodyPadding>
-            <ApexHeatmap />
+
           </Widget>
         </Grid>
         <Grid item xs={12} md={8}>
