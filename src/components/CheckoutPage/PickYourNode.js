@@ -56,13 +56,13 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
           }}
         >
           <MenuItem value={products[0]} id={1}>
-            250GB $399
+            $399 250GB 
           </MenuItem>
           <MenuItem value={products[1]} id={2}>
-            1TB $625
+            $625 1TB 
           </MenuItem>
           <MenuItem value={products[2]} id={3}>
-            2TB $850
+            $850 2TB 
           </MenuItem>
         </Select>
       </FormControl>

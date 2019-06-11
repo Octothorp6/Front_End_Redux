@@ -51,13 +51,12 @@ export const cryptoCheckout = payload => {
     dispatch({ type: CRYPTO_CHECKOUT });
     try {
       let invoiceLink = await API.newInvoice(customer);
-      let txData = await txInfo(payload, invoiceLink.data.result);
+      let txData = txInfo(payload, invoiceLink.data.result);
       let newTx = await API.newTransaction(txData);
       let saveUser = await API.register(user);
-      if (invoiceLink.status && newTx.status === 200) {
+      if (invoiceLink.status && newTx.status && saveUser.status === 200) {
         dispatch(creditCheckoutSuccess(payload));
         window.location.assign(invoiceLink.data.result);
-       
       }
     } catch (error) {
       dispatch(creditCheckoutError(error));
@@ -75,7 +74,6 @@ export const cryptoCheckoutError = error => ({
   payload: error
 });
 
-
 //=================================================================
 // CREDIT CHECKOUT ACTIONS
 
@@ -88,13 +86,13 @@ export const creditCheckout = payload => {
     try {
       let checkout = await API.newOrder(userData);
       let register = await API.register(user);
-      dispatch(creditCheckoutSuccess(payload));
       if (
         checkout.data.result.messages.resultCode === "Ok" &&
         register.status === 200
       ) {
         let ccTxData = ccTxInfo(payload, checkout);
         let saveTx = await API.newTransaction(ccTxData);
+        dispatch(creditCheckoutSuccess(payload));
         console.log(saveTx.statusText);
       }
     } catch (error) {
