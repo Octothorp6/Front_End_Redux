@@ -1,33 +1,35 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { compose } from 'recompose';
-import { connect } from 'react-redux';
-import themes, { overrides } from './themes';
-import { withLayout } from "./components/UI/Layout"
-import Layout from './components/DashboardPage/Layout';
-import Error from './pages/Error';
-import Login from './pages/Login';
-import Home from "./pages/Home"
-import Checkout from './pages/Checkout';
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { compose } from "recompose";
+import { connect } from "react-redux";
+import { withLayout } from "./components/UI/Layout";
+import themes, { overrides } from "./themes";
+import Layout from "./components/DashboardPage/Layout";
+import Error from "./pages/Error";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Checkout from "./pages/Checkout";
+import EnkeepThree from "./components/3DCanvas";
 
-const theme = createMuiTheme({...themes.default, ...overrides});
+const theme = createMuiTheme({ ...themes.default, ...overrides });
 
 const PrivateRoute = ({ component, ...rest }) => {
   return (
     <Route
-      {...rest} render={props => (
-      localStorage.getItem('token') ? (
-        React.createElement(component, props)
-      ) : (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { from: props.location },
-          }}
-        />
-      )
-    )}
+      {...rest}
+      render={props =>
+        localStorage.getItem("token") ? (
+          React.createElement(component, props)
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
     />
   );
 };
@@ -35,17 +37,18 @@ const PrivateRoute = ({ component, ...rest }) => {
 const PublicRoute = ({ component, ...rest }) => {
   return (
     <Route
-      {...rest} render={props => (
-      localStorage.getItem('token') ? (
-        <Redirect
-          to={{
-            pathname: '/admin',
-          }}
-        />
-      ) : (
-        React.createElement(component, props)
-      )
-    )}
+      {...rest}
+      render={props =>
+        localStorage.getItem("token") ? (
+          <Redirect
+            to={{
+              pathname: "/admin"
+            }}
+          />
+        ) : (
+          React.createElement(component, props)
+        )
+      }
     />
   );
 };
@@ -56,20 +59,22 @@ const App = () => (
       <Switch>
         <Route exact path="/" render={() => withLayout(Home)} />
         <Route exact path="/checkout" render={() => withLayout(Checkout)} />
-        <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
+        <Route
+          exact
+          path="/admin"
+          render={() => <Redirect to="/admin/dashboard" />}
+        />
         <PrivateRoute path="/admin" component={Layout} />
         <PublicRoute path="/login" component={Login} />
+        <Route path="/enkeep" component={EnkeepThree} />
         <Route component={Error} />
       </Switch>
     </BrowserRouter>
   </MuiThemeProvider>
 );
 
-
 export default compose(
-  connect(
-    state => ({
-      isAuthenticated: state.login.isAuthenticated,
-    })
-  )
+  connect(state => ({
+    isAuthenticated: state.login.isAuthenticated
+  }))
 )(App);
