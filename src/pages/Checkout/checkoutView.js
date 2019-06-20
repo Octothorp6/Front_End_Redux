@@ -11,6 +11,7 @@ import { Form, Formik } from "formik";
 import { fieldState } from "../../store/initialState";
 import { Button, Paper, Typography, withStyles } from "@material-ui/core";
 import { steps } from "../../components/CheckoutPage/products";
+//import EnkeepThree from "../../components/3DCanvas";
 
 class Checkout extends React.PureComponent {
   state = {
@@ -63,80 +64,85 @@ class Checkout extends React.PureComponent {
     const { classes, orderTotal } = this.props;
 
     return (
-      <Formik
-        initialValues={{ ...fieldState }}
-        onSubmit={this.creditCheckout}
-        validationSchema={CheckoutSchema}
-      >
-        {({ values, errors, touched, validateForm }) => (
-          <GridContainer spacing={24} justify="center">
-            <main className={classes.layout}>
-              <Paper className={classes.paper}>
-                <Form>
-                  <br />
-                  <GridItem xs={12} sm={12} md={12} lg={12}>
-                    <Typography variant="subheading">
-                      Cart total: {orderTotal}
-                    </Typography>{" "}
-                  </GridItem>
-                  <GridItem xs={12} sm={12} md={12} lg={12}>
+      <>
+        <Formik
+          initialValues={{ ...fieldState }}
+          onSubmit={this.creditCheckout}
+          validationSchema={CheckoutSchema}
+          validateOnChange={true}
+        >
+          {({ values, errors, touched, validateForm }) => (
+            <GridContainer spacing={24} justify="center">
+              <main className={classes.layout}>
+                <Paper className={classes.paper}>
+                  <Form>
                     <br />
-                    {this.getStepContent(
-                      this.state.step,
-                      errors,
-                      touched,
-                      values
-                    )}
-                    <br />
-                    {this.state.step !== 0 ? (
-                      <Button color="primary" onClick={this.handleBack}>
-                        Back
-                      </Button>
-                    ) : (
-                      ""
-                    )}
-                    {this.state.step === steps.length - 1 ? (
-                      <Button color="primary" type="submit">
-                        Checkout
-                      </Button>
-                    ) : (
-                      <Button
-                        color="primary"
-                        onClick={() =>
-                          validateForm().then(() => this.handleNext())
-                        }
-                      >
-                        Next
-                      </Button>
-                    )}
-                    {this.state.step === 1 ? (
-                      <Button
-                        color="primary"
-                        onClick={() =>
-                          validateForm().then(() => this.cryptoCheckout(values))
-                        }
-                      >
-                        Pay with BTC
-                      </Button>
-                    ) : (
-                      ""
-                    )}
-                    <br />
-                    <br />
-                  </GridItem>
-                </Form>
-              </Paper>
-            </main>
-          </GridContainer>
-        )}
-      </Formik>
+                    <GridItem xs={12} sm={12} md={12} lg={12}>
+                      <Typography variant="subheading">
+                        Cart total: {orderTotal}
+                      </Typography>{" "}
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={12} lg={12}>
+                      <br />
+                      {this.getStepContent(
+                        this.state.step,
+                        errors,
+                        touched,
+                        values
+                      )}
+                      <br />
+                      {this.state.step !== 0 ? (
+                        <Button color="primary" onClick={this.handleBack}>
+                          Back
+                        </Button>
+                      ) : (
+                        ""
+                      )}
+                      {this.state.step === steps.length - 1 ? (
+                        <Button color="primary" type="submit">
+                          Checkout
+                        </Button>
+                      ) : (
+                        <Button
+                          color="primary"
+                          onClick={() =>
+                            validateForm().then(() => this.handleNext())
+                          }
+                        >
+                          Next
+                        </Button>
+                      )}
+                      {this.state.step === 1 ? (
+                        <Button
+                          color="primary"
+                          onClick={() =>
+                            validateForm().then(() =>
+                              this.cryptoCheckout(values)
+                            )
+                          }
+                        >
+                          Pay with BTC
+                        </Button>
+                      ) : (
+                        ""
+                      )}
+                      <br />
+                      <br />
+                    </GridItem>
+                  </Form>
+                </Paper>
+              </main>
+            </GridContainer>
+          )}
+        </Formik>
+      </>
     );
   }
 }
 
 const styles = theme => ({
   layout: {
-    display: "table",
+    display: "flex",
     width: "auto",
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
@@ -150,8 +156,6 @@ const styles = theme => ({
     }
   },
   paper: {
-    display: "table-cell",
-    verticalAlign: "middle",
     margin: "auto",
     padding: theme.spacing.unit * 2,
     overflowX: "hidden",
