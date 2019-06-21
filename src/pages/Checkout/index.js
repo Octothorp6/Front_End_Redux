@@ -7,10 +7,12 @@ import {
   removeItemFromCart,
 } from "../../store/actions";
 
-const mapStateToProps = state => ({
-  cart: state.cart,
-  orderTotal: state.orderTotal
-});
+const mapStateToProps = state => {
+  return {
+    cart: state.checkout.cart,
+    orderTotal: state.checkout.orderTotal
+  };
+};
 
 const mapDispatchToProps = {
   creditCheckout,

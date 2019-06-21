@@ -31,7 +31,7 @@ export default function checkoutReducer(state = checkoutState, action) {
       }
       return {
         ...state,
-        cart: tempCart
+        cart: [...tempCart]
       };
     case REMOVE_ITEM_FROM_CART:
       updatedItemIndex = tempCart.findIndex(
@@ -47,7 +47,7 @@ export default function checkoutReducer(state = checkoutState, action) {
       }
       return {
         ...state,
-        cart: tempCart
+        cart: [...tempCart]
       };
     case GET_TOTAL:
       if (tempCart.length === 0) {

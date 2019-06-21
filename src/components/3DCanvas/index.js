@@ -30,6 +30,12 @@ function Controls(props) {
   );
 }
 
+function Lights(props) {
+
+}
+
+
+
 export default function EnkeepThree() {
   return (
     <>
@@ -41,8 +47,8 @@ export default function EnkeepThree() {
           rotateSpeed={0.1}
           maxPolarAngle={Math.PI / 2}
         />
-        <ambientLight intensity={0.9} position={[300, 300, 400]} />
-        <spotLight intensity={0.9} position={[400, 400, 400]} />
+        <ambientLight intensity={0.8} position={[300, 300, 400]} />
+        <spotLight intensity={0.9} position={[300, 400, 400]} />
         <Model url={path} />
       </Canvas>
     </>

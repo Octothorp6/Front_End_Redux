@@ -9,8 +9,8 @@ import Layout from "./components/DashboardPage/Layout";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Checkout from "./pages/Checkout";
-import EnkeepThree from "./components/3DCanvas";
+import Checkout from "./pages/Checkout/index";
+import Lazy3d from "./components/3DCanvas/View";
 
 const theme = createMuiTheme({ ...themes.default, ...overrides });
 
@@ -66,7 +66,7 @@ const App = () => (
         />
         <PrivateRoute path="/admin" component={Layout} />
         <PublicRoute path="/login" component={Login} />
-        <Route path="/enkeep" component={EnkeepThree} />
+        <Route path="/enkeep" component={Lazy3d} />
         <Route component={Error} />
       </Switch>
     </BrowserRouter>

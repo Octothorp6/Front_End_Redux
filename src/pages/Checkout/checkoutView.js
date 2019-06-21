@@ -11,13 +11,12 @@ import { Form, Formik } from "formik";
 import { fieldState } from "../../store/initialState";
 import { Button, Paper, Typography, withStyles } from "@material-ui/core";
 import { steps } from "../../components/CheckoutPage/products";
-//import EnkeepThree from "../../components/3DCanvas";
 
 class Checkout extends React.PureComponent {
   state = {
-    step: 0
+    step: 0,
   };
-
+  
   handleNext = () => {
     this.setState(state => ({ step: state.step + 1 }));
   };
@@ -61,7 +60,7 @@ class Checkout extends React.PureComponent {
   };
 
   render() {
-    const { classes, orderTotal } = this.props;
+    const { classes, orderTotal, cart } = this.props;
 
     return (
       <>
@@ -79,7 +78,7 @@ class Checkout extends React.PureComponent {
                     <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                       <Typography variant="subheading">
-                        Cart total: {orderTotal}
+                        Cart total: {orderTotal} &nbsp; Items: {cart.length}
                       </Typography>{" "}
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12} lg={12}>
@@ -173,6 +172,7 @@ const styles = theme => ({
 
 //validate props format
 Checkout.propTypes = {
+  cart: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
   creditCheckout: PropTypes.func.isRequired,
   cryptoCheckout: PropTypes.func.isRequired,
