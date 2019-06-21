@@ -30,12 +30,6 @@ function Controls(props) {
   );
 }
 
-function Lights(props) {
-
-}
-
-
-
 export default function EnkeepThree() {
   return (
     <>
