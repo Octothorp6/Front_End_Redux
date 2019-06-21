@@ -16,7 +16,7 @@ const LazyAdmin = loadable(() =>
 );
 
 const LazyEnkeep = loadable(() => 
-  import("../components/3DCanvas/index")
+  import(/* webpackPrefetch: true */ "../components/3DCanvas/index")
 );
 
 export default function asyncComponent(Component) {
