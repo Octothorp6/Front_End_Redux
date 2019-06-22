@@ -15,15 +15,6 @@ const LazyAdmin = loadable(() =>
   import("../components/DashboardPage/Layout")
 );
 
-
-export default function asyncComponent(Component) {
-  return props => (
-    <React.Fragment>
-      <Component {...props} />
-    </React.Fragment>
-  );
-}
-
 const PrivateRoute = ({ component, ...rest }) => {
   return (
     <Route
@@ -62,6 +53,14 @@ const PublicRoute = ({ component, ...rest }) => {
     />
   );
 };
+
+const asyncComponent = Component => {
+    return props => (
+      <React.Fragment>
+        <Component {...props} />
+      </React.Fragment>
+    );
+  }
 
 export const AppRoutes = () => (
   <Switch>
