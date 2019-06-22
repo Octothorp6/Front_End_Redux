@@ -15,9 +15,6 @@ const LazyAdmin = loadable(() =>
   import("../components/DashboardPage/Layout")
 );
 
-const LazyEnkeep = loadable(() => 
-  import(/* webpackPrefetch: true */ "../components/3DCanvas/index")
-);
 
 export default function asyncComponent(Component) {
   return props => (
@@ -71,7 +68,6 @@ export const AppRoutes = () => (
     <Route exact path="/" render={() => withLayout(Home)} />
     <Route exact path="/checkout" render={() => withLayout(Checkout)} />
     <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
-    <Route exact path="/enkeep" component={asyncComponent(LazyEnkeep)} />
     <PublicRoute exact path="/login" component={asyncComponent(LazyLogin)} />
     <PrivateRoute exact path="/admin" component={asyncComponent(LazyAdmin)} />
     <Route component={Error} />

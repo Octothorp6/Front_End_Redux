@@ -2,8 +2,9 @@ import React from "react";
 import GridContainer from "../../UI/Grid/GridContainer";
 import GridItem from "../../UI/Grid/GridItem";
 import LinkButton from "../../UI/Buttons";
-import { nodeImg } from "../../../assets";
 import CustomListItem from "../List/CustomList";
+import FullScreenDialog from "../../3DCanvas/3dWorld"
+import { nodeImg } from "../../../assets";
 import { List } from "@material-ui/core";
 import "./enkeep.css";
 
@@ -19,6 +20,8 @@ const Enkeep = () => {
             >
               Order Now!
             </LinkButton>
+            &nbsp;
+            <FullScreenDialog />
         </GridItem>
         <GridItem xs={12} sm={12} md={6} lg={4}>
           <List>

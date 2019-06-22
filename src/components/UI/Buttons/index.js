@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router"
-import {Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 const LinkButton = props => {
     const { history, location, match, staticContext, to, onClick, size, ...rest}  = props 
