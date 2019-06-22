@@ -1,7 +1,7 @@
 import React from "react";
 import GridContainer from "../../UI/Grid/GridContainer";
 import GridItem from "../../UI/Grid/GridItem";
-import LinkButton from "../../UI/LinkButton";
+import LinkButton from "../../UI/Buttons";
 import { nodeImg } from "../../../assets";
 import CustomListItem from "../List/CustomList";
 import { List } from "@material-ui/core";
