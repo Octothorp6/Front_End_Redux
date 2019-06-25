@@ -8,9 +8,16 @@ import "./Header.css";
 const Header = () => (
   <div className="menu-header">
     <GridContainer>
-      <GridItem lg={12}>
+      <GridItem sm={12} md={12} lg={12}>
         <div className="header">
           <img src={darkHeader} alt="EtherNode Logo" className="logo" />
+        </div>
+      </GridItem>
+      <GridItem sm={12} md={12} lg={12}>
+        <div className="home-hero">
+          <span className="welcomeText">Blockchain</span>&nbsp; &nbsp;{" "}
+          <span className="middleText">Network Connectivity</span>&nbsp; &nbsp;{" "}
+          <span className="welcomeText">Made Easy</span>
         </div>
       </GridItem>
     </GridContainer>

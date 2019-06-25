@@ -11,8 +11,6 @@ const Layout = props => (
   </React.Fragment>
 );
 
-
-
 //layout function with incoming Components as the parameter
 export const withLayout = Component => {
   return (

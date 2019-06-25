@@ -3,9 +3,6 @@ import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import WithSuspense from "../../utils/Helpers"
 
-// const modelPromise = import("./3DModel");
-// const Model = lazy(() => modelPromise)
-
 const Model = lazy(() => {
   return Promise.all([
     import("./3DModel"),
