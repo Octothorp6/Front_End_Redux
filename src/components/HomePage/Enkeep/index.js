@@ -3,7 +3,7 @@ import GridContainer from "../../UI/Grid/GridContainer";
 import GridItem from "../../UI/Grid/GridItem";
 import LinkButton from "../../UI/Buttons";
 import CustomListItem from "../List/CustomList";
-import FullScreenDialog from "../../3DCanvas/3dWorld"
+import FullScreenDialog from "../../3dCanvas2/Container";
 import { nodeImg } from "../../../assets";
 import { List } from "@material-ui/core";
 import "./enkeep.css";
