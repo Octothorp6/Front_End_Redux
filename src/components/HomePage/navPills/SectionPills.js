@@ -91,7 +91,7 @@ function SectionPills(props) {
                           <ListItem
                             alt="img"
                             icon={smartHome}
-                            header="Smart Home"
+                            header="Decentralized Applications"
                             text={
                               <>
                                 Personal digital data has rapidly become one of

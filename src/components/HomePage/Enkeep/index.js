@@ -10,7 +10,7 @@ import "./enkeep.css";
 const Enkeep = () => {
   return (
     <React.Fragment>
-      <h4>Shipping Early July 2019.</h4>
+      <h4>Shipping TBD.</h4>
       <GridContainer>
         <GridItem xs={12} sm={12} md={6} lg={8}>
           <img src={nodeImg} alt="nodeImg" style={{ maxWidth: "100%" }} />
@@ -21,11 +21,12 @@ const Enkeep = () => {
             <div className="enkeepList">
               <CustomListItem
                 header="Operating System"
-                text="ENOS Linux 5 Kernel"
+                text="EnOS Linux Based Distro"
               />
+              <CustomListItem header="Storage" text="M.2 NVME SSD" />
               <CustomListItem header="Processor" text="RK3399 64 Bit A72/A53" />
               <CustomListItem header="Memory" text="4GB Dual Channel LPDDR4" />
-              <CustomListItem header="Storage" text="970 EVO m.2 SSD" />
+              
             </div>
             <br />
           </List>
