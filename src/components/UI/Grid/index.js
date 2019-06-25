@@ -1,2 +1,2 @@
-export * from "./GridContainer";
-export * from "./GridItem"
+export { default as GridContainer }  from "./GridContainer";
+export { default as GridItem } from "./GridItem"

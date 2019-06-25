@@ -2,7 +2,7 @@ import React from "react";
 import loadable from "@loadable/component";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { withLayout } from "../components/UI/Layout";
-import { asyncComponent } from "./Helpers";
+import { WithAsyncComponent } from "./Helpers";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Checkout from "../pages/Checkout";
@@ -16,12 +16,13 @@ const LazyAdmin = loadable(() =>
   import("../components/DashboardPage/Layout")
 );
 
-const PrivateRoute = ({ component, ...rest }) => {
+//ROUTE FUNCTIONS
+export const PrivateRoute = ({ component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props =>
-        localStorage.getItem("token") ? (
+        sessionStorage.getItem("token") ? (
           React.createElement(component, props)
         ) : (
           <Redirect
@@ -36,12 +37,12 @@ const PrivateRoute = ({ component, ...rest }) => {
   );
 };
 
-const PublicRoute = ({ component, ...rest }) => {
+export const PublicRoute = ({ component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props =>
-        localStorage.getItem("token") ? (
+        sessionStorage.getItem("token") ? (
           <Redirect
             to={{
               pathname: "/admin"
@@ -55,14 +56,13 @@ const PublicRoute = ({ component, ...rest }) => {
   );
 };
 
-
 export const AppRoutes = () => (
   <Switch>
     <Route exact path="/" render={() => withLayout(Home)} />
     <Route exact path="/checkout" render={() => withLayout(Checkout)} />
     <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
-    <PublicRoute exact path="/login" component={asyncComponent(LazyLogin)} />
-    <PrivateRoute exact path="/admin" component={asyncComponent(LazyAdmin)} />
+    <PublicRoute path="/login" component={WithAsyncComponent(LazyLogin)} />
+    <PrivateRoute path="/admin" component={WithAsyncComponent(LazyAdmin)} />
     <Route component={Error} />
   </Switch>
 );

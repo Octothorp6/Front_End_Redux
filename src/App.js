@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { AppRoutes } from "./utils/Routes";
 import themes, { overrides } from "./themes";
 
-
 const theme = createMuiTheme({ ...themes.default, ...overrides });
 
 const App = () => (

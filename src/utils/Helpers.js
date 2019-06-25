@@ -1,6 +1,11 @@
 import React, { Suspense } from "react";
+import { CircularProgress } from "@material-ui/core"
 
-export const asyncComponent = Component => {
+//ALL HELPER FUNCTIONS WILL BE PREPENDED WITH THE KEYWORD "WITH" 
+//TO FOLLOW REACT CONVENTION
+
+// LAZY LOADING COMPONENT HELPER FUNCTIONS
+export const WithAsyncComponent = Component => {
   return props => (
     <React.Fragment>
       <Component {...props} />
@@ -8,11 +13,10 @@ export const asyncComponent = Component => {
   );
 };
 
-const FallBack = <div> <h1 style={{color:"blue"}}> HIIIIIII </h1> </div> ;
-
 export default function WithSuspense(Component) {
+  const FallBack = <div> <CircularProgress /> </div> ;
   return (
-    <Suspense fallback={e => <FallBack />}>
+    <Suspense fallback={`${FallBack}`}>
       <Component />
     </Suspense>
   );

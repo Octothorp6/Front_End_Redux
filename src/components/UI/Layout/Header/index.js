@@ -15,8 +15,8 @@ const Header = () => (
       </GridItem>
       <GridItem sm={12} md={12} lg={12}>
         <div className="home-hero">
-          <span className="welcomeText">Blockchain</span>&nbsp; &nbsp;{" "}
-          <span className="middleText">Network Connectivity</span>&nbsp; &nbsp;{" "}
+          <span className="welcomeText">Blockchain</span>&nbsp; &nbsp;
+          <span className="middleText">Network Connectivity</span>&nbsp; &nbsp;
           <span className="welcomeText">Made Easy</span>
         </div>
       </GridItem>

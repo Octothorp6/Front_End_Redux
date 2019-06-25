@@ -1,0 +1,7 @@
+.Scene {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
+    margin: 0em 0em;
+}
