@@ -12,7 +12,6 @@
     "formik-material-ui": "^0.0.18",
     "mui-datatables": "^2.3.0",
     "react": "^16.8.6",
-    "react-cache": "^2.0.0-alpha.1",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router": "^5.0.0",

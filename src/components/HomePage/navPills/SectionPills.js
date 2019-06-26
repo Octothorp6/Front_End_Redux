@@ -199,7 +199,7 @@ function SectionPills(props) {
                         <img
                           src={enosLogo}
                           alt="enKeep"
-                          style={{ maxWidth: "6em" }}
+                          style={{ maxWidth: "4em" }}
                         />
                         <List>
                           <ListItem
