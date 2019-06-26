@@ -19,20 +19,19 @@ export const login = (username, password) => {
 
   return async dispatch => {
     dispatch({ type: LOGIN_REQUEST });
-    dispatch(loginSuccess(username, password))
-    sessionStorage.setItem("token", username);
-    // try {
-    //   let authRequest = await API.login(admin);
-    //   if (authRequest.data.result.message === "Auth Success") {
-    //     let token = authRequest.data.result.token;
-    //     sessionStorage.setItem("token", token);
-    //     dispatch(loginSuccess(username, token));
-    //   }
-    // } catch (error) {
-    //   dispatch(loginError(error));
-    // }
+    try {
+      let authRequest = await API.login(admin);
+      if (authRequest.data.result.message === "Auth Success") {
+        let token = authRequest.data.result.token;
+        sessionStorage.setItem("token", token);
+        dispatch(loginSuccess(username, token));
+      }
+    } catch (error) {
+      dispatch(loginError(error));
+    }
   };
 };
+
 export const loginSuccess = payload => ({
   type: LOGIN_SUCCESS,
   payload: payload

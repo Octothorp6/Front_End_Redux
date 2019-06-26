@@ -13,6 +13,7 @@ import WithSuspense from "../../../utils/Helpers";
 
 const Model = lazy(() => import("./3DModel"));
 
+
 extend({ OrbitControls });
 
 function Controls(props) {

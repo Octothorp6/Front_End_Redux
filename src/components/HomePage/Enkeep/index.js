@@ -23,7 +23,6 @@ const Enkeep = () => {
               <CustomListItem header="Operating System" text="EnOS Linux Based Distro" />
               <CustomListItem header="Memory" text="4GB Dual Channel LPDDR4" />
               <CustomListItem header="Processor" text="RK3399 64 Bit A72/A53" />
-
             </div>
             <br />
           </List>
