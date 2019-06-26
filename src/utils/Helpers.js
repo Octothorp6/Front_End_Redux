@@ -29,8 +29,6 @@ export const WithSuspense = Component => {
 };
 
 
-
-
 //THREEJS HELPER FUNCTIONS
 export const loadGLTF = url => {
   return new Promise(resolve => {
