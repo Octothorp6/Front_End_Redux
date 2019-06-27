@@ -30,10 +30,6 @@ export default compose(
       props.setActiveTabId(id);
     },
     handleInput: props => (e, input = "login") => {
-      if (props.error) {
-        props.loginError(props.error);
-      }
-      
       if (input === "username") {
         props.setUsernameValue(e.target.value);
       } else if (input === "password") {
@@ -41,7 +37,7 @@ export default compose(
       } else if (input === "firstName") {
         props.setFirstNameValue(e.target.value);
       } else if (input === "lastName") {
-        props.setLastNameValue(e.target.value)
+        props.setLastNameValue(e.target.value);
       }
     },
     handleLoginButtonClick: props => () => {
