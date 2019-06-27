@@ -7,10 +7,10 @@ export const signUpInfo = user => {
     jsonrpc: "2.0",
     method: "createUser",
     params: [
-      user.userEmail,
-      user.userFirst,
-      user.userLast,
-      user.userPassword,
+      user.firstName,
+      user.lastName,
+      user.username,
+      user.password,
       user.userRole
     ],
     id: 4

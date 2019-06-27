@@ -5,6 +5,8 @@ import {
   LOGIN_ERROR,
   LOG_OUT_SUCCESS,
   TOGGLE_SIDEBAR,
+  REGISTER_USER,
+  REGISTER_SUCCESS,
   REGISTER_ERROR
 } from "../actions/types";
 import { authData, signUpInfo } from "../../utils/sanitizer";
@@ -17,13 +19,14 @@ export const toggleSidebar = () => ({
 //===========================================================================
 // USER REGISTER  ACTIONS
 
-export const register = user => {
-  let info = signUpInfo(user);
+export const register = (firstName, lastName, username, password) => {
+  let user = { firstName, lastName, username, password };
+  let auth = signUpInfo(user);
 
   return async dispatch => {
     dispatch({ type: REGISTER_USER });
     try {
-      let authRequest = await API.register(info);
+      let authRequest = await API.register(auth);
       if (authRequest.data.result.result.status === "success") {
         let token = authRequest.data.result.token;
         sessionStorage.setItem("token", token);
@@ -49,12 +52,12 @@ export const registerError = error => ({
 // USER LOGIN && LOGOUT ACTIONS
 
 export const login = (username, password) => {
-  let admin = authData(username, password);
+  let auth = authData(username, password);
 
   return async dispatch => {
     dispatch({ type: LOGIN_REQUEST });
     try {
-      let authRequest = await API.login(admin);
+      let authRequest = await API.login(auth);
       if (authRequest.data.result.message === "Auth Success") {
         let token = authRequest.data.result.token;
         sessionStorage.setItem("token", token);

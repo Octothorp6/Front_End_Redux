@@ -18,6 +18,6 @@ const App = () => (
 
 export default compose(
   connect(state => ({
-    isAuthenticated: state.login.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated
   }))
 )(App);
