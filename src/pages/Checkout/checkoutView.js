@@ -2,10 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import GridContainer from "../../components/UI/Grid/GridContainer";
 import GridItem from "../../components/UI/Grid/GridItem";
-import PickYourNode from "../../components/CheckoutPage/PickYourNode";
-import AddressForm from "../../components/CheckoutPage/AddressForm";
-import PaymentDetails from "../../components/CheckoutPage/PaymentDetails";
-import Confirm from "../../components/CheckoutPage/Confirm";
+import {
+  Confirm,
+  PickYourNode,
+  AddressForm,
+  PaymentDetails,
+  DifBilling,
+  Presale
+} from "../../components/CheckoutPage";
 import { CheckoutSchema } from "../../components/CheckoutPage/validation";
 import { Form, Formik } from "formik";
 import { fieldState } from "../../store/initialState";
@@ -14,9 +18,9 @@ import { steps } from "../../components/CheckoutPage/products";
 
 class Checkout extends React.PureComponent {
   state = {
-    step: 0,
+    step: 0
   };
-  
+
   handleNext = () => {
     this.setState(state => ({ step: state.step + 1 }));
   };
