@@ -33,11 +33,8 @@ const Login = ({ classes, ...props }) => (
         {props.activeTabId === 0 && (
           <React.Fragment>
             <Typography variant="h1" className={classes.greeting}>
-              Welcome User!
+              Welcome!
             </Typography>
-            <div className={classes.formDividerContainer}>
-              <div className={classes.formDivider} />
-            </div>
             <Fade in={props.error}>
               <Typography color="secondary" className={classes.errorMessage}>
                 Incorrect login or password.
@@ -102,10 +99,10 @@ const Login = ({ classes, ...props }) => (
         {props.activeTabId === 1 && (
           <React.Fragment>
             <Typography variant="h1" className={classes.greeting}>
-              Welcome!
+            Create your account
             </Typography>
             <Typography variant="h2" className={classes.subGreeting}>
-              Create your account
+              
             </Typography>
             <Fade in={props.error}>
               <Typography color="secondary" className={classes.errorMessage}>
