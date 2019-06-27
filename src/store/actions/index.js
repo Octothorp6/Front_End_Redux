@@ -10,6 +10,9 @@ export {
   logOut,
   logOutSuccess,
   loginError,
+  register,
+  registerError,
+  registerSuccess,
   toggleSidebar
 } from "./auth";
-export { sendEmail, contactEthernode } from "./email"
+export { sendEmail, contactEthernode } from "./email";

@@ -2,9 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { CircularProgress } from "@material-ui/core"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-//ALL HELPER FUNCTIONS WILL BE PREPENDED WITH THE KEYWORD "WITH" 
-//TO FOLLOW REACT CONVENTION
-
+// HELPER FUNCTIONS 
 // LAZY LOADING COMPONENT HELPER FUNCTIONS
 export const WithAsyncComponent = Component => {
   return props => (
