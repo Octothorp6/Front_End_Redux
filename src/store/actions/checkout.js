@@ -1,19 +1,25 @@
 import {
-  CREDIT_CHECKOUT,
-  CRYPTO_CHECKOUT,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
   GET_TOTAL,
+  CREDIT_CHECKOUT,
   CREDIT_CHECKOUT_SUCCESS,
   CREDIT_CHECKOUT_ERROR,
-  CRYPTO_CHECKOUT_SUCCESS
+  CRYPTO_CHECKOUT,
+  CRYPTO_CHECKOUT_SUCCESS,
+  CRYPTO_CHECKOUT_ERROR,
+  PRE_ORDER,
+  PRE_ORDER_ERROR,
+  PRE_ORDER_SUCCESS
 } from "./types";
 import {
   signUpInfo,
   checkoutInfo,
   ccTxInfo,
   txInfo,
-  invoiceInfo
+  invoiceInfo,
+  confirmOrder,
+  preOrderInfo
 } from "../../utils/sanitizer";
 import API from "../../utils/API";
 
@@ -33,7 +39,7 @@ export const removeItemFromCart = (itemId, cart) => {
   };
 };
 
-export const getTotal = cart => {
+const getTotal = cart => {
   return {
     type: GET_TOTAL,
     payload: cart
@@ -59,18 +65,18 @@ export const cryptoCheckout = payload => {
         window.location.assign(invoiceLink.data.result);
       }
     } catch (error) {
-      dispatch(creditCheckoutError(error));
+      dispatch(cryptoCheckoutError(error));
     }
   };
 };
 
-export const cryptoCheckoutSuccess = payload => ({
+const cryptoCheckoutSuccess = payload => ({
   type: CRYPTO_CHECKOUT_SUCCESS,
   payload: payload
 });
 
-export const cryptoCheckoutError = error => ({
-  type: CREDIT_CHECKOUT_ERROR,
+const cryptoCheckoutError = error => ({
+  type: CRYPTO_CHECKOUT_ERROR,
   payload: error
 });
 
@@ -101,12 +107,21 @@ export const creditCheckout = payload => {
   };
 };
 
-export const creditCheckoutSuccess = payload => ({
+const creditCheckoutSuccess = payload => ({
   type: CREDIT_CHECKOUT_SUCCESS,
   payload: payload
 });
 
-export const creditCheckoutError = error => ({
-  type: CREDIT_CHECKOUT_SUCCESS,
+const creditCheckoutError = error => ({
+  type: CREDIT_CHECKOUT_ERROR,
   payload: error
 });
+
+// PREORDER FUNCTIONS
+
+export const preOrder = payload => {
+  let user = preOrderInfo(payload);
+  return async dispatch => {
+    dispatch({ type: PRE_ORDER });
+  };
+};

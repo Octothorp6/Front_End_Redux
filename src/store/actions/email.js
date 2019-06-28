@@ -6,9 +6,8 @@ import {
   SEND_EMAIL_SUCCESS,
   CONTACT_US,
   CONTACT_US_ERROR,
-  CONTACT_US_SUCCESS
+  CONTACT_US_SUCCESS,
 } from "../actions/types";
-
 
 //=================================================================
 // SEND EMAIL TO USERS AFTER A PURCHASE
@@ -42,9 +41,10 @@ export const sendEmailError = error => ({
 
 export const contactEthernode = payload => {
   let user = contactUs(payload);
+  
   return async dispatch => {
+    dispatch({ type: CONTACT_US });
     try {
-      dispatch({ type: CONTACT_US });
       let contact = await API.sendEmail(user);
       dispatch(contactUsSuccess(payload));
       console.log(contact.statusText);

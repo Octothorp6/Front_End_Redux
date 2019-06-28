@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 
-const PurchaseTemp = ReactDOMServer.renderToStaticMarkup(
+export const PurchaseTemp = ReactDOMServer.renderToStaticMarkup(
   <div
     className="body"
     style={{ margin: "0 !important", padding: "15px", backgroundColor: "#FFF" }}
@@ -224,6 +224,3 @@ const PurchaseTemp = ReactDOMServer.renderToStaticMarkup(
     </div>
   </div>
 );
-
-
-export default PurchaseTemp;

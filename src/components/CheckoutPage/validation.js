@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 
+// CHECKOUT FORM VALIDATION
 export const CheckoutSchema = Yup.object().shape({
   userFirst: Yup.string().required("First name is required."),
   userLast: Yup.string().required("Last name is required"),

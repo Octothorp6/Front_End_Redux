@@ -7,8 +7,8 @@ import {
   PickYourNode,
   AddressForm,
   PaymentDetails,
-  DifBilling,
-  Presale
+  // DifBilling,
+  // Presale
 } from "../../components/CheckoutPage";
 import { CheckoutSchema } from "../../components/CheckoutPage/validation";
 import { Form, Formik } from "formik";
@@ -32,6 +32,11 @@ class Checkout extends React.PureComponent {
   cryptoCheckout = values => {
     this.props.cryptoCheckout(values);
   };
+  
+  // handlePreorder = values => {
+  //   this.props.
+  // }
+  
 
   creditCheckout = values => {
     this.props.creditCheckout(values);
@@ -115,7 +120,7 @@ class Checkout extends React.PureComponent {
                           Next
                         </Button>
                       )}
-                      {this.state.step === 1 ? (
+                      {/* {this.state.step === 1 ? (
                         <Button
                           color="primary"
                           onClick={() =>
@@ -128,7 +133,7 @@ class Checkout extends React.PureComponent {
                         </Button>
                       ) : (
                         ""
-                      )}
+                      )} */}
                       <br />
                       <br />
                     </GridItem>

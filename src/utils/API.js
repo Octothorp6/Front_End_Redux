@@ -1,28 +1,59 @@
 import axios from "axios";
 
 export default {
+  // ROUTES WITHOUT TOKEN
   sendEmail: function(email) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/mailRPC/mailRPC', email)
+    return axios.post(
+      process.env.REACT_APP_ENCOMMERCE_API + "/mailRPC/mailRPC",
+      email
+    );
   },
   register: function(user) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/accounts', user)
-  },
-  newOrder: function(orderData) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/authRPC/authnet', orderData)
-  },
-  newInvoice: function(query) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/btcpayRPC/btcpayRPC', query)
-  },
-  newTransaction: function(txData) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/orderRPC/orderRPC', txData)
+    return axios.post(
+      process.env.REACT_APP_ENCOMMERCE_API + "/accountRPC/acc",
+      user
+    );
   },
   login: function(user) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/acc', user)
+    return axios.post(
+      process.env.REACT_APP_ENCOMMERCE_API + "/accountRPC/acc",
+      user
+    );
   },
-  createAccount: function(user) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/acc', user)
+  // ROUTES WITH TOKEN
+  sendPreorderEmail: function(data, token) {
+    return axios.post(
+      process.env.REACT_APP_ENCOMMERCE_API + "/mailRPC/mailRPC",
+      data,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+  },
+  newOrder: function(orderData, token) {
+    return axios.post(
+      process.env.REACT_APP_ENCOMMERCE_API + "/authRPC/authnet",
+      orderData,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+  },
+  newInvoice: function(query, token) {
+    return axios.post(
+      process.env.REACT_APP_ENCOMMERCE_API + "/btcpayRPC/btcpayRPC",
+      query,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+  },
+  newTransaction: function(txData, token) {
+    return axios.post(
+      process.env.REACT_APP_ENCOMMERCE_API + "/orderRPC/orderRPC",
+      txData,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
   },
   getUsers: function(token) {
-    return axios.get(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/'+ token)
+    return axios.get(
+      process.env.REACT_APP_ENCOMMERCE_API +
+        "/accountRPC/admin" +
+        { headers: { Authorization: `Bearer ${token}` } }
+    );
   }
 };

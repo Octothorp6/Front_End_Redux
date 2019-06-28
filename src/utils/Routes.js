@@ -7,7 +7,7 @@ import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Checkout from "../pages/Checkout";
 
-//LAZY LOADING ROUTES ONLY AS THEY ARE NEEDED
+//LAZY LOADING ROUTES ONLY AS THEY ARE NEEDED TO SPEED UP BUILD TIME
 const LazyLogin = loadable(() => 
   import("../pages/Login")
 );

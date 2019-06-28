@@ -1,2 +1,3 @@
-export { default as Contact } from "./Contact";
-export { default as Purchase } from "./Purchase";
+export { ContactTemp } from "./Contact";
+export { PurchaseTemp } from "./Purchase";
+export { NewSalesTemp } from "./NewProrder"

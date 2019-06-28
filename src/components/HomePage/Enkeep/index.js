@@ -3,7 +3,7 @@ import GridContainer from "../../UI/Grid/GridContainer";
 import GridItem from "../../UI/Grid/GridItem";
 import LinkButton from "../../UI/Buttons";
 import CustomListItem from "../List/CustomList";
-import { nodeImg } from "../../../assets";
+import { presale } from "../../../assets";
 import { List } from "@material-ui/core";
 import "./enkeep.css";
 
@@ -12,8 +12,8 @@ const Enkeep = () => (
     <h4>Shipping TBD.</h4>
     <GridContainer>
       <GridItem xs={12} sm={12} md={6} lg={8}>
-        <img src={nodeImg} alt="nodeImg" style={{ maxWidth: "100%" }} />
-        <LinkButton to="/checkout">Order Now!</LinkButton>
+        <img src={presale} alt="nodeImg" style={{ maxWidth: "100%", backgroundColor: "white" }} />
+        <LinkButton to="/checkout">PreOrder Now!</LinkButton>
       </GridItem>
       <GridItem xs={12} sm={12} md={6} lg={4}>
         <List>
