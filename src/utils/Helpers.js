@@ -4,14 +4,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // HELPER FUNCTIONS 
 // LAZY LOADING COMPONENT HELPER FUNCTIONS
-export const WithAsyncComponent = Component => {
-  return props => (
-    <React.Fragment>
-      <Component {...props} />
-    </React.Fragment>
-  );
-};
-
 export const WithLazy = factory => {
   const Component = lazy(factory)
   return Component;
@@ -25,7 +17,6 @@ export const WithSuspense = Component => {
     </Suspense>
   );
 };
-
 
 //THREEJS HELPER FUNCTIONS
 export const loadGLTF = url => {

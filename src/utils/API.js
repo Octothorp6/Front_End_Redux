@@ -12,6 +12,7 @@ function postWithToken(suffix, data, token) {
 function postWithoutToken(suffix, data) {
   return axios.post(baseUrl + suffix, data);
 }
+
 // GET REQUEST HELPERS
 function getWithToken(suffix, token) {
   return axios.get(baseUrl + suffix, {
