@@ -6,7 +6,7 @@ import {
   twitterLogo
 } from "../../../../assets";
 import { GridContainer, GridItem } from "../../../UI/Grid";
-import { BottomNavigation, withStyles, BottomNavigationAction } from "@material-ui/core";
+import { BottomNavigation, withStyles } from "@material-ui/core";
 import IconBtn from "../../Buttons/IconButton";
 import PropTypes from "prop-types";
 

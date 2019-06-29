@@ -6,7 +6,7 @@ const IconButton = props => {
     const { to, size, ...rest}  = props 
     return (
         <Button {...rest}
-          variant="flat"
+          variant="text"
           size={size}
           onClick={() => {
             window.location.href = to

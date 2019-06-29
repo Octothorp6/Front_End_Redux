@@ -2,10 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Paper, Typography, withStyles } from "@material-ui/core";
 import { Form, Formik } from "formik";
-import {
-  GridContainer,
-  GridItem
-} from "../../components/UI/Grid";
+import { GridContainer, GridItem } from "../../components/UI/Grid";
 import {
   AddressForm,
   Confirm,
@@ -112,7 +109,8 @@ class Checkout extends React.PureComponent {
                     <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                       <Typography variant="subheading" color="textPrimary">
-                        Cart total: {orderTotal ? "$" + orderTotal : ""} &nbsp; Items: {cart.length}
+                        Cart total: {orderTotal ? "$" + orderTotal : 0} &nbsp;
+                        Items: {cart.length}
                       </Typography>{" "}
                     </GridItem>
                     <br />
@@ -152,7 +150,6 @@ class Checkout extends React.PureComponent {
                               {this.state.step !== 0 ? (
                                 <Button
                                   color="primary"
-
                                   className={classes.button}
                                   onClick={this.handleBack}
                                 >
@@ -236,7 +233,7 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
       maxWidth: "100%",
-      paddingBottom:"6.7rem"
+      paddingBottom: "6.7rem"
     }
   },
   paper: {
@@ -254,7 +251,7 @@ const styles = theme => ({
     }
   },
   buttons: {
-    display: "flex",
+    display: "flex"
   },
   button: {
     marginTop: theme.spacing.unit * 2
