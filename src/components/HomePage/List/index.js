@@ -25,28 +25,25 @@ const styles = theme => ({
   }
 });
 
-const listItem = props => {
-  const { classes } = props;
-  return (
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar style={{ borderRadius: 0 }} alt={props.alt} src={props.icon} />
-      </ListItemAvatar>
-      <ListItemText
-        primary={
-          <React.Fragment>
-            <span className={classes.header}>{props.header}</span>
-          </React.Fragment>
-        }
-        secondary={
-          <React.Fragment>
-            <span className={classes.inline}>{props.text}</span>
-          </React.Fragment>
-        }
-      />
-    </ListItem>
-  );
-};
+const listItem = ({ classes, ...props }) => (
+  <ListItem>
+    <ListItemAvatar>
+      <Avatar style={{ borderRadius: 0 }} alt={props.alt} src={props.icon} />
+    </ListItemAvatar>
+    <ListItemText
+      primary={
+        <React.Fragment>
+          <span className={classes.header}>{props.header}</span>
+        </React.Fragment>
+      }
+      secondary={
+        <React.Fragment>
+          <span className={classes.inline}>{props.text}</span>
+        </React.Fragment>
+      }
+    />
+  </ListItem>
+);
 
 listItem.propTypes = {
   classes: PropTypes.object.isRequired
