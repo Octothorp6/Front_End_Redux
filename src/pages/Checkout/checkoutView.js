@@ -97,15 +97,15 @@ class Checkout extends React.PureComponent {
 
     return (
       <>
-        <Formik
-          initialValues={{ ...fieldState }}
-          validationSchema={CheckoutSchema}
-          validateOnChange={true}
-        >
-          {({ values, errors, touched, validateForm }) => (
-            <GridContainer spacing={24} justify="center">
-              <main className={classes.layout}>
-                <Paper className={classes.paper}>
+        <GridContainer spacing={24} justify="center">
+          <main className={classes.layout}>
+            <Paper className={classes.paper}>
+              <Formik
+                initialValues={{ ...fieldState }}
+                validationSchema={CheckoutSchema}
+                validateOnChange={true}
+              >
+                {({ values, errors, touched, validateForm }) => (
                   <Form>
                     <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
@@ -113,8 +113,8 @@ class Checkout extends React.PureComponent {
                         Cart total: {orderTotal} &nbsp; Items: {cart.length}
                       </Typography>{" "}
                     </GridItem>
+                    <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
-                      <br />
                       {this.state.step === 3 ? (
                         <React.Fragment>
                           <Typography variant="h5" gutterBottom>
@@ -169,15 +169,15 @@ class Checkout extends React.PureComponent {
                                     validateForm().then(() => this.handleNext())
                                   }
                                   disabled={
-                                    this.state.step !== 0 ?
-                                    values.userFirst === "" ||
-                                    values.userLast === "" ||
-                                    values.userEmail === "" ||
-                                    values.shippingAddress1 === "" ||
-                                    values.shippingState === "" ||
-                                    values.shippingCity === "" ||
-                                    values.shippingCountry === ""
-                                    : false
+                                    this.state.step !== 0
+                                      ? values.userFirst === "" ||
+                                        values.userLast === "" ||
+                                        values.userEmail === "" ||
+                                        values.shippingAddress1 === "" ||
+                                        values.shippingState === "" ||
+                                        values.shippingCity === "" ||
+                                        values.shippingCountry === ""
+                                      : false
                                   }
                                 >
                                   Next
@@ -203,11 +203,11 @@ class Checkout extends React.PureComponent {
                       )} */}
                     </GridItem>
                   </Form>
-                </Paper>
-              </main>
-            </GridContainer>
-          )}
-        </Formik>
+                )}
+              </Formik>
+            </Paper>
+          </main>
+        </GridContainer>
       </>
     );
   }
@@ -225,7 +225,8 @@ const styles = theme => ({
       marginRight: "auto"
     },
     [theme.breakpoints.down("sm")]: {
-      margin: "auto"
+      margin: "auto",
+      maxWidth: "100%"
     }
   },
   paper: {

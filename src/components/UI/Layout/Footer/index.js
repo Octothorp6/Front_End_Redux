@@ -6,13 +6,13 @@ import {
   twitterLogo
 } from "../../../../assets";
 import { GridContainer, GridItem } from "../../../UI/Grid";
-import { BottomNavigation, IconButton } from "@material-ui/core";
+import { BottomNavigation, IconButton, withStyles } from "@material-ui/core";
 
 //functional component for the footer
-const Footer = () => (
+const Footer = ({ classes }) => (
   <div className="footer">
     <BottomNavigation>
-      <GridContainer>
+      <GridContainer className={classes.layout}>
         <GridItem xs={2} sm={2} lg={2}>
           <IconButton href="/login">Login</IconButton>
         </GridItem>
@@ -55,4 +55,15 @@ const Footer = () => (
     </BottomNavigation>
   </div>
 );
-export default Footer;
+
+const styles = theme => ({
+  layout: {
+    margin: "auto",
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    }
+  }
+});
+
+export default withStyles(styles)(Footer);
