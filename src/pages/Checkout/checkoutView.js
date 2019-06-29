@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import GridContainer from "../../components/UI/Grid/GridContainer";
-import GridItem from "../../components/UI/Grid/GridItem";
+import { Button, Paper, Typography, withStyles } from "@material-ui/core";
+import { Form, Formik } from "formik";
+import {
+  GridContainer,
+  GridItem
+} from "../../components/UI/Grid";
 import {
   AddressForm,
   Confirm,
@@ -11,9 +15,7 @@ import {
   // Presale
 } from "../../components/CheckoutPage";
 import { CheckoutSchema } from "../../components/CheckoutPage";
-import { Form, Formik } from "formik";
 import { fieldState } from "../../store/initialState";
-import { Button, Paper, Typography, withStyles } from "@material-ui/core";
 
 class Checkout extends React.PureComponent {
   state = {
