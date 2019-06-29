@@ -48,6 +48,7 @@ export const contactState = {
 export const fieldState = {
   userEmail: "",
   userRole: "customer",
+  password: "arbitraryValue",
   userFirst: "",
   userLast: "",
   cardHolder: "",

@@ -54,11 +54,7 @@ export const AppRoutes = () => (
   <Switch>
     <Route exact path="/" render={() => withLayout(Home)} />
     <Route exact path="/checkout" render={() => withLayout(Checkout)} />
-    <Route
-      exact
-      path="/admin"
-      render={() => <Redirect to="/admin/dashboard" />}
-    />
+    <Route exact path="/admin" render={() => <Redirect to="/admin/dashboard" />} />
     <PublicRoute path="/login" component={() => WithSuspense(LazyLogin)} />
     <PrivateRoute path="/admin" component={() => WithSuspense(LazyAdmin)} />
     <Route component={Error} />
