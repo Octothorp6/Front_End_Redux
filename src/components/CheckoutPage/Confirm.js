@@ -8,7 +8,6 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 
 const Confirm = ({ cart, classes, orderTotal, values }) => {
-
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -47,7 +46,8 @@ const Confirm = ({ cart, classes, orderTotal, values }) => {
           </Typography>
           <Grid item xs={12}>
             <Typography gutterBottom>
-              {values.userFirst} {values.userLast}
+              {values.userFirst} {values.userLast} <br />
+              {values.userEmail}
             </Typography>
             <Typography gutterBottom>{values.cardNumber}</Typography>
           </Grid>

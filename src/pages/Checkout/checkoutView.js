@@ -135,40 +135,48 @@ class Checkout extends React.PureComponent {
                         </React.Fragment>
                       ) : (
                         <React.Fragment>
-                          {this.getStepContent(
-                            this.state.step,
-                            errors,
-                            touched,
-                            values
-                          )}
+                          <GridItem xs={12} sm={12} md={12} lg={12}>
+                            {this.getStepContent(
+                              this.state.step,
+                              errors,
+                              touched,
+                              values
+                            )}
+                          </GridItem>
+
                           <br />
                           <br />
-                          <div className="buttons">
-                            {this.state.step !== 0 ? (
-                              <Button color="primary" onClick={this.handleBack}>
-                                Back
-                              </Button>
-                            ) : (
-                              ""
-                            )}
-                            {this.state.step === 2 ? (
-                              <Button
-                                color="primary"
-                                onClick={() => this.handlePreorder(values)}
-                              >
-                                Pre Order
-                              </Button>
-                            ) : (
-                              <Button
-                                color="primary"
-                                onClick={() =>
-                                  validateForm().then(() => this.handleNext())
-                                }
-                              >
-                                Next
-                              </Button>
-                            )}
-                          </div>
+                          <GridItem xs={12} sm={12} md={12} lg={12}>
+                            <div className="buttons">
+                              {this.state.step !== 0 ? (
+                                <Button
+                                  color="primary"
+                                  onClick={this.handleBack}
+                                >
+                                  Back
+                                </Button>
+                              ) : (
+                                ""
+                              )}
+                              {this.state.step === 2 ? (
+                                <Button
+                                  color="primary"
+                                  onClick={() => this.handlePreorder(values)}
+                                >
+                                  Pre Order
+                                </Button>
+                              ) : (
+                                <Button
+                                  color="primary"
+                                  onClick={() =>
+                                    validateForm().then(() => this.handleNext())
+                                  }
+                                >
+                                  Next
+                                </Button>
+                              )}
+                            </div>
+                          </GridItem>
                         </React.Fragment>
                       )}
                       {/* {this.state.step === 1 ? (

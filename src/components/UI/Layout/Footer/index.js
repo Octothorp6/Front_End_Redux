@@ -1,69 +1,59 @@
 import React from "react";
 import {
   githubLogo,
-  ethernodeBlack,
-  redditLogo,
   discordLogo,
   linkedInLogo,
   twitterLogo
 } from "../../../../assets";
-import GridContainer from "../../../UI/Grid/GridContainer";
-import GridItem from "../../../UI/Grid/GridItem";
+import { GridContainer, GridItem } from "../../../UI/Grid";
+import { BottomNavigation, IconButton } from "@material-ui/core";
 import "./Footer.css";
 
 //functional component for the footer
 const Footer = () => (
   <div className="footer">
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={4} lg={3}>
-        <img
-          src={ethernodeBlack}
-          alt="LogoBlack"
-          className="footer-logo"
-          title="Ethernode"
-        />
-      </GridItem>
-      <GridItem xs={6} sm={6} md={4} lg={6}>
-        <nav>
-          <ul>
-            <li>
-              <a href="https://forum.ethernode.io">Forum</a>
-            </li>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/login">Login</a>
-            </li>
-          </ul>
-        </nav>
-      </GridItem>
-      <GridItem xs={6} sm={6} md={4} lg={3}>
-        <div className="footer-links">
-          <a href="https://github.com/ethernodeio">
-            <img src={githubLogo} alt="Github Logo" className="social-icon" />
-          </a>
-          <a href="https://twitter.com/Ethernode_io">
-            <img src={twitterLogo} alt="Twitter Logo" className="social-icon" />
-          </a>
-          <a href="https://www.reddit.com/r/Ethernode">
-            <img src={redditLogo} alt="Reddit Logo" className="social-icon" />
-          </a>
-          <a href="https://www.linkedin.com/company/ethernode">
+    <BottomNavigation>
+      <GridContainer>
+        <GridItem xs={2} sm={2} lg={2}>
+          <IconButton href="/login">Login</IconButton>
+        </GridItem>
+        <GridItem xs={2} sm={2} lg={2}>
+          <IconButton href="https://forum.ethernode.io/">Forum</IconButton>
+        </GridItem>
+        <GridItem xs={2} sm={2} lg={2}>
+          <IconButton>
+            <img src={githubLogo} alt="github" style={{ maxWidth: "1.8rem" }} />
+          </IconButton>
+        </GridItem>
+        <GridItem xs={2} sm={2} lg={2}>
+          <IconButton>
+            <img
+              src={twitterLogo}
+              alt="github"
+              style={{ maxWidth: "1.8rem" }}
+            />
+          </IconButton>
+        </GridItem>
+        <GridItem xs={2} sm={2} lg={2}>
+          <IconButton>
             <img
               src={linkedInLogo}
-              alt="LinkedIn Logo"
-              className="social-icon"
+              alt="github"
+              style={{ maxWidth: "1.8rem" }}
             />
-          </a>
-          <a href="https://discord.gg/hXkUpV5">
-            {" "}
-            <img src={discordLogo} alt="Discord Logo" className="social-icon" />
-          </a>
-        </div>
-      </GridItem>
-    </GridContainer>
+          </IconButton>
+        </GridItem>
+        <GridItem xs={2} sm={2} lg={2}>
+          <IconButton>
+            <img
+              src={discordLogo}
+              alt="github"
+              style={{ maxWidth: "1.8rem" }}
+            />
+          </IconButton>
+        </GridItem>
+      </GridContainer>
+    </BottomNavigation>
   </div>
 );
-
 export default Footer;
