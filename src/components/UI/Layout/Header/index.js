@@ -9,7 +9,9 @@ const Header = () => (
     <GridContainer>
       <GridItem sm={12} md={12} lg={12}>
         <div className="header">
+          <a href="/">
           <img src={darkHeader} alt="EtherNode Logo" className="logo" />
+          </a>
         </div>
       </GridItem>
       <GridItem sm={12} md={12} lg={12}>

@@ -99,11 +99,9 @@ const Login = ({ classes, ...props }) => (
         {props.activeTabId === 1 && (
           <React.Fragment>
             <Typography variant="h1" className={classes.greeting}>
-            Create your account
+              Create your account
             </Typography>
-            <Typography variant="h2" className={classes.subGreeting}>
-              
-            </Typography>
+            <Typography variant="h2" className={classes.subGreeting} />
             <Fade in={props.error}>
               <Typography color="secondary" className={classes.errorMessage}>
                 Something is wrong with your login or password :(

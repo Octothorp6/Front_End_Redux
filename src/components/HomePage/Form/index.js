@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import GridContainer from "../../UI/Grid/GridContainer";
-import GridItem from "../../UI/Grid/GridItem";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
+import { GridContainer, GridItem } from "../../UI/Grid";
 import { contactEthernode } from "../../../store/actions";
 import { Form, Formik, Field } from "formik";
 import { TextField } from "formik-material-ui";
