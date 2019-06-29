@@ -1,7 +1,6 @@
 import React from "react";
 import { darkHeader } from "../../../../assets";
-import GridContainer from "../../../UI/Grid/GridContainer";
-import GridItem from "../../../UI/Grid/GridItem";
+import { GridContainer, GridItem } from "../../../UI/Grid";
 import "./Header.css";
 
 //functional component for the header

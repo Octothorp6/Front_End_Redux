@@ -7,7 +7,6 @@ import {
 } from "../../../../assets";
 import { GridContainer, GridItem } from "../../../UI/Grid";
 import { BottomNavigation, IconButton } from "@material-ui/core";
-import "./Footer.css";
 
 //functional component for the footer
 const Footer = () => (
