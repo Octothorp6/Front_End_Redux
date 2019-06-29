@@ -128,7 +128,7 @@ export const preOrder = payload => {
     dispatch({ type: PRE_ORDER });
     try {
       let register = await API.register(user);
-      console.log(register)
+      console.log(register);
       if (register.status === 200) {
         let token = register.data.result.token;
         let presale = await API.newTransaction(customer, token);

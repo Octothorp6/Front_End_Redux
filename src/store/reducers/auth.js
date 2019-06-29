@@ -19,7 +19,7 @@ export default function AuthReducer(state = authState, action) {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        user: action.payload.username,
+        user: action.payload.userEmail,
         token: action.payload.token,
         isLoading: false,
         isAuthenticated: true,
@@ -40,7 +40,7 @@ export default function AuthReducer(state = authState, action) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.payload.username,
+        user: action.payload.userEmail,
         token: action.payload.token,
         isLoading: false,
         isAuthenticated: true,

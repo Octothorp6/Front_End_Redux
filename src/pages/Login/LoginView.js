@@ -78,7 +78,7 @@ const Login = ({ classes, ...props }) => (
                   disabled={
                     props.username.length === 0 || props.password.length === 0
                   }
-                  onClick={props.handleLoginButtonClick}
+                  onClick={() => props.handleLoginButtonClick()}
                   variant="contained"
                   color="primary"
                   size="large"
@@ -174,7 +174,7 @@ const Login = ({ classes, ...props }) => (
                 <CircularProgress size={26} />
               ) : (
                 <Button
-                  onClick={props.handleRegisterButtonClick}
+                  onClick={() => props.handleRegisterButtonClick()}
                   disabled={
                     props.username.length === 0 ||
                     props.password.length === 0 ||

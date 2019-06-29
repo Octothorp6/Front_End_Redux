@@ -19,18 +19,23 @@ export const toggleSidebar = () => ({
 //===========================================================================
 // USER REGISTER  ACTIONS
 
-export const register = (firstName, lastName, username, password) => {
-  let user = { firstName, lastName, username, password };
-  let auth = signUpInfo(user);
+export const register = user => {
+  let auth = signUpInfo({
+    userFirst: user.userFirst,
+    userLast: user.userLast,
+    userEmail: user.userEmail,
+    password: user.password
+  });
 
   return async dispatch => {
     dispatch({ type: REGISTER_USER });
     try {
       let authRequest = await API.register(auth);
-      if (authRequest.data.result.result.status === "success") {
+      console.log(authRequest.data);
+      if (authRequest.data.result.status === "success") {
         let token = authRequest.data.result.token;
         sessionStorage.setItem("token", token);
-        dispatch(registerSuccess({ username, token }));
+        dispatch(registerSuccess({ userEmail: user.userEmail, token }));
       }
     } catch (error) {
       dispatch(registerError(error));
@@ -51,21 +56,24 @@ export const registerError = error => ({
 //============================================================================
 // USER LOGIN && LOGOUT ACTIONS
 
-export const login = (username, password) => {
-  let auth = authData(username, password);
+export const login = user => {
+  let auth = authData({ username: user.username, password: user.password });
+  console.log(auth);
 
   return async dispatch => {
     dispatch({ type: LOGIN_REQUEST });
     try {
       let authRequest = await API.login(auth);
+      console.log(authRequest.data);
       if (authRequest.data.result.message === "Auth Success") {
         let token = authRequest.data.result.token;
         sessionStorage.setItem("token", token);
-        dispatch(loginSuccess({ username, token }));
+        dispatch(loginSuccess({ username: user.username, token }));
       } else {
         dispatch(loginError({ message: authRequest.data.result.message }));
       }
     } catch (error) {
+      window.alert(error);
       console.log(error);
     }
   };

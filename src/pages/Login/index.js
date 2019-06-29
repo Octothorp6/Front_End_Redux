@@ -41,15 +41,15 @@ export default compose(
       }
     },
     handleLoginButtonClick: props => () => {
-      props.login(props.username, props.password);
+      props.login({ username: props.username, password: props.password });
     },
     handleRegisterButtonClick: props => () => {
-      props.register(
-        props.firstName,
-        props.lastName,
-        props.username,
-        props.password
-      );
+      props.register({
+        userFirst: props.firstName,
+        userLast: props.lastName,
+        userEmail: props.username,
+        password: props.password
+      });
     }
   }),
   lifecycle({

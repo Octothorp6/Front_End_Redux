@@ -10,7 +10,7 @@ export const signUpInfo = user => {
       user.userFirst,
       user.userLast,
       user.userEmail,
-      "arbitraryValue",
+      user.password,
       "customer"
     ],
     id: 4
@@ -230,11 +230,15 @@ export const txInfo = (user, url) => {
 
 //==========================================================================
 // SANITIZE LOGIN && REGISTER DATA
-export const authData = (username, password) => {
+export const authData = user => {
   let admin = {
     jsonrpc: "2.0",
     method: "login",
-    params: [username, password]
+    params: [
+      user.username, 
+      user.password
+    ],
+    id: 2
   };
   return admin;
 };
