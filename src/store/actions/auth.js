@@ -30,7 +30,7 @@ export const register = (firstName, lastName, username, password) => {
       if (authRequest.data.result.result.status === "success") {
         let token = authRequest.data.result.token;
         sessionStorage.setItem("token", token);
-        dispatch(registerSuccess(username, token));
+        dispatch(registerSuccess({ username, token }));
       }
     } catch (error) {
       dispatch(registerError(error));
@@ -61,10 +61,12 @@ export const login = (username, password) => {
       if (authRequest.data.result.message === "Auth Success") {
         let token = authRequest.data.result.token;
         sessionStorage.setItem("token", token);
-        dispatch(loginSuccess(username, token));
+        dispatch(loginSuccess({ username, token }));
+      } else {
+        dispatch(loginError({ message: authRequest.data.result.message }));
       }
     } catch (error) {
-      dispatch(loginError(error));
+      console.log(error);
     }
   };
 };

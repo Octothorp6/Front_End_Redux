@@ -46,7 +46,7 @@ const getTotal = cart => {
   };
 };
 
-//===================================================================
+//=================================================================================
 // CRYPTO CHECKOUT ACTIONS
 
 export const cryptoCheckout = payload => {
@@ -80,7 +80,7 @@ const cryptoCheckoutError = error => ({
   payload: error
 });
 
-//=================================================================
+//=================================================================================
 // CREDIT CHECKOUT ACTIONS
 
 export const creditCheckout = payload => {
@@ -118,10 +118,37 @@ const creditCheckoutError = error => ({
 });
 
 // PREORDER FUNCTIONS
-
+//=================================================================================
 export const preOrder = payload => {
-  let user = preOrderInfo(payload);
+  let user = signUpInfo(payload);
+  let customer = preOrderInfo(payload);
+  let confirmMsg = confirmOrder(payload);
+
   return async dispatch => {
     dispatch({ type: PRE_ORDER });
+    try {
+      let register = await API.register(user);
+      console.log(register)
+      if (register.status === 200) {
+        let token = register.data.result.token;
+        let presale = await API.newTransaction(customer, token);
+        let sendEmail = await API.sendPreorderEmail(confirmMsg, token);
+        console.log(presale.statusText, sendEmail.statusText);
+        dispatch(preOrderSuccess({ payload, token }));
+      }
+    } catch (error) {
+      dispatch(preOrderError({ message: error }));
+      window.alert(error);
+    }
   };
 };
+
+const preOrderSuccess = payload => ({
+  type: PRE_ORDER_SUCCESS,
+  payload: payload
+});
+
+const preOrderError = error => ({
+  type: PRE_ORDER_ERROR,
+  payload: error
+});

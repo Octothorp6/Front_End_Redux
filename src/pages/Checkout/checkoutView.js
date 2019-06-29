@@ -3,18 +3,17 @@ import PropTypes from "prop-types";
 import GridContainer from "../../components/UI/Grid/GridContainer";
 import GridItem from "../../components/UI/Grid/GridItem";
 import {
-  Confirm,
-  PickYourNode,
   AddressForm,
-  PaymentDetails,
+  Confirm,
+  PickYourNode
+  //PaymentDetails
   // DifBilling,
   // Presale
 } from "../../components/CheckoutPage";
-import { CheckoutSchema } from "../../components/CheckoutPage/validation";
+import { CheckoutSchema } from "../../components/CheckoutPage";
 import { Form, Formik } from "formik";
 import { fieldState } from "../../store/initialState";
 import { Button, Paper, Typography, withStyles } from "@material-ui/core";
-import { steps } from "../../components/CheckoutPage/products";
 
 class Checkout extends React.PureComponent {
   state = {
@@ -32,16 +31,43 @@ class Checkout extends React.PureComponent {
   cryptoCheckout = values => {
     this.props.cryptoCheckout(values);
   };
-  
-  // handlePreorder = values => {
-  //   this.props.
-  // }
-  
+
+  handlePreorder = values => {
+    Promise.resolve(this.props.preOrder(values)).then(() => this.handleNext());
+  };
 
   creditCheckout = values => {
     this.props.creditCheckout(values);
   };
 
+  //======================================================================
+  // ACTUAL CHECKOUT CODE
+  // getStepContent = (step, errors, touched, values) => {
+  //   switch (step) {
+  //     case 0:
+  //       return (
+  //         <PickYourNode
+  //           addItemToCart={this.props.addItemToCart}
+  //           removeItemFromCart={this.props.removeItemFromCart}
+  //         />
+  //       );
+  //     case 1:
+  //       return <AddressForm errors={errors} touched={touched} />;
+  //     case 2:
+  //       return <PaymentDetails errors={errors} touched={touched} />;
+  //     case 3:
+  //       return (
+  //         <Confirm
+  //           values={values}
+  //           cart={this.props.cart}
+  //           orderTotal={this.props.orderTotal}
+  //         />
+  //       );
+  //     default:
+  //       throw new Error("Invalid Step");
+  //   }
+  // };
+  //=======================================================================
   getStepContent = (step, errors, touched, values) => {
     switch (step) {
       case 0:
@@ -54,8 +80,6 @@ class Checkout extends React.PureComponent {
       case 1:
         return <AddressForm errors={errors} touched={touched} />;
       case 2:
-        return <PaymentDetails errors={errors} touched={touched} />;
-      case 3:
         return (
           <Confirm
             values={values}
@@ -69,13 +93,12 @@ class Checkout extends React.PureComponent {
   };
 
   render() {
-    const { classes, orderTotal, cart } = this.props;
+    const { classes, orderTotal, cart, orderId } = this.props;
 
     return (
       <>
         <Formik
           initialValues={{ ...fieldState }}
-          onSubmit={this.creditCheckout}
           validationSchema={CheckoutSchema}
           validateOnChange={true}
         >
@@ -92,33 +115,61 @@ class Checkout extends React.PureComponent {
                     </GridItem>
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                       <br />
-                      {this.getStepContent(
-                        this.state.step,
-                        errors,
-                        touched,
-                        values
-                      )}
-                      <br />
-                      {this.state.step !== 0 ? (
-                        <Button color="primary" onClick={this.handleBack}>
-                          Back
-                        </Button>
+                      {this.state.step === 3 ? (
+                        <React.Fragment>
+                          <Typography variant="h5" gutterBottom>
+                            Thank you for joining our presale.
+                          </Typography>
+                          <Typography variant="subtitle1">
+                            Your order number is {orderId}. Once we have
+                            sufficient preorders to kick off production, we will
+                            contact you with details and will send you an update
+                            once your order has shipped.
+                          </Typography>
+                          <Button
+                            onClick={this.handleBack}
+                            className={classes.button}
+                          >
+                            Back
+                          </Button>
+                        </React.Fragment>
                       ) : (
-                        ""
-                      )}
-                      {this.state.step === steps.length - 1 ? (
-                        <Button color="primary" type="submit">
-                          Checkout
-                        </Button>
-                      ) : (
-                        <Button
-                          color="primary"
-                          onClick={() =>
-                            validateForm().then(() => this.handleNext())
-                          }
-                        >
-                          Next
-                        </Button>
+                        <React.Fragment>
+                          {this.getStepContent(
+                            this.state.step,
+                            errors,
+                            touched,
+                            values
+                          )}
+                          <br />
+                          <br />
+                          <div className="buttons">
+                            {this.state.step !== 0 ? (
+                              <Button color="primary" onClick={this.handleBack}>
+                                Back
+                              </Button>
+                            ) : (
+                              ""
+                            )}
+                            {this.state.step === 2 ? (
+                              <Button
+                                color="primary"
+                                onClick={() => this.handlePreorder(values)}
+                              >
+                                Pre Order
+                              </Button>
+                            ) : (
+                              <Button
+                                color="primary"
+                                onClick={() =>
+                                  validateForm().then(() => this.handleNext())
+                                }
+                              >
+                                Next
+                              </Button>
+                            )}
+                          </div>
+                        </React.Fragment>
                       )}
                       {/* {this.state.step === 1 ? (
                         <Button
@@ -134,8 +185,6 @@ class Checkout extends React.PureComponent {
                       ) : (
                         ""
                       )} */}
-                      <br />
-                      <br />
                     </GridItem>
                   </Form>
                 </Paper>

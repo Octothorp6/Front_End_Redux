@@ -1,5 +1,6 @@
 import { checkoutState } from "../initialState";
 import {
+  GET_TOTAL,
   CRYPTO_CHECKOUT,
   CRYPTO_CHECKOUT_SUCCESS,
   CRYPTO_CHECKOUT_ERROR,
@@ -8,7 +9,8 @@ import {
   CREDIT_CHECKOUT_SUCCESS,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
-  GET_TOTAL
+  PRE_ORDER,PRE_ORDER_ERROR,
+  PRE_ORDER_SUCCESS
 } from "../actions/types";
 
 export default function checkoutReducer(state = checkoutState, action) {
@@ -99,6 +101,23 @@ export default function checkoutReducer(state = checkoutState, action) {
         ...action.payload,
         madeOrder: true,
         orderStatus: "paid"
+      }
+    case PRE_ORDER:
+        return {
+        ...state,
+        orderStatus: "PREORDER"
+      };
+    case PRE_ORDER_ERROR:
+      return {
+        ...state,
+        error: true,
+        errorMsg: action.payload.message
+      };
+    case PRE_ORDER_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        madeOrder: true,
       };
     default:
       return state;

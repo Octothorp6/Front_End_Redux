@@ -7,11 +7,11 @@ export const signUpInfo = user => {
     jsonrpc: "2.0",
     method: "createUser",
     params: [
-      user.firstName,
-      user.lastName,
-      user.username,
-      user.password,
-      user.userRole
+      user.userFirst,
+      user.userLast,
+      user.userEmail,
+      "arbitraryValue",
+      "customer"
     ],
     id: 4
   };
@@ -238,7 +238,7 @@ export const authData = (username, password) => {
   };
   return admin;
 };
-
+//===========================================================================
 // PREORDER ONLY BELOW
 //===========================================================================
 //SANITIZE USER BEFORE SENDING TO DB AFTER ORDER
@@ -302,9 +302,9 @@ export const confirmOrder = user => {
     method: "sendEmail",
     params: [
       [userObj],
-      info.userEmail,
-      `New Preorder from User: ${user.userName}, orderId: ${user.orderId}`,
-      NewSalesTemp(info.orderTotal)
+      user.userEmail,
+      `New Preorder from User: ${user.userFirst}, orderId: ${user.orderId}`,
+      NewSalesTemp(user.userFirst, user.userLast, user.userEmail, user.orderTotal)
     ],
     id: 500
   };

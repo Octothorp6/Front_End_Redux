@@ -1,9 +1,9 @@
 export {
   addItemToCart,
   removeItemFromCart,
-  getTotal,
   creditCheckout,
-  cryptoCheckout
+  cryptoCheckout,
+  preOrder
 } from "./checkout";
 export {
   login,
