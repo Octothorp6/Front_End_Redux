@@ -58,23 +58,21 @@ export const registerError = error => ({
 
 export const login = user => {
   let auth = authData({ username: user.username, password: user.password });
-  console.log(auth);
 
   return async dispatch => {
     dispatch({ type: LOGIN_REQUEST });
     try {
       let authRequest = await API.login(auth);
-      console.log(authRequest.data);
       if (authRequest.data.result.message === "Auth Success") {
         let token = authRequest.data.result.token;
         sessionStorage.setItem("token", token);
         dispatch(loginSuccess({ username: user.username, token }));
       } else {
         dispatch(loginError({ message: authRequest.data.result.message }));
+        window.alert(authRequest.data.result.message);
       }
     } catch (error) {
       window.alert(error);
-      console.log(error);
     }
   };
 };
