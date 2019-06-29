@@ -143,9 +143,6 @@ class Checkout extends React.PureComponent {
                               values
                             )}
                           </GridItem>
-
-                          <br />
-                          <br />
                           <GridItem xs={12} sm={12} md={12} lg={12}>
                             <div className="buttons">
                               {this.state.step !== 0 ? (
@@ -170,6 +167,17 @@ class Checkout extends React.PureComponent {
                                   color="primary"
                                   onClick={() =>
                                     validateForm().then(() => this.handleNext())
+                                  }
+                                  disabled={
+                                    this.state.step !== 0 ?
+                                    values.userFirst === "" ||
+                                    values.userLast === "" ||
+                                    values.userEmail === "" ||
+                                    values.shippingAddress1 === "" ||
+                                    values.shippingState === "" ||
+                                    values.shippingCity === "" ||
+                                    values.shippingCountry === ""
+                                    : false
                                   }
                                 >
                                   Next
