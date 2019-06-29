@@ -111,8 +111,8 @@ class Checkout extends React.PureComponent {
                   <Form>
                     <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
-                      <Typography variant="subheading">
-                        Cart total: {orderTotal} &nbsp; Items: {cart.length}
+                      <Typography variant="subheading" color="textPrimary">
+                        Cart total: {orderTotal ? "$" + orderTotal : ""} &nbsp; Items: {cart.length}
                       </Typography>{" "}
                     </GridItem>
                     <br />
@@ -129,6 +129,8 @@ class Checkout extends React.PureComponent {
                             once your order has shipped.
                           </Typography>
                           <Button
+                            color="primary"
+                            variant="contained"
                             onClick={this.handleBack}
                             className={classes.button}
                           >
@@ -150,6 +152,8 @@ class Checkout extends React.PureComponent {
                               {this.state.step !== 0 ? (
                                 <Button
                                   color="primary"
+
+                                  className={classes.button}
                                   onClick={this.handleBack}
                                 >
                                   Back
@@ -160,6 +164,7 @@ class Checkout extends React.PureComponent {
                               {this.state.step === 2 ? (
                                 <Button
                                   color="primary"
+                                  className={classes.button}
                                   onClick={() => this.handlePreorder(values)}
                                 >
                                   Pre Order
@@ -167,6 +172,7 @@ class Checkout extends React.PureComponent {
                               ) : (
                                 <Button
                                   color="primary"
+                                  className={classes.button}
                                   onClick={() =>
                                     validateForm().then(() => this.handleNext())
                                   }
@@ -192,6 +198,7 @@ class Checkout extends React.PureComponent {
                       {/* {this.state.step === 1 ? (
                         <Button
                           color="primary"
+                          className={classes.button}
                           onClick={() =>
                             validateForm().then(() =>
                               this.cryptoCheckout(values)
@@ -228,7 +235,8 @@ const styles = theme => ({
     },
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
-      maxWidth: "100%"
+      maxWidth: "100%",
+      paddingBottom:"6.7rem"
     }
   },
   paper: {
@@ -244,6 +252,12 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       margin: "auto"
     }
+  },
+  buttons: {
+    display: "flex",
+  },
+  button: {
+    marginTop: theme.spacing.unit * 2
   }
 });
 

@@ -20,9 +20,9 @@ function getWithToken(suffix, token) {
   });
 }
 
-function getWithoutToken(suffix, data) {
-  return axios.get(baseUrl + suffix, data);
-}
+// function getWithoutToken(suffix, data) {
+//   return axios.get(baseUrl + suffix, data);
+// }
 
 export default {
   // POST REQUESTS WITHOUT TOKEN
