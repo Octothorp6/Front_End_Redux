@@ -7,7 +7,7 @@ import { Form, Formik, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { contactState } from "../../../store/initialState";
 import { ContactSchema } from "./validationSchema";
-import "./Form.css"
+import "./Form.css";
 
 class ContactForm extends Component {
   handleSubmit = values => {
@@ -18,7 +18,6 @@ class ContactForm extends Component {
     return (
       <Formik
         initialValues={{ ...contactState }}
-        onSubmit={this.handleSubmit}
         validationSchema={ContactSchema}
       >
         {({ values, validateForm }) => (
@@ -36,7 +35,7 @@ class ContactForm extends Component {
                   </span>
                 </GridItem>
                 <GridItem sm={12} lg={6}>
-                  <br/>
+                  <br />
                   <Field
                     type="text"
                     name="name"
@@ -48,7 +47,7 @@ class ContactForm extends Component {
                     fullwidth="true"
                   />
                   <Field
-                    type="text"
+                    type="email"
                     name="email"
                     margin="normal"
                     className="Field"
@@ -73,7 +72,6 @@ class ContactForm extends Component {
                     onClick={() =>
                       validateForm().then(() => this.handleSubmit(values))
                     }
-                    type="submit"
                   >
                     Submit
                   </Button>
@@ -89,9 +87,9 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  name: state.name,
-  email: state.email,
-  message: state.message
+  name: state.email.name,
+  email: state.email.email,
+  message: state.email.message
 });
 
 const mapDispatchToProps = {

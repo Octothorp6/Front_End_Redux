@@ -163,7 +163,7 @@ export const invoiceInfo = user => {
       "USD",
       `${user.orderId}`,
       "Enkeep",
-      "https://dev.ethernode.io",
+      process.env.REACT_APP_BTCPAY_REDIRECT_LINK,
       true,
       user.userFirst,
       user.shippingAddress1,
