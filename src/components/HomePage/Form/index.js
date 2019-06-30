@@ -16,14 +16,14 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <Formik
-        initialValues={{ ...contactState }}
-        validationSchema={ContactSchema}
-      >
-        {({ values, validateForm }) => (
-          <React.Fragment>
-            <Form>
-              <GridContainer>
+      <React.Fragment>
+        <GridContainer>
+          <Formik
+            initialValues={{ ...contactState }}
+            validationSchema={ContactSchema}
+          >
+            {({ values, validateForm }) => (
+              <Form>
                 <GridItem xs={12} sm={12} lg={6}>
                   <h2>Contact us</h2>
                   <span>
@@ -76,12 +76,12 @@ class ContactForm extends Component {
                     Submit
                   </Button>
                 </GridItem>
-              </GridContainer>
-              <br />
-            </Form>
-          </React.Fragment>
-        )}
-      </Formik>
+                <br />
+              </Form>
+            )}
+          </Formik>
+        </GridContainer>
+      </React.Fragment>
     );
   }
 }
