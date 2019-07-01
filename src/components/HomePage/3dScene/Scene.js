@@ -4,12 +4,14 @@ import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 extend({ OrbitControls });
+const path =
+  "https://raw.githubusercontent.com/Octothorp6/3d-Model/master/EtherNode_Final/Final_2.gltf";
+const texture =
+  "https://raw.githubusercontent.com/Octothorp6/3d-Model/master/EtherNode_Final/art-black-and-white-counter-2341290%20(1).jpg";
 
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
   const controls = useRef();
-  const path = process.env.REACT_APP_3DMODEL_URL;
-  const texture = process.env.REACT_APP_TEXTURE_URL;
 
   useEffect(() => {
     Promise.all([
@@ -20,7 +22,7 @@ function Controls(props) {
         scene.add(GLTF.scene);
       })
     ]);
-  }, [scene, path, texture]);
+  }, [scene]);
 
   camera.position.set(20, 20, 20);
   gl.setPixelRatio(window.devicePixelRatio);
