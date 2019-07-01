@@ -7,7 +7,6 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { withLayout } from "../components/UI/Layout";
 import { WithSuspense } from "./Helpers";
 
-
 //LAZY LOADING ROUTES ONLY AS THEY ARE NEEDED TO SPEED UP BUILD TIME
 const LazyLogin = loadable(() => import("../pages/Login"));
 const LazyAdmin = loadable(() => import("../components/DashboardPage/Layout"));
