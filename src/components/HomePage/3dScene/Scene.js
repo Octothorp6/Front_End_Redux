@@ -1,30 +1,25 @@
 import React, { useRef, useEffect } from "react";
-import { loadGLTF, loadTexture } from "../../../utils/Helpers";
+import { loadGLTF } from "../../../utils/Helpers";
 import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as THREE from "three";
 
 extend({ OrbitControls });
 const path =
   "https://raw.githubusercontent.com/Octothorp6/3d-Model/master/EtherNode_Final/Final_2.gltf";
-const texture =
-  "https://raw.githubusercontent.com/Octothorp6/3d-Model/master/EtherNode_Final/art-black-and-white-counter-2341290%20(1).jpg";
 
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
   const controls = useRef();
 
   useEffect(() => {
-    Promise.all([
-      loadTexture(texture).then(TXTE => {
-        scene.background = TXTE;
-      }),
       loadGLTF(path).then(GLTF => {
         scene.add(GLTF.scene);
       })
-    ]);
   }, [scene]);
 
-  camera.position.set(20, 20, 20);
+  scene.background = new THREE.Color('white')
+  camera.position.set(10, 10, 10);
   gl.setPixelRatio(window.devicePixelRatio);
 
   useRender(() => controls.current && controls.current.update(), false);

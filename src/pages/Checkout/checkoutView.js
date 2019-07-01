@@ -245,8 +245,7 @@ const styles = theme => ({
   },
   paper: {
     margin: "auto",
-    overflow: "auto",
-    maxHeight: "400px",
+    maxHeight: "auto",
     padding: theme.spacing.unit * 2,
     alignItems: "center",
     textAlign: "center",
