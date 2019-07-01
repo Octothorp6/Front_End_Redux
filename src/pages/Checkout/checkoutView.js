@@ -193,6 +193,7 @@ class Checkout extends React.PureComponent {
                                 </Button>
                               )}
                             </div>
+                            <br />
                           </GridItem>
                         </React.Fragment>
                       )}
@@ -243,6 +244,8 @@ const styles = theme => ({
   },
   paper: {
     margin: "auto",
+    overflow: "auto",
+    maxHeight: "350px",
     padding: theme.spacing.unit * 2,
     alignItems: "center",
     textAlign: "center",
