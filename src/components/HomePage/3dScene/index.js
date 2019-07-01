@@ -7,10 +7,14 @@ export default function EnkeepScene() {
   return (
     <div className="Scene">
       <GridContainer>
-        <br />
-        <br />
+        <GridItem sm={12} md={12} lg={12}>
+        <div className="placeHolder"></div>
+        </GridItem>
         <GridItem sm={12} md={12} lg={12}>
           <Scene />
+        </GridItem>
+        <GridItem sm={12} md={12} lg={12}>
+          <div className="placeHolder"></div>
         </GridItem>
       </GridContainer>
     </div>

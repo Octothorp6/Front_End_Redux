@@ -13,12 +13,12 @@ function Controls(props) {
   const controls = useRef();
 
   useEffect(() => {
-      loadGLTF(path).then(GLTF => {
-        scene.add(GLTF.scene);
-      })
+    loadGLTF(path).then(GLTF => {
+      scene.add(GLTF.scene);
+    });
   }, [scene]);
 
-  scene.background = new THREE.Color('white')
+  scene.background = new THREE.Color("white");
   camera.position.set(10, 10, 10);
   gl.setPixelRatio(window.devicePixelRatio);
 
