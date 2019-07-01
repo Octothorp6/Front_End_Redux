@@ -11,7 +11,7 @@ function Controls(props) {
   const controls = useRef();
   const path = process.env.REACT_APP_3DMODEL_URL
   const texture = process.env.REACT_APP_TEXTURE_URL
-  useMemo(() => {
+  useEffect(() => {
     Promise.all([
       loadTexture(texture).then(TXTE => {
         scene.background = TXTE;
