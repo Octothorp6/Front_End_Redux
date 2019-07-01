@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Button,
-  Paper,
-  Typography,
-  withStyles,
-} from "@material-ui/core";
+import { Button, Paper, Typography, withStyles } from "@material-ui/core";
 import { Form, Formik } from "formik";
 import { GridContainer, GridItem } from "../../components/UI/Grid";
 import {
@@ -100,7 +95,7 @@ class Checkout extends React.PureComponent {
     const { classes, orderTotal, cart, orderId } = this.props;
 
     return (
-      <>
+      <React.Fragment>
         <main className={classes.layout}>
           <Paper className={classes.paper}>
             <GridContainer spacing={24} justify="center">
@@ -112,12 +107,16 @@ class Checkout extends React.PureComponent {
                 {({ values, errors, touched, validateForm }) => (
                   <Form>
                     <br />
-                    <GridItem xs={12} sm={12} md={12} lg={12}>
-                      <Typography variant="subheading" color="textPrimary">
+                    <span>
+                      <Typography
+                        variant="subheading"
+                        color="textPrimary"
+                        align="center"
+                      >
                         Cart total: {orderTotal ? "$" + orderTotal : 0} &nbsp;
                         Items: {cart.length}
                       </Typography>{" "}
-                    </GridItem>
+                    </span>
                     <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                       {this.state.step === 3 ? (
@@ -219,7 +218,7 @@ class Checkout extends React.PureComponent {
             </GridContainer>
           </Paper>
         </main>
-      </>
+      </React.Fragment>
     );
   }
 }
@@ -228,6 +227,7 @@ const styles = theme => ({
   layout: {
     display: "flex",
     width: "auto",
+    overflowX: "hidden",
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
     paddingBottom: "6.6rem",
@@ -244,7 +244,6 @@ const styles = theme => ({
   paper: {
     margin: "auto",
     padding: theme.spacing.unit * 2,
-    overflowX: "hidden",
     alignItems: "center",
     textAlign: "center",
     width: 600,
