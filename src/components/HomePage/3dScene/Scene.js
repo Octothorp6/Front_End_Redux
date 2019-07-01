@@ -1,16 +1,16 @@
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useEffect } from "react";
 import { loadGLTF, loadTexture } from "../../../utils/Helpers";
 import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 extend({ OrbitControls });
 
-
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
   const controls = useRef();
-  const path = process.env.REACT_APP_3DMODEL_URL
-  const texture = process.env.REACT_APP_TEXTURE_URL
+  const path = process.env.REACT_APP_3DMODEL_URL;
+  const texture = process.env.REACT_APP_TEXTURE_URL;
+
   useEffect(() => {
     Promise.all([
       loadTexture(texture).then(TXTE => {
