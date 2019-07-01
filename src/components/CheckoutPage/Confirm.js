@@ -9,8 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const Confirm = ({ cart, classes, orderTotal, values }) => {
   return (
-    <React.Fragment>
-      <div className={classes.confirm}>
+    <div className={classes.confirm}>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
@@ -54,8 +53,7 @@ const Confirm = ({ cart, classes, orderTotal, values }) => {
           </Grid>
         </Grid>
       </Grid>
-      </div>
-    </React.Fragment>
+    </div>
   );
 };
 
