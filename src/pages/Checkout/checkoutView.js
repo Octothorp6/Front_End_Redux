@@ -1,6 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Paper, Typography, withStyles } from "@material-ui/core";
+import {
+  Button,
+  Paper,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
 import { Form, Formik } from "formik";
 import { GridContainer, GridItem } from "../../components/UI/Grid";
 import {
@@ -96,9 +101,9 @@ class Checkout extends React.PureComponent {
 
     return (
       <>
-        <GridContainer spacing={24} justify="center">
-          <main className={classes.layout}>
-            <Paper className={classes.paper}>
+        <main className={classes.layout}>
+          <Paper className={classes.paper}>
+            <GridContainer spacing={24} justify="center">
               <Formik
                 initialValues={{ ...fieldState }}
                 validationSchema={CheckoutSchema}
@@ -211,9 +216,9 @@ class Checkout extends React.PureComponent {
                   </Form>
                 )}
               </Formik>
-            </Paper>
-          </main>
-        </GridContainer>
+            </GridContainer>
+          </Paper>
+        </main>
       </>
     );
   }

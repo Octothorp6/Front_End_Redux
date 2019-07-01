@@ -27,4 +27,3 @@ export { default as nodeImg } from "./EtherNode_4.png";
 export { default as networkEarth } from "./Network_Earth.png";
 export { default as tuxor } from "./ENLinuxGrey.png";
 export { default as presale } from "./Presale.svg";
-export { default as texture } from "./TexturesCom_InkWide0007_3_S.jpg"

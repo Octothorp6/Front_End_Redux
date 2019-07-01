@@ -13,10 +13,16 @@ function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
   const controls = useRef();
   useEffect(() => {
-    loadTexture(texture).then(TXTE => {
-      scene.background = TXTE;
-    });
+    Promise.all([
+      loadTexture(texture).then(TXTE => {
+        scene.background = TXTE;
+      }),
+      loadGLTF(path).then(GLTF => {
+        scene.add(GLTF.scene);
+      })
+    ]);
   }, [scene]);
+
   camera.position.set(20, 20, 20);
   gl.setPixelRatio(window.devicePixelRatio);
 
@@ -33,11 +39,6 @@ function Controls(props) {
 
 export default function Scene() {
   const { scene } = useThree();
-  useEffect(() => {
-    loadGLTF(path).then(GLTF => {
-      scene.add(GLTF.scene);
-    });
-  }, [scene]);
 
   return (
     <>
