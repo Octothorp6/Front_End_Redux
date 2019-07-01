@@ -1,5 +1,4 @@
-import React from "react";
-import loadable from "@loadable/component";
+import React, { lazy } from "react";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Checkout from "../pages/Checkout";
@@ -8,8 +7,8 @@ import { withLayout } from "../components/UI/Layout";
 import { WithSuspense } from "./Helpers";
 
 //LAZY LOADING ROUTES ONLY AS THEY ARE NEEDED TO SPEED UP BUILD TIME
-const LazyLogin = loadable(() => import("../pages/Login"));
-const LazyAdmin = loadable(() => import("../components/DashboardPage/Layout"));
+const LazyLogin = lazy(() => import("../pages/Login"));
+const LazyAdmin = lazy(() => import("../components/DashboardPage/Layout"));
 
 //ROUTE FUNCTIONS
 export const PrivateRoute = ({ component, ...rest }) => {
