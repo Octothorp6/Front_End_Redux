@@ -26,9 +26,7 @@ function getWithToken(suffix, token) {
 
 export default {
   // POST REQUESTS WITHOUT TOKEN
-  sendEmail: function(email) {
-    return postWithoutToken("/mailRPC/mailRPC", email);
-  },
+
   register: function(user) {
     return postWithoutToken("/accountRPC/acc", user);
   },
@@ -36,6 +34,9 @@ export default {
     return postWithoutToken("/accountRPC/acc", user);
   },
   // POST REQUESTS WITH TOKEN
+  sendEmail: function(email, token) {
+    return postWithToken("/mailRPC/mailRPC", email, token);
+  },
   sendPreorderEmail: function(data, token) {
     return postWithToken("/mailRPC/mailRPC", data, token);
   },

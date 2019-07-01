@@ -19,7 +19,8 @@ import {
   txInfo,
   invoiceInfo,
   confirmOrder,
-  preOrderInfo
+  preOrderInfo,
+  emailContact
 } from "../../utils/sanitizer";
 import API from "../../utils/API";
 
@@ -123,6 +124,7 @@ export const preOrder = payload => {
   let user = signUpInfo(payload);
   let customer = preOrderInfo(payload);
   let confirmMsg = confirmOrder(payload);
+  let emailMsg = emailContact(payload);
 
   return async dispatch => {
     dispatch({ type: PRE_ORDER });
@@ -133,7 +135,12 @@ export const preOrder = payload => {
         let token = register.data.result.token;
         let presale = await API.newTransaction(customer, token);
         let sendEmail = await API.sendPreorderEmail(confirmMsg, token);
-        console.log(presale.statusText, sendEmail.statusText);
+        let sendConfirmation = await API.sendEmail(emailMsg, token);
+        console.log(
+          presale.statusText,
+          sendEmail.statusText,
+          sendConfirmation.statusText
+        );
         dispatch(preOrderSuccess({ payload, token }));
       }
     } catch (error) {

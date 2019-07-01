@@ -32,7 +32,7 @@ export const emailContact = info => {
     params: [
       [userObj],
       process.env.REACT_APP_SALES_EMAIL,
-      "Thank You for Your Recent Purchase.",
+      "Thank You for Your Recent Preorder.",
       PurchaseTemp
     ],
     id: 500
