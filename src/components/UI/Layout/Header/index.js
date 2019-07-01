@@ -1,7 +1,6 @@
 import React from "react";
 import { darkHeader } from "../../../../assets";
-import GridContainer from "../../../UI/Grid/GridContainer";
-import GridItem from "../../../UI/Grid/GridItem";
+import { GridContainer, GridItem } from "../../../UI/Grid";
 import "./Header.css";
 
 //functional component for the header
@@ -10,7 +9,9 @@ const Header = () => (
     <GridContainer>
       <GridItem sm={12} md={12} lg={12}>
         <div className="header">
+          <a href="/">
           <img src={darkHeader} alt="EtherNode Logo" className="logo" />
+          </a>
         </div>
       </GridItem>
       <GridItem sm={12} md={12} lg={12}>

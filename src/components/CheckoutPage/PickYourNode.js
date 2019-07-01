@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import { nodeImg } from "../../assets";
 import { products } from "./products";
 
-const styles = theme => ({
+const styles = () => ({
   button: {
     display: "block",
     paddingBottom: "2rem"
@@ -66,10 +66,7 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
       </FormControl>
       <br />
       <br />
-      <Button
-        color="primary"
-        onClick={() => (item ? addItemToCart(item) : "")}
-      >
+      <Button color="primary" onClick={() => (item ? addItemToCart(item) : "")}>
         Add Item
       </Button>
       <Button
@@ -85,7 +82,7 @@ const PickYourNode = ({ addItemToCart, removeItemFromCart, classes }) => {
 PickYourNode.propTypes = {
   classes: PropTypes.object.isRequired,
   addItemToCart: PropTypes.func.isRequired,
-  removeItemFromCart: PropTypes.func.isRequired,
+  removeItemFromCart: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(PickYourNode);

@@ -1,69 +1,91 @@
 import React from "react";
 import {
   githubLogo,
-  ethernodeBlack,
-  redditLogo,
   discordLogo,
   linkedInLogo,
   twitterLogo
 } from "../../../../assets";
-import GridContainer from "../../../UI/Grid/GridContainer";
-import GridItem from "../../../UI/Grid/GridItem";
-import "./Footer.css";
+import { GridContainer, GridItem } from "../../../UI/Grid";
+import { BottomNavigation, withStyles } from "@material-ui/core";
+import IconBtn from "../../Buttons/IconButton";
+import PropTypes from "prop-types";
 
 //functional component for the footer
-const Footer = () => (
-  <div className="footer">
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={4} lg={3}>
-        <img
-          src={ethernodeBlack}
-          alt="LogoBlack"
-          className="footer-logo"
-          title="Ethernode"
-        />
-      </GridItem>
-      <GridItem xs={6} sm={6} md={4} lg={6}>
-        <nav>
-          <ul>
-            <li>
-              <a href="https://forum.ethernode.io">Forum</a>
-            </li>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/login">Login</a>
-            </li>
-          </ul>
-        </nav>
-      </GridItem>
-      <GridItem xs={6} sm={6} md={4} lg={3}>
-        <div className="footer-links">
-          <a href="https://github.com/ethernodeio">
-            <img src={githubLogo} alt="Github Logo" className="social-icon" />
-          </a>
-          <a href="https://twitter.com/Ethernode_io">
-            <img src={twitterLogo} alt="Twitter Logo" className="social-icon" />
-          </a>
-          <a href="https://www.reddit.com/r/Ethernode">
-            <img src={redditLogo} alt="Reddit Logo" className="social-icon" />
-          </a>
-          <a href="https://www.linkedin.com/company/ethernode">
-            <img
-              src={linkedInLogo}
-              alt="LinkedIn Logo"
-              className="social-icon"
-            />
-          </a>
-          <a href="https://discord.gg/hXkUpV5">
-            {" "}
-            <img src={discordLogo} alt="Discord Logo" className="social-icon" />
-          </a>
-        </div>
-      </GridItem>
-    </GridContainer>
+const Footer = ({ classes }) => (
+  <div className={classes.layout}>
+    <BottomNavigation>
+      <div className={classes.buttons}>
+        <GridContainer>
+          <GridItem xs={2} sm={2} lg={2}>
+            <IconBtn to="/login">Login</IconBtn>
+          </GridItem>
+          <GridItem xs={2} sm={2} lg={2}>
+            <IconBtn to="https://forum.ethernode.io/">Forum</IconBtn>
+          </GridItem>
+          <GridItem xs={2} sm={2} lg={2}>
+            <IconBtn to="https://github.com/ethernodeio">
+              <img
+                src={githubLogo}
+                alt="github"
+                style={{ maxWidth: "1.8rem" }}
+              />
+            </IconBtn>
+          </GridItem>
+          <GridItem xs={2} sm={2} lg={2}>
+            <IconBtn to="https://twitter.com/Ethernode_io">
+              <img
+                src={twitterLogo}
+                alt="twitter"
+                style={{ maxWidth: "1.8rem" }}
+              />
+            </IconBtn>
+          </GridItem>
+          <GridItem xs={2} sm={2} lg={2}>
+            <IconBtn to="https://www.linkedin.com/company/ethernode">
+              <img
+                src={linkedInLogo}
+                alt="linkedIn"
+                style={{ maxWidth: "1.8rem" }}
+              />
+            </IconBtn>
+          </GridItem>
+          <GridItem xs={2} sm={2} lg={2}>
+            <IconBtn to="https://discord.com">
+              <img
+                src={discordLogo}
+                alt="discord"
+                style={{ maxWidth: "1.8rem" }}
+              />
+            </IconBtn>
+          </GridItem>
+        </GridContainer>
+      </div>
+    </BottomNavigation>
   </div>
 );
 
-export default Footer;
+const styles = theme => ({
+  layout: {
+    bottom: "0",
+    margin: "auto",
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    }
+  },
+  buttons: {
+    marginTop: theme.spacing.unit,
+    minWidth: "100%",
+    margin: "auto",
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "100",
+      paddingRight: "1.5em"
+    }
+  }
+});
+
+Footer.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Footer);

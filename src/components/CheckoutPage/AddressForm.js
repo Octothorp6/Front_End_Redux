@@ -1,11 +1,11 @@
 import React from "react";
-import { TextField } from "formik-material-ui";
-import { Field } from "formik";
 import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
+import { TextField } from "formik-material-ui";
+import { Field } from "formik";
 import "./checkoutPages.css";
 
-const AddressForm = ({ errors, touched }) => (
+export const AddressForm = ({ errors, touched }) => (
   <div className="textFields">
     <GridContainer container spacing={24} justify="center">
       <GridItem lg={6} sm={12}>
@@ -16,11 +16,7 @@ const AddressForm = ({ errors, touched }) => (
           label="First Name"
           variant="outlined"
           component={TextField}
-          helperText={
-            touched.userFirst && 
-            errors.userFirst && 
-            errors.userFirst
-          }
+          helperText={touched.userFirst && errors.userFirst}
           fullwidth="true"
         />
       </GridItem>
@@ -32,11 +28,7 @@ const AddressForm = ({ errors, touched }) => (
           label="Last Name"
           variant="outlined"
           component={TextField}
-          helperText={
-            touched.userLast && 
-            errors.userLast && 
-            errors.userLast
-          }
+          helperText={touched.userLast && errors.userLast}
           fullwidth="true"
         />
       </GridItem>
@@ -48,11 +40,7 @@ const AddressForm = ({ errors, touched }) => (
           variant="outlined"
           label="Email"
           component={TextField}
-          helperText={
-            touched.userEmail && 
-            errors.userEmail && 
-            errors.userEmail
-          }
+          helperText={touched.userEmail && errors.userEmail}
           fullwidth="true"
         />
       </GridItem>
@@ -64,11 +52,7 @@ const AddressForm = ({ errors, touched }) => (
           variant="outlined"
           label="Address 1"
           component={TextField}
-          helperText={
-            touched.shippingAddress1 &&
-            errors.shippingAddress1 &&
-            errors.shippingAddress1
-          }
+          helperText={touched.shippingAddress1 && errors.shippingAddress1}
           fullwidth="true"
         />
       </GridItem>
@@ -80,11 +64,7 @@ const AddressForm = ({ errors, touched }) => (
           variant="outlined"
           label="Address 2"
           component={TextField}
-          helperText={
-            touched.shippingAddress2 &&
-            errors.shippingAddress2 &&
-            errors.shippingAddress2
-          }
+          helperText={touched.shippingAddress2 && errors.shippingAddress2}
           fullwidth="true"
         />
       </GridItem>
@@ -96,11 +76,7 @@ const AddressForm = ({ errors, touched }) => (
           label="City"
           variant="outlined"
           component={TextField}
-          helperText={
-            touched.shippingCity && 
-            errors.shippingCity && 
-            errors.shippingCity
-          }
+          helperText={touched.shippingCity && errors.shippingCity}
           fullwidth="true"
         />
       </GridItem>
@@ -112,11 +88,7 @@ const AddressForm = ({ errors, touched }) => (
           variant="outlined"
           label="State"
           component={TextField}
-          helperText={
-            touched.shippingState &&
-            errors.shippingState &&
-            errors.shippingState
-          }
+          helperText={touched.shippingState && errors.shippingState}
           fullwidth="true"
         />
       </GridItem>
@@ -128,11 +100,7 @@ const AddressForm = ({ errors, touched }) => (
           variant="outlined"
           label="Zip code"
           component={TextField}
-          helperText={
-            touched.shippingZip && 
-            errors.shippingZip && 
-            errors.shippingZip
-          }
+          helperText={touched.shippingZip && errors.shippingZip}
           fullwidth="true"
         />
       </GridItem>
@@ -144,16 +112,10 @@ const AddressForm = ({ errors, touched }) => (
           variant="outlined"
           label="Country"
           component={TextField}
-          helperText={
-            touched.shippingCountry &&
-            errors.shippingCountry &&
-            errors.shippingCountry
-          }
+          helperText={touched.shippingCountry && errors.shippingCountry}
           fullwidth="true"
         />
       </GridItem>
     </GridContainer>
   </div>
 );
-
-export default AddressForm;

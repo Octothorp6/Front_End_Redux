@@ -5,7 +5,7 @@ import { TextField } from "formik-material-ui";
 import { Field } from "formik";
 import "./checkoutPages.css";
 
-const PaymentDetails = ({ errors, touched }) => (
+export const PaymentDetails = ({ errors, touched }) => (
   <div className="textFields">
     <GridContainer spacing={24}>
       <GridItem lg={6} sm={12}>
@@ -16,11 +16,7 @@ const PaymentDetails = ({ errors, touched }) => (
           variant="outlined"
           label="Card holder"
           component={TextField}
-          helperText={
-            touched.cardHolder && 
-            errors.cardHolder && 
-            errors.cardHolder
-          }
+          helperText={touched.cardHolder && errors.cardHolder}
           fullwidth="true"
         />
       </GridItem>
@@ -32,11 +28,7 @@ const PaymentDetails = ({ errors, touched }) => (
           variant="outlined"
           label="Card number"
           component={TextField}
-          helperText={
-            touched.cardNumber && 
-            errors.cardNumber && 
-            errors.cardNumber
-          }
+          helperText={touched.cardNumber && errors.cardNumber}
           fullwidth="true"
         />
       </GridItem>
@@ -48,11 +40,7 @@ const PaymentDetails = ({ errors, touched }) => (
           variant="outlined"
           label="Expiration YYYY-MM"
           component={TextField}
-          helperText={
-            touched.expiration && 
-            errors.expiration && 
-            errors.expiration
-          }
+          helperText={touched.expiration && errors.expiration}
           fullwidth="true"
         />
       </GridItem>
@@ -64,16 +52,10 @@ const PaymentDetails = ({ errors, touched }) => (
           variant="outlined"
           label="CVV"
           component={TextField}
-          helperText={
-            touched.cvv &&
-            errors.cvv &&
-            errors.cvv
-          }
+          helperText={touched.cvv && errors.cvv}
           fullwidth="true"
         />
       </GridItem>
     </GridContainer>
   </div>
 );
-
-export default PaymentDetails;

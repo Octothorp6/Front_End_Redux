@@ -26,7 +26,7 @@ import NavPills from "../navPills";
 import pillsStyle from "./navPillsStyle";
 import ListItem from "../List";
 import List from "@material-ui/core/List";
-import Enkeep from "../Enkeep";
+import Presale from "../Presale";
 import EnOs from "../EnOs";
 
 function SectionPills(props) {
@@ -111,7 +111,7 @@ function SectionPills(props) {
                             }
                           />
                         </List>
-                        <Enkeep />
+                        <Presale />
                       </React.Fragment>
                     )
                   },

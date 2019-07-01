@@ -1,25 +1,54 @@
 import axios from "axios";
 
+const baseUrl = process.env.REACT_APP_ENCOMMERCE_API;
+
+//POST REQUEST HELPERS
+function postWithToken(suffix, data, token) {
+  return axios.post(baseUrl + suffix, data, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}
+
+function postWithoutToken(suffix, data) {
+  return axios.post(baseUrl + suffix, data);
+}
+// GET REQUEST HELPERS
+function getWithToken(suffix, token) {
+  return axios.get(baseUrl + suffix, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}
+
+// function getWithoutToken(suffix, data) {
+//   return axios.get(baseUrl + suffix, data);
+// }
+
 export default {
-  sendEmail: function(email) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/mailRPC/mailRPC', email)
-  },
+  // POST REQUESTS WITHOUT TOKEN
   register: function(user) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/accounts', user)
+    return postWithoutToken("/accountRPC/acc", user);
   },
-  newOrder: function(orderData) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/authRPC/authnet', orderData)
+  login: function(user) {
+    return postWithoutToken("/accountRPC/acc", user);
   },
-  newInvoice: function(query) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/btcpayRPC/btcpayRPC', query)
+  // POST REQUESTS WITH TOKEN
+  sendEmail: function(email, token) {
+    return postWithToken("/mailRPC/mailRPC", email, token);
   },
-  newTransaction: function(txData) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/orderRPC/orderRPC', txData)
+  sendPreorderEmail: function(data, token) {
+    return postWithToken("/mailRPC/mailRPC", data, token);
   },
-  login: function(admin) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/usrAdmin', admin)
+  newOrder: function(orderData, token) {
+    return postWithToken("/authRPC/authnet", orderData, token);
   },
-  createAccount: function(user) {
-    return axios.post(process.env.REACT_APP_ENCOMMERCE_API+'/accountRPC/usrAdmin', user)
+  newInvoice: function(query, token) {
+    return postWithToken("/btcpayRPC/btcpayRPC", query, token);
+  },
+  newTransaction: function(txData, token) {
+    return postWithToken("/orderRPC/orderRPC", txData, token);
+  },
+  // GET REQUESTS WITH TOKEN
+  getUsers: function(token) {
+    return getWithToken("/accountRPC/admin", token);
   }
 };

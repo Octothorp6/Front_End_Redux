@@ -26,3 +26,4 @@ export { default as logoDark } from "./Logo-Dark-Bold-Outline.png";
 export { default as nodeImg } from "./EtherNode_4.png";
 export { default as networkEarth } from "./Network_Earth.png";
 export { default as tuxor } from "./ENLinuxGrey.png";
+export { default as presale } from "./Presale.svg";

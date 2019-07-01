@@ -1,21 +1,32 @@
-import React, { useRef } from "react";
-import * as THREE from "three";
-import { loadGLTF } from "../../../utils/Helpers";
+import React, { useRef, useMemo } from "react";
+import { loadGLTF, loadTexture } from "../../../utils/Helpers";
 import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 extend({ OrbitControls });
-const path = process.env.REACT_APP_3DMODEL_URL;
+const [path, texture] = [
+  process.env.REACT_APP_3DMODEL_URL,
+  process.env.REACT_APP_TEXTURE_URL
+];
 
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
   const controls = useRef();
-  scene.background = new THREE.Color("white");
+  useMemo(() => {
+    Promise.all([
+      loadTexture(texture).then(TXTE => {
+        scene.background = TXTE;
+      }),
+      loadGLTF(path).then(GLTF => {
+        scene.add(GLTF.scene);
+      })
+    ]);
+  }, [scene]);
 
   camera.position.set(20, 20, 20);
   gl.setPixelRatio(window.devicePixelRatio);
 
-  useRender(() => controls.current && controls.current.update());
+  useRender(() => controls.current && controls.current.update(), false);
 
   return (
     <orbitControls
@@ -27,13 +38,7 @@ function Controls(props) {
 }
 
 export default function Scene() {
-  const scene = new THREE.Scene();
-
-  loadGLTF(path).then(GLTF => {
-    scene.add(GLTF.scene);
-  });
-  // ENABLE CACHING FOR THE MODEL TO SAVE UNECCESARY RENDERS
-  THREE.Cache.enabled = true;
+  const { scene } = useThree();
 
   return (
     <>
@@ -47,10 +52,8 @@ export default function Scene() {
         />
         <ambientLight intensity={0.8} position={[300, 300, 400]} />
         <spotLight intensity={0.9} position={[300, 400, 400]} />
-        <primitive object={scene} />
+        <primitive attach="map" object={scene} />
       </Canvas>
     </>
   );
 }
-
-//Promise testing
