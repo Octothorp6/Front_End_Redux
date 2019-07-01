@@ -166,7 +166,11 @@ class Checkout extends React.PureComponent {
                                 <Button
                                   color="primary"
                                   className={classes.button}
-                                  onClick={() => validateForm().then(() => this.handlePreorder(values))}
+                                  onClick={() =>
+                                    validateForm().then(() =>
+                                      this.handlePreorder(values)
+                                    )
+                                  }
                                 >
                                   Pre Order
                                 </Button>
@@ -174,11 +178,9 @@ class Checkout extends React.PureComponent {
                                 <Button
                                   color="primary"
                                   className={classes.button}
-                                  onClick={() =>
-                                    this.handleNext()
-                                  }
+                                  onClick={() => this.handleNext()}
                                   disabled={
-                                    this.state.step !== 0
+                                    this.state.step !== 0 || cart.length === 0
                                       ? values.userFirst === "" ||
                                         values.userLast === "" ||
                                         values.userEmail === "" ||
