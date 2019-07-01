@@ -166,7 +166,7 @@ class Checkout extends React.PureComponent {
                                 <Button
                                   color="primary"
                                   className={classes.button}
-                                  onClick={() => this.handlePreorder(values)}
+                                  onClick={() => validateForm().then(() => this.handlePreorder(values))}
                                 >
                                   Pre Order
                                 </Button>
@@ -175,7 +175,7 @@ class Checkout extends React.PureComponent {
                                   color="primary"
                                   className={classes.button}
                                   onClick={() =>
-                                    validateForm().then(() => this.handleNext())
+                                    this.handleNext()
                                   }
                                   disabled={
                                     this.state.step !== 0
@@ -197,6 +197,7 @@ class Checkout extends React.PureComponent {
                           </GridItem>
                         </React.Fragment>
                       )}
+
                       {/* {this.state.step === 1 ? (
                         <Button
                           color="primary"
