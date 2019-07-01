@@ -4,14 +4,13 @@ import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 extend({ OrbitControls });
-const [path, texture] = [
-  process.env.REACT_APP_3DMODEL_URL,
-  process.env.REACT_APP_TEXTURE_URL
-];
+
 
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
   const controls = useRef();
+  const path = process.env.REACT_APP_3DMODEL_URL
+  const texture = process.env.REACT_APP_TEXTURE_URL
   useMemo(() => {
     Promise.all([
       loadTexture(texture).then(TXTE => {
@@ -21,7 +20,7 @@ function Controls(props) {
         scene.add(GLTF.scene);
       })
     ]);
-  }, [scene]);
+  }, [scene, path, texture]);
 
   camera.position.set(20, 20, 20);
   gl.setPixelRatio(window.devicePixelRatio);
