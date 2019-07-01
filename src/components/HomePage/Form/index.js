@@ -17,13 +17,13 @@ class ContactForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <GridContainer>
-          <Formik
-            initialValues={{ ...contactState }}
-            validationSchema={ContactSchema}
-          >
-            {({ values, validateForm }) => (
-              <Form>
+        <Formik
+          initialValues={{ ...contactState }}
+          validationSchema={ContactSchema}
+        >
+          {({ values, validateForm }) => (
+            <Form>
+              <GridContainer>
                 <GridItem xs={12} sm={12} lg={6}>
                   <h2>Contact us</h2>
                   <span>
@@ -41,7 +41,7 @@ class ContactForm extends Component {
                     name="name"
                     margin="normal"
                     className="Field"
-                    variant="outlined"
+                    variant="filled"
                     label="Name"
                     component={TextField}
                     fullwidth="true"
@@ -52,7 +52,7 @@ class ContactForm extends Component {
                     margin="normal"
                     className="Field"
                     label="Email"
-                    variant="outlined"
+                    variant="filled"
                     component={TextField}
                     fullwidth="true"
                   />
@@ -62,7 +62,7 @@ class ContactForm extends Component {
                     margin="normal"
                     className="Field"
                     label="Message"
-                    variant="outlined"
+                    variant="filled"
                     component={TextField}
                     fullwidth="true"
                   />
@@ -76,11 +76,11 @@ class ContactForm extends Component {
                     Submit
                   </Button>
                 </GridItem>
-                <br />
-              </Form>
-            )}
-          </Formik>
-        </GridContainer>
+              </GridContainer>
+              <br />
+            </Form>
+          )}
+        </Formik>
       </React.Fragment>
     );
   }
