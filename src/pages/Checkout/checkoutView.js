@@ -96,9 +96,9 @@ class Checkout extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <main className={classes.layout}>
-          <Paper className={classes.paper}>
-            <GridContainer spacing={24} justify="center">
+        <GridContainer spacing={24} justify="center">
+          <main className={classes.layout}>
+            <Paper className={classes.paper}>
               <Formik
                 initialValues={{ ...fieldState }}
                 validationSchema={CheckoutSchema}
@@ -216,9 +216,9 @@ class Checkout extends React.PureComponent {
                   </Form>
                 )}
               </Formik>
-            </GridContainer>
-          </Paper>
-        </main>
+            </Paper>
+          </main>
+        </GridContainer>
       </React.Fragment>
     );
   }
@@ -245,7 +245,7 @@ const styles = theme => ({
   paper: {
     margin: "auto",
     overflow: "auto",
-    maxHeight: "350px",
+    maxHeight: "400px",
     padding: theme.spacing.unit * 2,
     alignItems: "center",
     textAlign: "center",
