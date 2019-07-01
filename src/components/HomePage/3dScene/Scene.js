@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useMemo } from "react";
 import { loadGLTF, loadTexture } from "../../../utils/Helpers";
 import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -12,7 +12,7 @@ const [path, texture] = [
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
   const controls = useRef();
-  useEffect(() => {
+  useMemo(() => {
     Promise.all([
       loadTexture(texture).then(TXTE => {
         scene.background = TXTE;
