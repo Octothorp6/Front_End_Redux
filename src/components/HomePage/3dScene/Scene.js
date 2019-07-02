@@ -3,7 +3,6 @@ import { loadGLTF } from "../../../utils/Helpers";
 import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-
 extend({ OrbitControls });
 const path =
   "https://raw.githubusercontent.com/Octothorp6/3d-Model/master/EtherNode_Final/Final_2.gltf";

@@ -1,28 +1,3 @@
-// import React from "react";
-// import { GridItem, GridContainer } from "../../UI/Grid";
-// import Scene from "./Scene";
-// import "./3dScene.css";
-
-// export default function EnkeepScene() {
-//   return (
-//     <div className="Scene">
-//       <GridContainer>
-//         <GridItem sm={12} md={12} lg={12}>
-//           <div className="placeHolder" />
-//         </GridItem>
-//         <GridItem sm={12} md={12} lg={12}>
-//           <Scene />
-//         </GridItem>
-//         <GridItem sm={12} md={12} lg={12}>
-//           <div className="placeHolder" />
-//         </GridItem>
-//       </GridContainer>
-//     </div>
-//   );
-// }
-
-
-
 import React from "react";
 import {
   AppBar,
@@ -33,26 +8,16 @@ import {
   IconButton,
   Slide
 } from "@material-ui/core";
-import Scene from "./Scene"
-import CloseIcon from '@material-ui/icons/Close';
+import Scene from "./Scene";
+import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
-
-const styles = theme => ({
-  appBar: {
-    position: "relative"
-  },
-  title: {
-    marginLeft: theme.spacing.unit * 2,
-    flex: 1
-  }
-});
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 function EnkeepScene({ classes }) {
   const [open, setOpen] = React.useState(false);
+
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
 
   function handleClickOpen() {
     setOpen(true);
@@ -63,7 +28,11 @@ function EnkeepScene({ classes }) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button
+        variant="outlined"
+        style={{ backgroundColor: "#2FCE74", color: "white" }}
+        onClick={handleClickOpen}
+      >
         View our 3d Model
       </Button>
       <Dialog
@@ -82,6 +51,7 @@ function EnkeepScene({ classes }) {
             >
               <CloseIcon />
             </IconButton>
+            EnKeep
           </Toolbar>
         </AppBar>
         <Scene />
@@ -90,8 +60,19 @@ function EnkeepScene({ classes }) {
   );
 }
 
+const styles = theme => ({
+  appBar: {
+    position: "relative",
+    backgroundColor: "#2FCE74"
+  },
+  title: {
+    marginLeft: theme.spacing.unit * 2,
+    flex: 1
+  }
+});
+
 EnkeepScene.propTypes = {
   classes: PropTypes.object.isRequired
-}
+};
 
 export default withStyles(styles)(EnkeepScene);
