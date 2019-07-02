@@ -220,7 +220,7 @@ class Checkout extends React.PureComponent {
                 )}
               </Formik>
             </Paper>
-            {this.state.step === 3 && <div><br /> <br /></div>}
+            {this.state.step === 3 && <div className={classes.bottomDiv}><br /> <br /></div>}
           </main>
         </GridContainer>
       </React.Fragment>
@@ -235,7 +235,7 @@ const styles = theme => ({
     overflowX: "hidden",
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
-    paddingBottom: "6.6rem",
+    paddingBottom: "11.4rem",
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
       marginLeft: "auto",
       marginRight: "auto"
@@ -259,6 +259,10 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       margin: "auto"
     }
+  },
+  bottomDiv: {
+    margin: "auto",
+    paddingBottom: "24rem"
   },
   buttons: {
     display: "flex"
