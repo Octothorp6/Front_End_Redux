@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { loadGLTF } from "../../../utils/Helpers";
 import { useThree, Canvas, extend, useRender } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -10,7 +10,6 @@ const path =
 
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
-  gl.setSize(window.innerWidth/2,window.innerHeight/2);
   const controls = useRef();
 
   useEffect(() => {
@@ -19,9 +18,10 @@ function Controls(props) {
     });
   }, [scene]);
 
-  scene.background = new THREE.Color("white");
   camera.position.set(12, 12, 12);
   gl.setPixelRatio(window.devicePixelRatio);
+  gl.setSize(window.innerWidth / 2, window.innerHeight / 2);
+  scene.background = new THREE.Color("white");
 
   useRender(() => controls.current && controls.current.update(), false);
 
@@ -39,7 +39,7 @@ export default function Scene() {
 
   return (
     <>
-      <Canvas >
+      <Canvas>
         <Controls
           enableDamping
           enablePan={false}

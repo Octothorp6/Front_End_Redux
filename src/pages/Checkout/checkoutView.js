@@ -104,7 +104,7 @@ class Checkout extends React.PureComponent {
                 validationSchema={CheckoutSchema}
                 validateOnChange={true}
               >
-                {({ values, errors, touched, validateForm }) => (
+                {({ values, errors, touched, validateForm, resetForm }) => (
                   <Form>
                     <br />
                     <span>
@@ -166,11 +166,11 @@ class Checkout extends React.PureComponent {
                                 <Button
                                   color="primary"
                                   className={classes.button}
-                                  onClick={() =>
-                                    validateForm().then(() =>
-                                      this.handlePreorder(values)
-                                    )
-                                  }
+                                  onClick={() => {
+                                    validateForm()
+                                      .then(() => this.handlePreorder(values))
+                                      .then(() => resetForm(fieldState));
+                                  }}
                                 >
                                   Pre Order
                                 </Button>
@@ -220,7 +220,11 @@ class Checkout extends React.PureComponent {
                 )}
               </Formik>
             </Paper>
-            {this.state.step === 3 && <div className={classes.bottomDiv}><br /> <br /></div>}
+            {this.state.step === 3 && (
+              <div className={classes.bottomDiv}>
+                <br /> <br />
+              </div>
+            )}
           </main>
         </GridContainer>
       </React.Fragment>
