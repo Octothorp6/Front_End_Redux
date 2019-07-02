@@ -220,6 +220,7 @@ class Checkout extends React.PureComponent {
                 )}
               </Formik>
             </Paper>
+            {this.state.step === 3 && <div><br /> <br /></div>}
           </main>
         </GridContainer>
       </React.Fragment>

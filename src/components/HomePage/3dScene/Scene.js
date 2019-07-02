@@ -10,6 +10,7 @@ const path =
 
 function Controls(props) {
   const { canvas, camera, gl, scene } = useThree();
+  gl.setSize(window.innerWidth/2,window.innerHeight/2);
   const controls = useRef();
 
   useEffect(() => {
@@ -19,7 +20,7 @@ function Controls(props) {
   }, [scene]);
 
   scene.background = new THREE.Color("white");
-  camera.position.set(10, 10, 10);
+  camera.position.set(12, 12, 12);
   gl.setPixelRatio(window.devicePixelRatio);
 
   useRender(() => controls.current && controls.current.update(), false);
@@ -38,7 +39,7 @@ export default function Scene() {
 
   return (
     <>
-      <Canvas>
+      <Canvas >
         <Controls
           enableDamping
           enablePan={false}
