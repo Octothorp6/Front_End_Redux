@@ -53,8 +53,8 @@ export const contactUs = info => {
     method: "sendEmail",
     params: [
       [userObj],
-      info.userEmail,
-      `Website Contact from User: ${info.userName}`,
+      info.email,
+      `Website Contact from User: ${info.name}`,
       ContactTemp(info.message)
     ],
     id: 500
