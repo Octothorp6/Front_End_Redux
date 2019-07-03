@@ -1,6 +1,5 @@
 //INTIIAL CHECKOUTSTATE
 export const checkoutState = {
-  userPassword: "",
   orderTotal: null,
   orderId: Date.now(),
   orderStatus: "",
@@ -48,6 +47,7 @@ export const contactState = {
 export const fieldState = {
   userEmail: "",
   userRole: "customer",
+  password: "arbitraryValue",
   userFirst: "",
   userLast: "",
   cardHolder: "",

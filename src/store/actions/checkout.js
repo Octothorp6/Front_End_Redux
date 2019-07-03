@@ -1,19 +1,26 @@
 import {
-  CREDIT_CHECKOUT,
-  CRYPTO_CHECKOUT,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
   GET_TOTAL,
+  CREDIT_CHECKOUT,
   CREDIT_CHECKOUT_SUCCESS,
   CREDIT_CHECKOUT_ERROR,
-  CRYPTO_CHECKOUT_SUCCESS
+  CRYPTO_CHECKOUT,
+  CRYPTO_CHECKOUT_SUCCESS,
+  CRYPTO_CHECKOUT_ERROR,
+  PRE_ORDER,
+  PRE_ORDER_ERROR,
+  PRE_ORDER_SUCCESS
 } from "./types";
 import {
   signUpInfo,
   checkoutInfo,
   ccTxInfo,
   txInfo,
-  invoiceInfo
+  invoiceInfo,
+  confirmOrder,
+  preOrderInfo,
+  emailContact
 } from "../../utils/sanitizer";
 import API from "../../utils/API";
 
@@ -33,14 +40,14 @@ export const removeItemFromCart = (itemId, cart) => {
   };
 };
 
-export const getTotal = cart => {
+const getTotal = cart => {
   return {
     type: GET_TOTAL,
     payload: cart
   };
 };
 
-//===================================================================
+//=================================================================================
 // CRYPTO CHECKOUT ACTIONS
 
 export const cryptoCheckout = payload => {
@@ -59,22 +66,22 @@ export const cryptoCheckout = payload => {
         window.location.assign(invoiceLink.data.result);
       }
     } catch (error) {
-      dispatch(creditCheckoutError(error));
+      dispatch(cryptoCheckoutError(error));
     }
   };
 };
 
-export const cryptoCheckoutSuccess = payload => ({
+const cryptoCheckoutSuccess = payload => ({
   type: CRYPTO_CHECKOUT_SUCCESS,
   payload: payload
 });
 
-export const cryptoCheckoutError = error => ({
-  type: CREDIT_CHECKOUT_ERROR,
+const cryptoCheckoutError = error => ({
+  type: CRYPTO_CHECKOUT_ERROR,
   payload: error
 });
 
-//=================================================================
+//=================================================================================
 // CREDIT CHECKOUT ACTIONS
 
 export const creditCheckout = payload => {
@@ -101,12 +108,53 @@ export const creditCheckout = payload => {
   };
 };
 
-export const creditCheckoutSuccess = payload => ({
+const creditCheckoutSuccess = payload => ({
   type: CREDIT_CHECKOUT_SUCCESS,
   payload: payload
 });
 
-export const creditCheckoutError = error => ({
-  type: CREDIT_CHECKOUT_SUCCESS,
+const creditCheckoutError = error => ({
+  type: CREDIT_CHECKOUT_ERROR,
+  payload: error
+});
+
+// PREORDER FUNCTIONS
+//=================================================================================
+export const preOrder = payload => {
+  let user = signUpInfo(payload);
+  let customer = preOrderInfo(payload);
+  let confirmMsg = confirmOrder(payload);
+  let emailMsg = emailContact(payload);
+
+  return async dispatch => {
+    dispatch({ type: PRE_ORDER });
+    try {
+      let register = await API.register(user);
+      if (register.status === 200) {
+        let token = register.data.result.token;
+        let presale = await API.newTransaction(customer, token);
+        let sendEmail = await API.sendPreorderEmail(confirmMsg, token);
+        let sendConfirmation = await API.sendEmail(emailMsg, token);
+        console.log(
+          presale.statusText,
+          sendEmail.statusText,
+          sendConfirmation.statusText
+        );
+        dispatch(preOrderSuccess({ payload, token }));
+      }
+    } catch (error) {
+      dispatch(preOrderError({ message: error }));
+      window.alert("This user already exists.");
+    }
+  };
+};
+
+const preOrderSuccess = payload => ({
+  type: PRE_ORDER_SUCCESS,
+  payload: payload
+});
+
+const preOrderError = error => ({
+  type: PRE_ORDER_ERROR,
   payload: error
 });

@@ -1,45 +1,54 @@
 import React from "react";
-import logo from "../../assets/ENLinuxGrey.png";
 import {
   Grid,
   CircularProgress,
   Typography,
   withStyles,
   Button,
+  Tabs,
+  Tab,
   TextField,
   Fade
 } from "@material-ui/core";
+import { tuxor } from "../../assets";
 
 const Login = ({ classes, ...props }) => (
   <Grid container className={classes.container}>
     <div className={classes.logotypeContainer}>
-      <img src={logo} alt="logo" className={classes.logotypeImage} />
+      <img src={tuxor} alt="logo" className={classes.logotypeImage} />
       <Typography className={classes.logotypeText}>Ethernode Admin</Typography>
     </div>
     <div className={classes.formContainer}>
       <div className={classes.form}>
+        <Tabs
+          value={props.activeTabId}
+          onChange={props.handleTabChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
+        >
+          <Tab label="Login" classes={{ root: classes.tab }} />
+          <Tab label="Register" classes={{ root: classes.tab }} />
+        </Tabs>
+        {props.activeTabId === 0 && (
           <React.Fragment>
-            <Typography variant="h1" className={classes.greeting} style={{color: "white"}}>
-              Welcome to Ethernode
+            <Typography variant="h1" className={classes.greeting}>
+              Welcome!
             </Typography>
-            <div className={classes.formDividerContainer}>
-              <div className={classes.formDivider} />
-              <div className={classes.formDivider} />
-            </div>
             <Fade in={props.error}>
               <Typography color="secondary" className={classes.errorMessage}>
                 Incorrect login or password.
               </Typography>
             </Fade>
             <TextField
-              id="email"
+              id="username"
               InputProps={{
                 classes: {
                   underline: classes.textFieldUnderline,
                   input: classes.textField
                 }
               }}
-              value={props.usernameValue}
+              value={props.username}
               onChange={e => props.handleInput(e, "username")}
               margin="normal"
               placeholder="Email Adress"
@@ -54,7 +63,7 @@ const Login = ({ classes, ...props }) => (
                   input: classes.textField
                 }
               }}
-              value={props.passwordValue}
+              value={props.password}
               onChange={e => props.handleInput(e, "password")}
               margin="normal"
               placeholder="Password"
@@ -67,14 +76,12 @@ const Login = ({ classes, ...props }) => (
               ) : (
                 <Button
                   disabled={
-                    props.usernameValue.length === 0 ||
-                    props.passwordValue.length === 0
+                    props.username.length === 0 || props.password.length === 0
                   }
-                  onClick={props.handleLoginButtonClick}
+                  onClick={() => props.handleLoginButtonClick()}
                   variant="contained"
                   color="primary"
                   size="large"
-                  
                 >
                   Login
                 </Button>
@@ -84,13 +91,109 @@ const Login = ({ classes, ...props }) => (
                 size="large"
                 className={classes.forgetButton}
               >
-                Forgot Password
+                Forget Password
               </Button>
             </div>
           </React.Fragment>
+        )}
+        {props.activeTabId === 1 && (
+          <React.Fragment>
+            <Typography variant="h1" className={classes.greeting}>
+              Create your account
+            </Typography>
+            <Typography variant="h2" className={classes.subGreeting} />
+            <Fade in={props.error}>
+              <Typography color="secondary" className={classes.errorMessage}>
+                Something is wrong with your login or password :(
+              </Typography>
+            </Fade>
+            <TextField
+              id="firstName"
+              InputProps={{
+                classes: {
+                  underline: classes.textFieldUnderline,
+                  input: classes.textField
+                }
+              }}
+              value={props.firstName}
+              onChange={e => props.handleInput(e, "firstName")}
+              margin="normal"
+              placeholder="First Name"
+              type="text"
+              fullWidth
+            />
+            <TextField
+              id="lastname"
+              InputProps={{
+                classes: {
+                  underline: classes.textFieldUnderline,
+                  input: classes.textField
+                }
+              }}
+              value={props.lastName}
+              onChange={e => props.handleInput(e, "lastName")}
+              margin="normal"
+              placeholder="Last Name"
+              type="text"
+              fullWidth
+            />
+            <TextField
+              id="username"
+              InputProps={{
+                classes: {
+                  underline: classes.textFieldUnderline,
+                  input: classes.textField
+                }
+              }}
+              value={props.username}
+              onChange={e => props.handleInput(e, "username")}
+              margin="normal"
+              placeholder="Email Address"
+              type="email"
+              fullWidth
+            />
+            <TextField
+              id="password"
+              InputProps={{
+                classes: {
+                  underline: classes.textFieldUnderline,
+                  input: classes.textField
+                }
+              }}
+              value={props.password}
+              onChange={e => props.handleInput(e, "password")}
+              margin="normal"
+              placeholder="Password"
+              type="password"
+              fullWidth
+            />
+            <div className={classes.creatingButtonContainer}>
+              {props.isLoading ? (
+                <CircularProgress size={26} />
+              ) : (
+                <Button
+                  onClick={() => props.handleRegisterButtonClick()}
+                  disabled={
+                    props.username.length === 0 ||
+                    props.password.length === 0 ||
+                    props.lastName.length === 0 ||
+                    props.firstName.length === 0
+                  }
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  className={classes.createAccountButton}
+                >
+                  Create your account
+                </Button>
+              )}
+            </div>
+          </React.Fragment>
+        )}
       </div>
       <Typography color="primary" className={classes.copyright}>
-        © 2019 Ethernode, LLC all rights reserved.
+        © 2019 Ethernode, LLC. All rights reserved.
       </Typography>
     </div>
   </Grid>
@@ -149,18 +252,21 @@ const styles = theme => ({
     width: 320
   },
   tab: {
+    color: "white",
     fontWeight: 400,
     fontSize: 18
   },
   greeting: {
     fontWeight: 500,
     textAlign: "center",
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 4,
+    color: "white"
   },
   subGreeting: {
     fontWeight: 500,
     textAlign: "center",
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
+    color: "white"
   },
   googleButton: {
     marginTop: theme.spacing.unit * 6,
@@ -235,10 +341,10 @@ const styles = theme => ({
   },
   copyright: {
     marginTop: theme.spacing.unit * 4,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
     [theme.breakpoints.up("md")]: {
       position: "absolute",
-      bottom: theme.spacing.unit * 2,
+      bottom: theme.spacing.unit * 2
     }
   }
 });

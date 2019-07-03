@@ -1,4 +1,4 @@
-import { Purchase, Contact } from "./EmailTemplates"
+import { ContactTemp, PurchaseTemp, NewSalesTemp } from "./EmailTemplates";
 
 //==========================================================================
 //SANITIZE USER INFORMATION FOR REGISTRATION
@@ -7,11 +7,11 @@ export const signUpInfo = user => {
     jsonrpc: "2.0",
     method: "createUser",
     params: [
-      user.userEmail,
       user.userFirst,
       user.userLast,
-      user.userPassword,
-      user.userRole
+      user.userEmail,
+      user.password,
+      "customer"
     ],
     id: 4
   };
@@ -19,7 +19,7 @@ export const signUpInfo = user => {
 };
 
 //===========================================================================
-//Clean up contact email Data
+//CLEAN UP USER EMAIL BEFORE CONTACTING THEM AFTER A PURCHASE
 export const emailContact = info => {
   let userObj = {
     email: info.userEmail,
@@ -29,29 +29,39 @@ export const emailContact = info => {
   let contact = {
     jsonrpc: "2.0",
     method: "sendEmail",
-    params: [[userObj], process.env.REACT_APP_SALES_EMAIL, "Thank You for Your Recent Purchase.", Purchase(info.message)],
+    params: [
+      [userObj],
+      process.env.REACT_APP_SALES_EMAIL,
+      "Thank You for Your Recent Preorder.",
+      PurchaseTemp
+    ],
     id: 500
   };
   return contact;
 };
 
-
 //===========================================================================
-//Clean up contact email Data
+//CLEAN UP USER EMAIL INFORMATION BEFORE SENDING TO SENDGRID
 export const contactUs = info => {
   let userObj = {
     email: process.env.REACT_APP_SUPPORT_EMAIL,
-    name:  `EtherNode Support`
+    name: `EtherNode Support`
   };
 
   let contact = {
     jsonrpc: "2.0",
     method: "sendEmail",
-    params: [[userObj], info.userEmail,`Website Contact from User: ${info.userName}`, Contact(info.message)],
+    params: [
+      [userObj],
+      info.email,
+      `Website Contact from User: ${info.name}`,
+      ContactTemp(info.message)
+    ],
     id: 500
   };
   return contact;
 };
+
 //===========================================================================
 //CLEAN USER BEFORE SENDING TO PAYMENT API
 export const checkoutInfo = user => {
@@ -153,7 +163,7 @@ export const invoiceInfo = user => {
       "USD",
       `${user.orderId}`,
       "Enkeep",
-      "https://dev.ethernode.io",
+      process.env.REACT_APP_BTCPAY_REDIRECT_LINK,
       true,
       user.userFirst,
       user.shippingAddress1,
@@ -219,15 +229,88 @@ export const txInfo = (user, url) => {
 };
 
 //==========================================================================
-// SANITIZE LOGIN && REGISTER DATA 
-export const authData = (username, password) => {
+// SANITIZE LOGIN && REGISTER DATA
+export const authData = user => {
   let admin = {
     jsonrpc: "2.0",
     method: "login",
     params: [
-      username,
-      password
-    ]
-  }
-  return admin 
-}
+      user.username, 
+      user.password
+    ],
+    id: 2
+  };
+  return admin;
+};
+//===========================================================================
+// PREORDER ONLY BELOW
+//===========================================================================
+//SANITIZE USER BEFORE SENDING TO DB AFTER ORDER
+export const preOrderInfo = user => {
+  let txText = "PRESALE";
+  let transID = "PRESALE";
+  let text = "PRESALE REGISTRATION";
+
+  let presaleTx = {
+    orderId: `${user.orderId}`,
+    paymentType: "PRESALE",
+    txResult: `${text}`,
+    txCode: `${transID}`,
+    txText: `${txText}`,
+    items: [user.cart],
+    billing: {
+      billFirst: user.userFirst,
+      billLast: user.userLast,
+      company: "null",
+      address1: user.billingAddress1,
+      address2: user.billingAddress2,
+      city: user.billingCity,
+      state: user.billingState,
+      country: user.billingCountry,
+      phone: "212-222-2222"
+    },
+    shipping: {
+      shipFirst: user.userFirst,
+      shipLast: user.userLast,
+      company: "null",
+      address1: user.shippingAddress1,
+      address2: user.shippingAddress2,
+      city: user.shippingCity,
+      state: user.shippingState,
+      country: user.shippingCountry,
+      phone: "212-222-2222"
+    },
+    orderTotal: user.orderTotal,
+    orderStatus: user.orderStatus
+  };
+
+  let ccTxData = {
+    jsonrpc: "2.0",
+    method: "newOrder",
+    params: [user.userEmail, presaleTx],
+    id: 3
+  };
+  return ccTxData;
+};
+
+//===========================================================================
+// CLEAN UP ORDER && PREORDER CONFIRMATION EMAIL DATA
+export const confirmOrder = user => {
+  let userObj = {
+    email: process.env.REACT_APP_SALES_EMAIL,
+    name: `New Preorder`
+  };
+
+  let contact = {
+    jsonrpc: "2.0",
+    method: "sendEmail",
+    params: [
+      [userObj],
+      user.userEmail,
+      `New Preorder from User: ${user.userFirst}, orderId: ${user.orderId}`,
+      NewSalesTemp(user.userFirst, user.userLast, user.userEmail, user.orderTotal)
+    ],
+    id: 500
+  };
+  return contact;
+};

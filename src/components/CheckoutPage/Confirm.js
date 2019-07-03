@@ -8,9 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 
 const Confirm = ({ cart, classes, orderTotal, values }) => {
-
   return (
-    <React.Fragment>
+    <div className={classes.confirm}>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
@@ -28,7 +27,7 @@ const Confirm = ({ cart, classes, orderTotal, values }) => {
           </Typography>
         </ListItem>
       </List>
-      <Grid container spacing={16}>
+      <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
             Shipping
@@ -43,21 +42,25 @@ const Confirm = ({ cart, classes, orderTotal, values }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
-            Payment details
+            Customer details
           </Typography>
           <Grid item xs={12}>
             <Typography gutterBottom>
-              {values.userFirst} {values.userLast}
+              {values.userFirst} {values.userLast} <br />
+              {values.userEmail}
             </Typography>
             <Typography gutterBottom>{values.cardNumber}</Typography>
           </Grid>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </div>
   );
 };
 
 const styles = theme => ({
+  confirm: {
+    width: "100%"
+  },
   listItem: {
     padding: `${theme.spacing.unit}px 0`
   },

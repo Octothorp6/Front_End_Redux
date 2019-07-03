@@ -5,7 +5,7 @@ import GridContainer from "../UI/Grid/GridContainer";
 import GridItem from "../UI/Grid/GridItem";
 import "./checkoutPages.css";
 
-const DifBilling = ({ errors, touched }) => (
+export const DifBilling = ({ errors, touched }) => (
   <div className="textFields">
     <GridContainer spacing={24}>
       <GridItem lg={6} sm={12}>
@@ -13,11 +13,9 @@ const DifBilling = ({ errors, touched }) => (
           type="text"
           name="cardHolder"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
-          helperText={
-            touched.cardHolder && errors.cardHolder && errors.cardHolder
-          }
+          helperText={touched.cardHolder && errors.cardHolder}
           fullwidth="true"
         />
       </GridItem>
@@ -26,11 +24,9 @@ const DifBilling = ({ errors, touched }) => (
           type="number"
           name="cardNumber"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
-          helperText={
-            touched.cardNumber && errors.cardNumber && errors.cardNumber
-          }
+          helperText={touched.cardNumber && errors.cardNumber}
           fullwidth="true"
         />
       </GridItem>
@@ -39,11 +35,9 @@ const DifBilling = ({ errors, touched }) => (
           type="text"
           name="expiration"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
-          helperText={
-            touched.expiration && errors.expiration && errors.expiration
-          }
+          helperText={touched.expiration && errors.expiration}
           fullwidth="true"
         />
       </GridItem>
@@ -52,13 +46,9 @@ const DifBilling = ({ errors, touched }) => (
           type="text"
           name="shippingAddress1"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
-          helperText={
-            touched.shippingAddress1 &&
-            errors.shippingAddress1 &&
-            errors.shippingAddress1
-          }
+          helperText={touched.shippingAddress1 && errors.shippingAddress1}
           fullwidth="true"
         />
       </GridItem>
@@ -67,18 +57,12 @@ const DifBilling = ({ errors, touched }) => (
           type="text"
           name="shippingAddress2"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
-          helperText={
-            touched.shippingAddress2 &&
-            errors.shippingAddress2 &&
-            errors.shippingAddress2
-          }
+          helperText={touched.shippingAddress2 && errors.shippingAddress2}
           fullwidth="true"
         />
       </GridItem>
     </GridContainer>
   </div>
 );
-
-export default DifBilling;

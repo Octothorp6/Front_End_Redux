@@ -1,17 +1,11 @@
 import React from "react";
-// nodejs library that concatenates classes
 import classNames from "classnames";
-// nodejs library to set properties for components
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-//components
-import GridContainer from "../../UI/Grid/GridContainer"
-import GridItem from "../../UI/Grid/GridItem";
 import navPillsStyle from "./navPillsStyle";
+import { Tabs, Tab, withStyles } from "@material-ui/core";
+import { GridContainer, GridItem } from "../../UI/Grid";
+
 
 class NavPills extends React.Component {
   constructor(props) {
@@ -124,13 +118,7 @@ NavPills.propTypes = {
       tabContent: PropTypes.node
     })
   ).isRequired,
-  color: PropTypes.oneOf([
-    "primary",
-    "warning",
-    "danger",
-    "success",
-    "info",
-  ]),
+  color: PropTypes.oneOf(["primary", "warning", "danger", "success", "info"]),
   direction: PropTypes.string,
   horizontal: PropTypes.shape({
     tabsGrid: PropTypes.object,

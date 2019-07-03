@@ -20,13 +20,12 @@ import {
 } from "../../../assets/index";
 import Home from "@material-ui/icons/Home";
 // core components
-import GridContainer from "../../UI/Grid/GridContainer";
-import GridItem from "../../UI/Grid/GridItem";
+import { GridContainer, GridItem } from "../../UI/Grid";
 import NavPills from "../navPills";
 import pillsStyle from "./navPillsStyle";
 import ListItem from "../List";
 import List from "@material-ui/core/List";
-import Enkeep from "../Enkeep";
+import Presale from "../Presale";
 import EnOs from "../EnOs";
 
 function SectionPills(props) {
@@ -111,7 +110,7 @@ function SectionPills(props) {
                             }
                           />
                         </List>
-                        <Enkeep />
+                        <Presale />
                       </React.Fragment>
                     )
                   },

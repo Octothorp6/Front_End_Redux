@@ -1,16 +1,6 @@
 import React from "react";
-// nodejs library to set properties for components
 import PropTypes from "prop-types";
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import Grid from "@material-ui/core/Grid";
-
-const style = {
-  grid: {
-    marginRight: "0px",
-    marginLeft: "0px"
-  }
-};
+import { withStyles, Grid } from "@material-ui/core";
 
 function GridContainer({ ...props }) {
   const { classes, children, className, ...rest } = props;
@@ -20,6 +10,13 @@ function GridContainer({ ...props }) {
     </Grid>
   );
 }
+
+const style = {
+  grid: {
+    marginRight: "0px",
+    marginLeft: "0px"
+  }
+};
 
 GridContainer.defaultProps = {
   className: ""
