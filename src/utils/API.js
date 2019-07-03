@@ -12,7 +12,6 @@ function postWithToken(suffix, data, token) {
 function postWithoutToken(suffix, data) {
   return axios.post(baseUrl + suffix, data);
 }
-
 // GET REQUEST HELPERS
 function getWithToken(suffix, token) {
   return axios.get(baseUrl + suffix, {
@@ -20,22 +19,23 @@ function getWithToken(suffix, token) {
   });
 }
 
-function getWithoutToken(suffix, data) {
-  return axios.get(baseUrl + suffix, data);
-}
+// function getWithoutToken(suffix, data) {
+//   return axios.get(baseUrl + suffix, data);
+// }
 
 export default {
   // POST REQUESTS WITHOUT TOKEN
-  sendEmail: function(email) {
-    return postWithoutToken("/mailRPC/mailRPC", email);
-  },
   register: function(user) {
     return postWithoutToken("/accountRPC/acc", user);
   },
   login: function(user) {
     return postWithoutToken("/accountRPC/acc", user);
   },
+  sendEmail: function(email) {
+    return postWithoutToken("/mailRPC/mailRPC", email);
+  },
   // POST REQUESTS WITH TOKEN
+
   sendPreorderEmail: function(data, token) {
     return postWithToken("/mailRPC/mailRPC", data, token);
   },

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { CircularProgress } from "@material-ui/core"
+import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // HELPER FUNCTIONS 
@@ -23,4 +24,11 @@ export const loadGLTF = url => {
   return new Promise(resolve => {
     new GLTFLoader().load(url, resolve);
   });
+};
+
+
+export const loadTexture = url => {
+  return new Promise(resolve => {
+    new THREE.TextureLoader().load(url, resolve);
+  })
 };

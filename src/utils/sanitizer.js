@@ -32,7 +32,7 @@ export const emailContact = info => {
     params: [
       [userObj],
       process.env.REACT_APP_SALES_EMAIL,
-      "Thank You for Your Recent Purchase.",
+      "Thank You for Your Recent Preorder.",
       PurchaseTemp
     ],
     id: 500
@@ -53,8 +53,8 @@ export const contactUs = info => {
     method: "sendEmail",
     params: [
       [userObj],
-      info.userEmail,
-      `Website Contact from User: ${info.userName}`,
+      info.email,
+      `Website Contact from User: ${info.name}`,
       ContactTemp(info.message)
     ],
     id: 500
@@ -163,7 +163,7 @@ export const invoiceInfo = user => {
       "USD",
       `${user.orderId}`,
       "Enkeep",
-      "https://dev.ethernode.io",
+      process.env.REACT_APP_BTCPAY_REDIRECT_LINK,
       true,
       user.userFirst,
       user.shippingAddress1,

@@ -13,7 +13,7 @@ export const DifBilling = ({ errors, touched }) => (
           type="text"
           name="cardHolder"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
           helperText={touched.cardHolder && errors.cardHolder}
           fullwidth="true"
@@ -24,7 +24,7 @@ export const DifBilling = ({ errors, touched }) => (
           type="number"
           name="cardNumber"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
           helperText={touched.cardNumber && errors.cardNumber}
           fullwidth="true"
@@ -35,7 +35,7 @@ export const DifBilling = ({ errors, touched }) => (
           type="text"
           name="expiration"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
           helperText={touched.expiration && errors.expiration}
           fullwidth="true"
@@ -46,7 +46,7 @@ export const DifBilling = ({ errors, touched }) => (
           type="text"
           name="shippingAddress1"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
           helperText={touched.shippingAddress1 && errors.shippingAddress1}
           fullwidth="true"
@@ -57,7 +57,7 @@ export const DifBilling = ({ errors, touched }) => (
           type="text"
           name="shippingAddress2"
           className="Field"
-          variant="outlined"
+          variant="filled"
           component={TextField}
           helperText={touched.shippingAddress2 && errors.shippingAddress2}
           fullwidth="true"

@@ -2,10 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Paper, Typography, withStyles } from "@material-ui/core";
 import { Form, Formik } from "formik";
-import {
-  GridContainer,
-  GridItem
-} from "../../components/UI/Grid";
+import { GridContainer, GridItem } from "../../components/UI/Grid";
 import {
   AddressForm,
   Confirm,
@@ -98,7 +95,7 @@ class Checkout extends React.PureComponent {
     const { classes, orderTotal, cart, orderId } = this.props;
 
     return (
-      <>
+      <React.Fragment>
         <GridContainer spacing={24} justify="center">
           <main className={classes.layout}>
             <Paper className={classes.paper}>
@@ -107,14 +104,19 @@ class Checkout extends React.PureComponent {
                 validationSchema={CheckoutSchema}
                 validateOnChange={true}
               >
-                {({ values, errors, touched, validateForm }) => (
+                {({ values, errors, touched, validateForm, resetForm }) => (
                   <Form>
                     <br />
-                    <GridItem xs={12} sm={12} md={12} lg={12}>
-                      <Typography variant="subheading">
-                        Cart total: {orderTotal} &nbsp; Items: {cart.length}
+                    <span>
+                      <Typography
+                        variant="subheading"
+                        color="textPrimary"
+                        align="center"
+                      >
+                        Cart total: {orderTotal ? "$" + orderTotal : 0} &nbsp;
+                        Items: {cart.length}
                       </Typography>{" "}
-                    </GridItem>
+                    </span>
                     <br />
                     <GridItem xs={12} sm={12} md={12} lg={12}>
                       {this.state.step === 3 ? (
@@ -129,6 +131,8 @@ class Checkout extends React.PureComponent {
                             once your order has shipped.
                           </Typography>
                           <Button
+                            color="primary"
+                            variant="contained"
                             onClick={this.handleBack}
                             className={classes.button}
                           >
@@ -150,6 +154,7 @@ class Checkout extends React.PureComponent {
                               {this.state.step !== 0 ? (
                                 <Button
                                   color="primary"
+                                  className={classes.button}
                                   onClick={this.handleBack}
                                 >
                                   Back
@@ -160,18 +165,22 @@ class Checkout extends React.PureComponent {
                               {this.state.step === 2 ? (
                                 <Button
                                   color="primary"
-                                  onClick={() => this.handlePreorder(values)}
+                                  className={classes.button}
+                                  onClick={() => {
+                                    validateForm()
+                                      .then(() => this.handlePreorder(values))
+                                      .then(() => resetForm(fieldState));
+                                  }}
                                 >
                                   Pre Order
                                 </Button>
                               ) : (
                                 <Button
                                   color="primary"
-                                  onClick={() =>
-                                    validateForm().then(() => this.handleNext())
-                                  }
+                                  className={classes.button}
+                                  onClick={() => this.handleNext()}
                                   disabled={
-                                    this.state.step !== 0
+                                    this.state.step !== 0 || cart.length === 0
                                       ? values.userFirst === "" ||
                                         values.userLast === "" ||
                                         values.userEmail === "" ||
@@ -186,12 +195,15 @@ class Checkout extends React.PureComponent {
                                 </Button>
                               )}
                             </div>
+                            <br />
                           </GridItem>
                         </React.Fragment>
                       )}
+
                       {/* {this.state.step === 1 ? (
                         <Button
                           color="primary"
+                          className={classes.button}
                           onClick={() =>
                             validateForm().then(() =>
                               this.cryptoCheckout(values)
@@ -208,9 +220,14 @@ class Checkout extends React.PureComponent {
                 )}
               </Formik>
             </Paper>
+            {this.state.step === 3 && (
+              <div className={classes.bottomDiv}>
+                <br /> <br />
+              </div>
+            )}
           </main>
         </GridContainer>
-      </>
+      </React.Fragment>
     );
   }
 }
@@ -219,22 +236,24 @@ const styles = theme => ({
   layout: {
     display: "flex",
     width: "auto",
+    overflowX: "hidden",
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
-    paddingBottom: "6.6rem",
+    paddingBottom: "11.4rem",
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
       marginLeft: "auto",
       marginRight: "auto"
     },
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
-      maxWidth: "100%"
+      maxWidth: "100%",
+      paddingBottom: "6.7rem"
     }
   },
   paper: {
     margin: "auto",
+    maxHeight: "auto",
     padding: theme.spacing.unit * 2,
-    overflowX: "hidden",
     alignItems: "center",
     textAlign: "center",
     width: 600,
@@ -244,6 +263,16 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       margin: "auto"
     }
+  },
+  bottomDiv: {
+    margin: "auto",
+    paddingBottom: "24rem"
+  },
+  buttons: {
+    display: "flex"
+  },
+  button: {
+    marginTop: theme.spacing.unit * 2
   }
 });
 

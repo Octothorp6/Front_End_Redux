@@ -6,7 +6,7 @@ import {
   SEND_EMAIL_SUCCESS,
   CONTACT_US,
   CONTACT_US_ERROR,
-  CONTACT_US_SUCCESS,
+  CONTACT_US_SUCCESS
 } from "../actions/types";
 
 //=================================================================
@@ -19,7 +19,7 @@ export const sendEmail = payload => {
     try {
       dispatch(sendEmailSuccess(payload));
       let thankYou = await API.sendEmail(customer);
-        console.log(thankYou.statusText)
+      console.log(thankYou.statusText);
     } catch (error) {
       dispatch(sendEmailError(error));
     }
@@ -41,7 +41,7 @@ export const sendEmailError = error => ({
 
 export const contactEthernode = payload => {
   let user = contactUs(payload);
-  
+
   return async dispatch => {
     dispatch({ type: CONTACT_US });
     try {

@@ -7,7 +7,7 @@ import { Form, Formik, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { contactState } from "../../../store/initialState";
 import { ContactSchema } from "./validationSchema";
-import "./Form.css"
+import "./Form.css";
 
 class ContactForm extends Component {
   handleSubmit = values => {
@@ -16,13 +16,12 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <Formik
-        initialValues={{ ...contactState }}
-        onSubmit={this.handleSubmit}
-        validationSchema={ContactSchema}
-      >
-        {({ values, validateForm }) => (
-          <React.Fragment>
+      <React.Fragment>
+        <Formik
+          initialValues={{ ...contactState }}
+          validationSchema={ContactSchema}
+        >
+          {({ values, validateForm, resetForm }) => (
             <Form>
               <GridContainer>
                 <GridItem xs={12} sm={12} lg={6}>
@@ -36,24 +35,24 @@ class ContactForm extends Component {
                   </span>
                 </GridItem>
                 <GridItem sm={12} lg={6}>
-                  <br/>
+                  <br />
                   <Field
                     type="text"
                     name="name"
                     margin="normal"
                     className="Field"
-                    variant="outlined"
+                    variant="filled"
                     label="Name"
                     component={TextField}
                     fullwidth="true"
                   />
                   <Field
-                    type="text"
+                    type="email"
                     name="email"
                     margin="normal"
                     className="Field"
                     label="Email"
-                    variant="outlined"
+                    variant="filled"
                     component={TextField}
                     fullwidth="true"
                   />
@@ -63,17 +62,17 @@ class ContactForm extends Component {
                     margin="normal"
                     className="Field"
                     label="Message"
-                    variant="outlined"
+                    variant="filled"
                     component={TextField}
                     fullwidth="true"
                   />
                   <Button
                     variant="contained"
                     color="default"
-                    onClick={() =>
-                      validateForm().then(() => this.handleSubmit(values))
-                    }
-                    type="submit"
+                    onClick={() => {
+                      validateForm().then(() => this.handleSubmit(values));
+                      resetForm(contactState)
+                    }}
                   >
                     Submit
                   </Button>
@@ -81,17 +80,17 @@ class ContactForm extends Component {
               </GridContainer>
               <br />
             </Form>
-          </React.Fragment>
-        )}
-      </Formik>
+          )}
+        </Formik>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  name: state.name,
-  email: state.email,
-  message: state.message
+  name: state.email.name,
+  email: state.email.email,
+  message: state.email.message
 });
 
 const mapDispatchToProps = {

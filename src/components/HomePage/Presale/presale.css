@@ -3,3 +3,9 @@
     padding-left: 40px !important 
   }
 }
+
+.buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
