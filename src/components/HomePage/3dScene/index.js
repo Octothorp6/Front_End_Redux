@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, forwardRef } from "react";
 import {
   AppBar,
   withStyles,
@@ -12,12 +12,12 @@ import Scene from "./Scene";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 
-function EnkeepScene({ classes }) {
-  const [open, setOpen] = React.useState(false);
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+function EnkeepScene({ classes }) {
+  const [open, setOpen] = useState(false);
 
   function handleClickOpen() {
     setOpen(true);
@@ -30,10 +30,11 @@ function EnkeepScene({ classes }) {
     <div>
       <Button
         variant="outlined"
+        size="large"
         style={{ backgroundColor: "#2FCE74", color: "white" }}
         onClick={handleClickOpen}
       >
-        View our 3d Model
+        View 3d Model
       </Button>
       <Dialog
         fullScreen
