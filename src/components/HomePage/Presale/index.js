@@ -10,7 +10,6 @@ import "./presale.css";
 
 const Presale = () => (
   <React.Fragment>
-    <h4>Shipping TBD.</h4>
     <GridContainer>
       <GridItem xs={12} sm={12} md={6} lg={8}>
         <img
