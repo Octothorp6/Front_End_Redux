@@ -4,7 +4,7 @@ export const checkoutState = {
   orderTotal: null,
   orderId: unixDate,
   orderStatus: "",
-  cart: [{}],
+  cart: [],
   salesTax: 0,
   payType: "",
   shippingCost: 0,
