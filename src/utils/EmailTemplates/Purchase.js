@@ -119,17 +119,19 @@ export const PurchaseTemp = ReactDOMServer.renderToStaticMarkup(
                           textAlign: "justify"
                         }}
                       >
-                        Thank you for purchasing an EnKeep, your gateway to the
-                        private, secure, permission-less and censorship
-                        resistant network of Ethereum blockchains. As a peer in
-                        this network you’ll have access to its many features
-                        through EnOS, a transparent and secure digital
-                        environment in which to build and utilize applications
-                        engineered to protect your data, not exploit it. EnKeep
-                        is in production and will begin shipping in early July.
-                        Thank you for being part of our early efforts to bring
-                        the technology of blockchain and the power of digital
-                        freedom to the world.
+                        Thank you for signing up for the EnKeep pre-sale! 
+                        EnKeep is your gateway to the private, secure, permission-less and 
+                        censorship resistant network of Ethereum blockchains. As a peer in 
+                        this network you’ll have access to its many features through EnOS, 
+                        a transparent and secure digital environment to build and 
+                        run applications engineered to protect your data, not exploit it. 
+                        Please check out our expanding resource base by visiting our forums at 
+                        https://forum.ethernode.io/. 
+                        <br /><br />
+                        Thank you for being part of our early efforts to bring the technology 
+                        of blockchain and the power of digital freedom to the world.
+                        <br /><br />
+                        -Team Ethernode
                       </p>
                       <br />
                       <p> - Team Ethernode</p>

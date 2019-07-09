@@ -21,7 +21,7 @@ class ContactForm extends Component {
           initialValues={{ ...contactState }}
           validationSchema={ContactSchema}
         >
-          {({ values, validateForm }) => (
+          {({ values, validateForm, resetForm }) => (
             <Form>
               <GridContainer>
                 <GridItem xs={12} sm={12} lg={6}>
@@ -69,9 +69,10 @@ class ContactForm extends Component {
                   <Button
                     variant="contained"
                     color="default"
-                    onClick={() =>
-                      validateForm().then(() => this.handleSubmit(values))
-                    }
+                    onClick={() => {
+                      validateForm().then(() => this.handleSubmit(values));
+                      resetForm(contactState)
+                    }}
                   >
                     Submit
                   </Button>

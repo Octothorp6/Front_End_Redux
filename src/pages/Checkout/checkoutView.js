@@ -96,15 +96,15 @@ class Checkout extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <main className={classes.layout}>
-          <Paper className={classes.paper}>
-            <GridContainer spacing={24} justify="center">
+        <GridContainer spacing={24} justify="center">
+          <main className={classes.layout}>
+            <Paper className={classes.paper}>
               <Formik
                 initialValues={{ ...fieldState }}
                 validationSchema={CheckoutSchema}
                 validateOnChange={true}
               >
-                {({ values, errors, touched, validateForm }) => (
+                {({ values, errors, touched, validateForm, resetForm }) => (
                   <Form>
                     <br />
                     <span>
@@ -166,7 +166,11 @@ class Checkout extends React.PureComponent {
                                 <Button
                                   color="primary"
                                   className={classes.button}
-                                  onClick={() => this.handlePreorder(values)}
+                                  onClick={() => {
+                                    validateForm()
+                                      .then(() => this.handlePreorder(values))
+                                      .then(() => resetForm(fieldState));
+                                  }}
                                 >
                                   Pre Order
                                 </Button>
@@ -174,11 +178,9 @@ class Checkout extends React.PureComponent {
                                 <Button
                                   color="primary"
                                   className={classes.button}
-                                  onClick={() =>
-                                    validateForm().then(() => this.handleNext())
-                                  }
+                                  onClick={() => this.handleNext()}
                                   disabled={
-                                    this.state.step !== 0
+                                    this.state.step !== 0 || cart.length === 0
                                       ? values.userFirst === "" ||
                                         values.userLast === "" ||
                                         values.userEmail === "" ||
@@ -193,9 +195,11 @@ class Checkout extends React.PureComponent {
                                 </Button>
                               )}
                             </div>
+                            <br />
                           </GridItem>
                         </React.Fragment>
                       )}
+
                       {/* {this.state.step === 1 ? (
                         <Button
                           color="primary"
@@ -215,9 +219,14 @@ class Checkout extends React.PureComponent {
                   </Form>
                 )}
               </Formik>
-            </GridContainer>
-          </Paper>
-        </main>
+            </Paper>
+            {this.state.step === 3 && (
+              <div className={classes.bottomDiv}>
+                <br /> <br />
+              </div>
+            )}
+          </main>
+        </GridContainer>
       </React.Fragment>
     );
   }
@@ -230,7 +239,7 @@ const styles = theme => ({
     overflowX: "hidden",
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
-    paddingBottom: "6.6rem",
+    paddingBottom: "11.4rem",
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
       marginLeft: "auto",
       marginRight: "auto"
@@ -243,6 +252,7 @@ const styles = theme => ({
   },
   paper: {
     margin: "auto",
+    maxHeight: "auto",
     padding: theme.spacing.unit * 2,
     alignItems: "center",
     textAlign: "center",
@@ -253,6 +263,10 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       margin: "auto"
     }
+  },
+  bottomDiv: {
+    margin: "auto",
+    paddingBottom: "24rem"
   },
   buttons: {
     display: "flex"

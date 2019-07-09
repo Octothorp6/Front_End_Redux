@@ -31,10 +31,11 @@ export default {
   login: function(user) {
     return postWithoutToken("/accountRPC/acc", user);
   },
-  // POST REQUESTS WITH TOKEN
-  sendEmail: function(email, token) {
-    return postWithToken("/mailRPC/mailRPC", email, token);
+  sendEmail: function(email) {
+    return postWithoutToken("/mailRPC/mailRPC", email);
   },
+  // POST REQUESTS WITH TOKEN
+
   sendPreorderEmail: function(data, token) {
     return postWithToken("/mailRPC/mailRPC", data, token);
   },
