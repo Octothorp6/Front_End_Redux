@@ -82,7 +82,7 @@ export const checkoutInfo = user => {
       user.shippingState,
       user.shippingZip,
       user.shippingCountry,
-      user.cart,
+      [user.cart],
       user.salesTax,
       user.userFirst,
       user.userLast,
@@ -116,7 +116,7 @@ export const ccTxInfo = (user, response) => {
     txResult: `${text}`,
     txCode: `${transID}`,
     txText: `${txText}`,
-    items: [user.cart],
+    items: [{user.cart}],
     billing: {
       billFirst: user.userFirst,
       billLast: user.userLast,
@@ -252,12 +252,12 @@ export const preOrderInfo = user => {
   let text = "PRESALE REGISTRATION";
 
   let presaleTx = {
-    orderId: `${user.orderId}`,
+    orderId: `${orderId}`,
     paymentType: "PRESALE",
     txResult: `${text}`,
     txCode: `${transID}`,
     txText: `${txText}`,
-    items: [user.cart],
+    items: [{user.cart}],
     billing: {
       billFirst: user.userFirst,
       billLast: user.userLast,
