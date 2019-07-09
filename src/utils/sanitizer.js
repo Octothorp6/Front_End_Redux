@@ -257,7 +257,7 @@ export const preOrderInfo = user => {
     txResult: `${text}`,
     txCode: `${transID}`,
     txText: `${txText}`,
-    items: [user.cart],
+    items: [cart],
     billing: {
       billFirst: user.userFirst,
       billLast: user.userLast,
