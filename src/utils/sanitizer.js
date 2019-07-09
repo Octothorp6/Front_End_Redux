@@ -252,7 +252,7 @@ export const preOrderInfo = user => {
   let text = "PRESALE REGISTRATION";
 
   let presaleTx = {
-    orderId: `${orderId}`,
+    orderId: Date.now(),
     paymentType: "PRESALE",
     txResult: `${text}`,
     txCode: `${transID}`,
