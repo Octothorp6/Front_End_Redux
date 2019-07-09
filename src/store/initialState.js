@@ -1,7 +1,7 @@
 //INTIIAL CHECKOUTSTATE
 export const checkoutState = {
   orderTotal: null,
-  orderId: Date.now(),
+  orderId: today,
   orderStatus: "",
   cart: [],
   salesTax: 0,
