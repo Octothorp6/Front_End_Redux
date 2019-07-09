@@ -127,7 +127,7 @@ export const PurchaseTemp = ReactDOMServer.renderToStaticMarkup(
                         run applications engineered to protect your data, not exploit it. 
                         Please check out our expanding resource base by visiting our forums at 
                         https://forum.ethernode.io/. 
-                        <br /><br >/
+                        <br /><br />
                         Thank you for being part of our early efforts to bring the technology 
                         of blockchain and the power of digital freedom to the world.
                         <br /><br />
