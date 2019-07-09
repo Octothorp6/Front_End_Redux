@@ -7,9 +7,9 @@ export const signUpInfo = user => {
     jsonrpc: "2.0",
     method: "createUser",
     params: [
+      user.userEmail,
       user.userFirst,
       user.userLast,
-      user.userEmail,
       user.password,
       "customer"
     ],
