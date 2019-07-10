@@ -7,9 +7,9 @@ export const signUpInfo = user => {
     jsonrpc: "2.0",
     method: "createUser",
     params: [
+      user.userEmail,
       user.userFirst,
       user.userLast,
-      user.userEmail,
       user.password,
       "customer"
     ],
@@ -82,7 +82,7 @@ export const checkoutInfo = user => {
       user.shippingState,
       user.shippingZip,
       user.shippingCountry,
-      user.cart,
+      [user.cart],
       user.salesTax,
       user.userFirst,
       user.userLast,
@@ -252,7 +252,7 @@ export const preOrderInfo = user => {
   let text = "PRESALE REGISTRATION";
 
   let presaleTx = {
-    orderId: `${user.orderId}`,
+    orderId: Date.now(),
     paymentType: "PRESALE",
     txResult: `${text}`,
     txCode: `${transID}`,

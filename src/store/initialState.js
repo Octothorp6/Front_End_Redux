@@ -1,7 +1,8 @@
+let unixDate = Math.round(+new Date()/1000);
 //INTIIAL CHECKOUTSTATE
 export const checkoutState = {
   orderTotal: null,
-  orderId: Date.now(),
+  orderId: unixDate,
   orderStatus: "",
   cart: [],
   salesTax: 0,

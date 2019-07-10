@@ -32,11 +32,25 @@ class Checkout extends React.PureComponent {
   };
 
   handlePreorder = values => {
-    Promise.resolve(this.props.preOrder(values)).then(() => this.handleNext());
+    Promise.resolve(
+      this.props.preOrder({
+        ...values,
+        orderId: this.props.orderId,
+        orderTotal: this.props.orderTotal,
+        cart: this.props.cart
+      })
+    ).then(() => this.handleNext());
   };
 
   creditCheckout = values => {
-    this.props.creditCheckout(values);
+    Promise.resolve(
+      this.props.preOrder({
+        ...values,
+        orderId: this.props.orderId,
+        orderTotal: this.props.orderTotal,
+        cart: this.props.cart
+      })
+    ).then(() => this.handleNext());
   };
 
   //======================================================================
