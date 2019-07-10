@@ -234,10 +234,7 @@ export const authData = user => {
   let admin = {
     jsonrpc: "2.0",
     method: "login",
-    params: [
-      user.username, 
-      user.password
-    ],
+    params: [user.username, user.password],
     id: 2
   };
   return admin;
@@ -252,7 +249,7 @@ export const preOrderInfo = user => {
   let text = "PRESALE REGISTRATION";
 
   let presaleTx = {
-    orderId: Date.now(),
+    orderId: `${user.orderId}`,
     paymentType: "PRESALE",
     txResult: `${text}`,
     txCode: `${transID}`,
@@ -308,7 +305,12 @@ export const confirmOrder = user => {
       [userObj],
       user.userEmail,
       `New Preorder from User: ${user.userFirst}, orderId: ${user.orderId}`,
-      NewSalesTemp(user.userFirst, user.userLast, user.userEmail, user.orderTotal)
+      NewSalesTemp(
+        user.userFirst,
+        user.userLast,
+        user.userEmail,
+        user.orderTotal
+      )
     ],
     id: 500
   };
