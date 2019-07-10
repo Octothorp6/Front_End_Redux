@@ -125,7 +125,7 @@ export const preOrder = payload => {
   let customer = preOrderInfo(payload);
   let confirmMsg = confirmOrder(payload);
   let emailMsg = emailContact(payload);
-
+  console.log(payload)
   return async dispatch => {
     dispatch({ type: PRE_ORDER });
     try {
